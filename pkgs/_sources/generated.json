@@ -1,0 +1,21 @@
+{
+    "material-fox": {
+        "cargoLocks": null,
+        "extract": null,
+        "name": "material-fox",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "muckSponge",
+            "repo": "MaterialFox",
+            "rev": "8b1a7b10da0751a1f63e51eac428ba1eb1094b5f",
+            "sha256": "sha256-une3WS6mprqga8FuNRlZV0a3Vmq7UhL1Gzy4JvdRov4=",
+            "type": "github"
+        },
+        "version": "8b1a7b10da0751a1f63e51eac428ba1eb1094b5f"
+    }
+}

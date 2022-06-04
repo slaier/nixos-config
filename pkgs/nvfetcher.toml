@@ -1,0 +1,4 @@
+[material-fox]
+src.git = "https://github.com/muckSponge/MaterialFox.git"
+fetch.github = "muckSponge/MaterialFox"
+
