@@ -10,7 +10,7 @@
 
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
 
-    nixosConfigurations.vbox = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.vbox = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       modules = [
         ({ pkgs, ... }: {
@@ -27,11 +27,11 @@
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = {
             hm-path = ./hm;
+            packages = (import ./pkgs { pkgs = import nixpkgs { inherit system; }; });
           };
           home-manager.users.nixos = import ./users/nixos/hm.nix;
         }
       ];
     };
-
   };
 }
