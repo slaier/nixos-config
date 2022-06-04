@@ -10,5 +10,7 @@
     curl
     git
   ];
+
+  users.users.root.password = "nixos";
 }
 
