@@ -25,6 +25,9 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = {
+            hm-path = ./hm;
+          };
           home-manager.users.nixos = import ./users/nixos/hm.nix;
         }
       ];
