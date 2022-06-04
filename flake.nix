@@ -1,9 +1,12 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/22.05";
+
+    home-manager.url = "github:nix-community/home-manager/release-22.05";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs }: {
+  outputs = { self, nixpkgs, home-manager }: {
 
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
 
@@ -17,6 +20,13 @@
           ];
           nix.registry.sys.flake = nixpkgs;
         })
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.nixos = import ./users/nixos/hm.nix;
+        }
       ];
     };
 
