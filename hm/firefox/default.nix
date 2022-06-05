@@ -1,6 +1,6 @@
-{ pkgs, lib, packages, ... }:
+{ pkgs, lib, ... }:
 let
-  theme = (packages.material-fox);
+  theme = (pkgs.nur-slaier.material-fox);
 
   cfgPath = ".mozilla/firefox";
   profileName = "j9v3rvaj.default";

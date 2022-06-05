@@ -4,9 +4,12 @@
 
     home-manager.url = "github:nix-community/home-manager/release-22.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    nur-slaier.url = "github:slaier/nur-packages";
+    nur-slaier.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager }: {
+  outputs = { self, nixpkgs, home-manager, nur-slaier }: {
 
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
 
@@ -18,6 +21,9 @@
             ./hosts/vbox
             ./users
           ];
+          nixpkgs.config.packageOverrides = pkgs: {
+            nur-slaier = nur-slaier.packages.x86_64-linux;
+          };
           nix.registry.sys.flake = nixpkgs;
         })
 
@@ -27,7 +33,6 @@
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = {
             hm-path = ./hm;
-            packages = (import ./pkgs { pkgs = import nixpkgs { inherit system; }; });
           };
           home-manager.users.nixos = import ./users/nixos/hm.nix;
         }

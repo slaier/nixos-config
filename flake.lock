@@ -37,10 +37,31 @@
         "type": "github"
       }
     },
+    "nur-slaier": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1654414931,
+        "narHash": "sha256-dBfiewzCh887h9PoRu/841ppeYJmi7nCxVT2jiyTRy4=",
+        "owner": "slaier",
+        "repo": "nur-packages",
+        "rev": "8b11eab64e8fdc7dfe298080eff5f8cbaf8c0103",
+        "type": "github"
+      },
+      "original": {
+        "owner": "slaier",
+        "repo": "nur-packages",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nur-slaier": "nur-slaier"
       }
     }
   },
