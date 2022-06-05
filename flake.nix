@@ -19,7 +19,7 @@
         ({ pkgs, ... }: {
           imports = [
             ./hosts/vbox
-            ./users
+            ./system
           ];
           nixpkgs.config.packageOverrides = pkgs: {
             nur-slaier = nur-slaier.packages.x86_64-linux;
@@ -34,7 +34,7 @@
           home-manager.extraSpecialArgs = {
             hm-path = ./hm;
           };
-          home-manager.users.nixos = import ./users/nixos/hm.nix;
+          home-manager.users.nixos = import ./hm/users/nixos;
         }
       ];
     };
