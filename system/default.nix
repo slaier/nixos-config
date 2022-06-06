@@ -1,7 +1,8 @@
 { ... }: {
   imports = [
+    ./core
+    ./fcitx
     ./i3
-    ./programs
     ./users
   ];
 }
