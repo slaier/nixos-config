@@ -22,6 +22,11 @@
     userName = "Slaier";
 
     aliases = {
+      d = "diff";
+      dc = "diff --cached";
+      ds = "diff --staged";
+      r = "restore";
+      rs = "restore --staged";
       st = "status -sb";
       lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
     };
