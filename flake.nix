@@ -29,6 +29,7 @@
         vbox = {
           system = "x86_64-linux";
           host-module = ./hosts/vbox;
+          users.nixos = import ./hosts/vbox/hm.nix;
         };
       };
       forAllHosts = f: mapAttrs f hosts;
@@ -37,13 +38,13 @@
       formatter = forAllSystems (system:
         (let pkgs = import nixpkgs { inherit system; }; in pkgs.nixpkgs-fmt)
       );
-      nixosConfigurations = forAllHosts (host: { system, host-module }: nixpkgs.lib.nixosSystem {
+      nixosConfigurations = forAllHosts (_: { system, host-module, users }: nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
           ({ pkgs, ... }: {
             imports = [
+              ./nixos
               host-module
-              ./system
             ];
             nixpkgs.overlays = [
               nur.overlay
@@ -61,9 +62,12 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
+              inherit users;
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.nixos = import ./hm;
+              sharedModules = [
+                ./hm
+              ];
             };
           }
         ];

@@ -1,4 +1,5 @@
-{ ... }: {
+{ config, lib, ... }:
+lib.mkIf config.slaier.isDesktop {
   environment.pathsToLink = [ "/libexec" ];
   services.xserver = {
     enable = true;

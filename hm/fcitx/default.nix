@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
   makeDict = name: dicts:
     let
@@ -18,7 +18,10 @@ let
       ...
     '';
 in
-{
+lib.mkIf config.slaier.isDesktop {
+  xsession.windowManager.i3.config.startup = [
+    { command = "fcitx5 -d"; always = true; notification = false; }
+  ];
   xdg.dataFile = {
     "fcitx5/themes".source = "${pkgs.nur.repos.xddxdd.fcitx5-breeze}/share/fcitx5/themes";
     "fcitx5/rime/default.custom.yaml".text = builtins.toJSON {

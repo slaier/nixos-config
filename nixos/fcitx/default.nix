@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ config, pkgs, lib, ... }:
+lib.mkIf config.slaier.isDesktop {
   i18n.inputMethod = {
     enabled = "fcitx5";
     fcitx5.addons = with pkgs; with nur.repos.xddxdd; [

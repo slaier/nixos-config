@@ -1,4 +1,5 @@
-{ lib, pkgs, ... }: with lib; {
+{ config, pkgs, lib, ... }:
+lib.mkIf config.slaier.isDesktop {
   xsession.enable = true;
   xsession.windowManager.i3 = {
     enable = true;
@@ -51,7 +52,7 @@
         outer = 2;
         smartGaps = true;
       };
-      keybindings = mkOptionDefault {
+      keybindings = lib.mkOptionDefault {
         "${modifier}+Tab" = "exec --no-startup-id ${pkgs.rofi}/bin/rofi -show window";
         "${modifier}+Shift+a" = "focus child";
         "${modifier}+Shift+h" = "move absolute position center";
@@ -64,9 +65,6 @@
       };
       menu = "--no-startup-id ${pkgs.rofi}/bin/rofi -show drun";
       modifier = "Mod4"; # use win key
-      startup = [
-        { command = "fcitx5 -d"; always = true; notification = false; }
-      ];
       terminal = "--no-startup-id ${pkgs.alacritty}/bin/alacritty";
       window.border = 0;
     };

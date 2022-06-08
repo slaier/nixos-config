@@ -15,6 +15,8 @@
 
   networking.firewall.enable = false;
 
-  system.stateVersion = "22.05";
+  slaier = {
+    isDesktop = true;
+  };
 }
 

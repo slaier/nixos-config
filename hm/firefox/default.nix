@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 let
   theme = (pkgs.nur-slaier.material-fox);
 
@@ -6,7 +6,7 @@ let
   profileName = "j9v3rvaj.default";
   profilePath = "${cfgPath}/${profileName}";
 in
-{
+lib.mkIf config.slaier.isDesktop {
   home.packages = [ pkgs.firefox ];
   home.file = {
     "${cfgPath}/profiles.ini" = {

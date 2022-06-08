@@ -1,10 +1,9 @@
-{ lib, ... }: {
+{ config, lib, ... }: {
   imports = [
+    ./core
     ./fcitx
-    ./firefox
-    ./git
     ./i3
-    ./neovim
+    ./users
   ];
 
   options.slaier.isDesktop = lib.mkEnableOption "desktop";
