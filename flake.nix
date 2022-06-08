@@ -14,6 +14,8 @@
 
   outputs = { self, nixpkgs, latest, home-manager, nur, nur-slaier }:
     let
+      inherit (nixpkgs.lib.attrsets) genAttrs mapAttrs attrValues;
+
       systems = [
         "x86_64-linux"
         "i686-linux"
@@ -22,14 +24,14 @@
         "armv6l-linux"
         "armv7l-linux"
       ];
-      forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f system);
+      forAllSystems = f: genAttrs systems (system: f system);
       hosts = {
         vbox = {
           system = "x86_64-linux";
           host-module = ./hosts/vbox;
         };
       };
-      forAllHosts = f: nixpkgs.lib.attrsets.mapAttrs f hosts;
+      forAllHosts = f: mapAttrs f hosts;
     in
     {
       formatter = forAllSystems (system:
@@ -49,7 +51,7 @@
             nixpkgs.config.packageOverrides = (
               let pkgs-latest = import latest { inherit system; }; in
               pkgs: {
-                nur-slaier = pkgs.lib.attrsets.getAttrFromPath [ system ] nur-slaier.packages;
+                nur-slaier = nur-slaier.packages.${system};
                 fcitx5 = pkgs-latest.fcitx5;
               }
             );
@@ -58,12 +60,11 @@
 
           home-manager.nixosModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {
-              hm-path = ./hm;
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.nixos = import ./hm;
             };
-            home-manager.users.nixos = import ./hm/users/nixos;
           }
         ];
       });
