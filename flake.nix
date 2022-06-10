@@ -1,7 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
-    latest.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     home-manager.url = "github:nix-community/home-manager/release-22.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -12,9 +11,9 @@
     nur-slaier.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, latest, home-manager, nur, nur-slaier }:
+  outputs = { self, nixpkgs, home-manager, nur, nur-slaier }:
     let
-      inherit (nixpkgs.lib.attrsets) genAttrs mapAttrs attrValues;
+      inherit (nixpkgs.lib.attrsets) genAttrs mapAttrs attrValues mapAttrsToList;
 
       systems = [
         "x86_64-linux"
@@ -38,6 +37,7 @@
       formatter = forAllSystems (system:
         (let pkgs = import nixpkgs { inherit system; }; in pkgs.nixpkgs-fmt)
       );
+      overlays = mapAttrs (name: path: import path) (import ./overlays);
       nixosConfigurations = forAllHosts (_: { system, host-module, users }: nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
@@ -48,14 +48,10 @@
             ];
             nixpkgs.overlays = [
               nur.overlay
-            ];
-            nixpkgs.config.packageOverrides = (
-              let pkgs-latest = import latest { inherit system; }; in
-              pkgs: {
-                nur-slaier = nur-slaier.packages.${system};
-                fcitx5 = pkgs-latest.fcitx5;
-              }
-            );
+            ] ++ (mapAttrsToList (_: path: import path) (import ./overlays));
+            nixpkgs.config.packageOverrides = pkgs: {
+              nur-slaier = nur-slaier.packages.${system};
+            };
             nix.registry.sys.flake = nixpkgs;
           })
 
