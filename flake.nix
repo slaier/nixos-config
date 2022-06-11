@@ -8,7 +8,7 @@
     nur.url = "github:nix-community/NUR";
 
     nur-slaier.url = "github:slaier/nur-packages";
-    nur-slaier.inputs.nixpkgs.follows = "nixpkgs";
+    nur-slaier.inputs.nixos.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, home-manager, nur, nur-slaier }:
@@ -49,6 +49,7 @@
             nixpkgs.overlays = [
               nur.overlay
             ] ++ (mapAttrsToList (_: path: import path) (import ./overlays));
+            nixpkgs.config.allowUnfree = true;
             nixpkgs.config.packageOverrides = pkgs: {
               nur-slaier = nur-slaier.packages.${system};
             };

@@ -54,16 +54,16 @@
     },
     "nur-slaier": {
       "inputs": {
-        "nixpkgs": [
+        "nixos": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1654691457,
-        "narHash": "sha256-qzHUj4/UKQclu7yTFULMxx9UbCqOim15iFRKyRg9EIU=",
+        "lastModified": 1654944308,
+        "narHash": "sha256-t+XDGYT1nlEsenz/DFHgdMzewayJ5UVJER3AGbiB7v0=",
         "owner": "slaier",
         "repo": "nur-packages",
-        "rev": "985bc6708592f99c023bac52ab3be3a38b9593af",
+        "rev": "1d9461cbe84768deebfaa4e0d4d3ed6c2a81f3df",
         "type": "github"
       },
       "original": {
