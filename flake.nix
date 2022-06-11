@@ -9,9 +9,12 @@
 
     nur-slaier.url = "github:slaier/nur-packages";
     nur-slaier.inputs.nixos.follows = "nixpkgs";
+
+    indexyz.url = "github:X01A/nixos";
+    indexyz.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, nur-slaier }:
+  outputs = { self, nixpkgs, home-manager, nur, nur-slaier, indexyz }:
     let
       inherit (nixpkgs.lib.attrsets) genAttrs mapAttrs attrValues mapAttrsToList;
 
@@ -52,6 +55,7 @@
             nixpkgs.config.allowUnfree = true;
             nixpkgs.config.packageOverrides = pkgs: {
               nur-slaier = nur-slaier.packages.${system};
+              indexyz = indexyz.legacyPackages.${system};
             };
             nix.registry.sys.flake = nixpkgs;
           })

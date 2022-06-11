@@ -1,5 +1,80 @@
 {
   "nodes": {
+    "cloudreve-cli": {
+      "inputs": {
+        "flake-compat": [
+          "indexyz",
+          "flake-compat"
+        ],
+        "flake-utils": [
+          "indexyz",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "indexyz",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1654269350,
+        "narHash": "sha256-uh2AwcnUK1Gu4uJdxbsJppdn9ieT/Lul1gwZaKKDMO4=",
+        "owner": "Indexyz",
+        "repo": "CloudreveCLI",
+        "rev": "2e2aaaf355f108e4c97cb9c308fbb3e0bc267cf1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Indexyz",
+        "repo": "CloudreveCLI",
+        "type": "github"
+      }
+    },
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1650374568,
+        "narHash": "sha256-Z+s0J8/r907g149rllvwhb4pKi8Wam5ij0st8PwAh+E=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "b4a34015c698c7793d592d66adbab377907a2be8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1653893745,
+        "narHash": "sha256-0jntwV3Z8//YwuOjzhV2sgJJPt+HY6KhU7VZUL0fKZQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "1ed9fb1935d260de5fe1c2f7ee0ebaae17ed2fa1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_2": {
+      "locked": {
+        "lastModified": 1637014545,
+        "narHash": "sha256-26IZAc5yzlD9FlDT54io1oqG/bBoyka+FJk5guaX4x4=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "bba5dcc8e0b20ab664967ad83d24d64cb64ec4f4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -21,6 +96,31 @@
         "type": "github"
       }
     },
+    "indexyz": {
+      "inputs": {
+        "cloudreve-cli": "cloudreve-cli",
+        "flake-compat": "flake-compat",
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "npmlock2nix": "npmlock2nix",
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1654358979,
+        "narHash": "sha256-JGAgAeQEEJh+Mdi0m6S/s5/R22i+a+9mr5XJNdhFllc=",
+        "owner": "X01A",
+        "repo": "nixos",
+        "rev": "888f35203587c16af4220fdcaf156c6911bf7015",
+        "type": "github"
+      },
+      "original": {
+        "owner": "X01A",
+        "repo": "nixos",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1654360807,
@@ -34,6 +134,22 @@
         "owner": "NixOS",
         "ref": "nixos-22.05",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "npmlock2nix": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1654187501,
+        "narHash": "sha256-OS1BfUHuMh659Uao4K/AJ1I9VNloRgUIZyOZAqyK6z4=",
+        "owner": "serokell",
+        "repo": "nix-npm-buildpackage",
+        "rev": "e363bfaf587e2a449e40e52d440495dfa5249313",
+        "type": "github"
+      },
+      "original": {
+        "owner": "serokell",
+        "repo": "nix-npm-buildpackage",
         "type": "github"
       }
     },
@@ -75,9 +191,32 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "indexyz": "indexyz",
         "nixpkgs": "nixpkgs",
         "nur": "nur",
         "nur-slaier": "nur-slaier"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "flake-utils": "flake-utils_2",
+        "nixpkgs": [
+          "indexyz",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1654310165,
+        "narHash": "sha256-5TWkZMKnrLQVGsWrcDabJX7E502qoi0+vP1RReJp0/Y=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "e64770eac18a1983232a5bc55fa443d9f15cc489",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     }
   },

@@ -1,5 +1,6 @@
 { lib, ... }: {
   imports = [
+    ./apps
     ./fcitx
     ./firefox
     ./git
