@@ -1,34 +1,42 @@
-{ pkgs, ... }: {
-  nix.settings.substituters = [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" ];
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
+{ config, pkgs, lib, ... }:
+with lib;
+mkMerge [
+  {
+    nix.settings.substituters = [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" ];
+    nix.extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
 
-  environment.systemPackages = with pkgs; [
-    curl
-    git
-    neovim
-    wget
-  ];
-
-  fonts = {
-    enableDefaultFonts = true;
-    fonts = with pkgs; [
-      nerdfonts
-      noto-fonts-cjk
-      noto-fonts-emoji
+    environment.systemPackages = with pkgs; [
+      curl
+      git
+      neovim
+      wget
     ];
 
-    fontconfig = {
-      defaultFonts = {
-        serif = [ "FantasqueSansMono Nerd Font Mono" ];
-        sansSerif = [ "FantasqueSansMono Nerd Font Mono" ];
-        monospace = [ "FantasqueSansMono Nerd Font Mono" "Noto Color Emoji" ];
-        emoji = [ "Noto Color Emoji" ];
+    fonts = {
+      enableDefaultFonts = true;
+      fonts = with pkgs; [
+        nerdfonts
+        noto-fonts-cjk
+        noto-fonts-emoji
+      ];
+
+      fontconfig = {
+        defaultFonts = {
+          serif = [ "FantasqueSansMono Nerd Font Mono" ];
+          sansSerif = [ "FantasqueSansMono Nerd Font Mono" ];
+          monospace = [ "FantasqueSansMono Nerd Font Mono" "Noto Color Emoji" ];
+          emoji = [ "Noto Color Emoji" ];
+        };
       };
     };
-  };
 
-  system.stateVersion = "22.05";
-}
+    system.stateVersion = "22.05";
+  }
+
+  (mkIf config.slaier.isDesktop {
+    programs.adb.enable = true;
+  })
+]
 
