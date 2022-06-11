@@ -32,6 +32,17 @@ mkMerge [
       };
     };
 
+    services.earlyoom.enable = true;
+
+    security.pam.loginLimits = [
+      {
+        domain = "*";
+        type = "soft";
+        item = "nofile";
+        value = "40960";
+      }
+    ];
+
     system.stateVersion = "22.05";
   }
 
