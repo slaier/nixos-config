@@ -35,6 +35,21 @@ lib.mkIf config.slaier.isDesktop {
   };
   systemd.user.sessionVariables = {
     NIX_RIME_DATA_DIR = "${config.i18n.inputMethod.package}/share/rime-data";
+    NIX_FCITX5_STATIC_PROFILE_PATH = "${config.xdg.configHome}/fcitx5/nix-profile";
+  };
+  xdg.configFile = {
+    "fcitx5/nix-profile".text = ''
+      [Groups/0]
+      Name=Default
+      Default Layout=us
+      DefaultIM=rime
+
+      [Groups/0/Items/0]
+      Name=rime
+
+      [GroupOrder]
+      0=Default
+    '';
   };
   xdg.dataFile = {
     "fcitx5/themes".source = "${pkgs.nur.repos.xddxdd.fcitx5-breeze}/share/fcitx5/themes";

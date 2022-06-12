@@ -1,0 +1,16 @@
+:100644 100644 ce53b286 00000000 M	src/lib/fcitx/inputmethodmanager.cpp
+
+diff --git a/src/lib/fcitx/inputmethodmanager.cpp b/src/lib/fcitx/inputmethodmanager.cpp
+index ce53b286..9a6dcf7d 100644
+--- a/src/lib/fcitx/inputmethodmanager.cpp
++++ b/src/lib/fcitx/inputmethodmanager.cpp
+@@ -66,7 +66,8 @@ void InputMethodManagerPrivate::loadConfig(
+     const std::function<void(InputMethodManager &)>
+         &buildDefaultGroupCallback) {
+     const auto &path = StandardPath::global();
+-    auto file = path.open(StandardPath::Type::PkgConfig, "profile", O_RDONLY);
++    auto profilePath = getenv("NIX_FCITX5_STATIC_PROFILE_PATH");
++    auto file = path.open(StandardPath::Type::PkgConfig, profilePath ? profilePath : "profile", O_RDONLY);
+     RawConfig config;
+     if (file.fd() >= 0) {
+         readFromIni(config, file.fd());
