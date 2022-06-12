@@ -43,6 +43,7 @@ in
       aliases = {
         d = "diff";
         dc = "diff --cached";
+        dh = "diff HEAD^!";
         ds = "diff --staged";
         r = "restore";
         rs = "restore --staged";
