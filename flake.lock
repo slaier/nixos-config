@@ -137,6 +137,17 @@
         "type": "github"
       }
     },
+    "nixpkgs-channel": {
+      "locked": {
+        "narHash": "sha256-8SEWEpn00/Y/5/cs20pfRfPB6EHHiL+sPR/O5QgpkEo=",
+        "type": "tarball",
+        "url": "https://releases.nixos.org/nixos/22.05/nixos-22.05.915.9ff91ce2e4c/nixexprs.tar.xz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://releases.nixos.org/nixos/22.05/nixos-22.05.915.9ff91ce2e4c/nixexprs.tar.xz"
+      }
+    },
     "npmlock2nix": {
       "flake": false,
       "locked": {
@@ -155,36 +166,16 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1654423064,
-        "narHash": "sha256-X3u2YCDQTiMU+geriz0bjLEJFIxXs1GOVEo8WKEi4Ic=",
+        "lastModified": 1655199919,
+        "narHash": "sha256-DOwpi0H4SVMKJ+QX/REgNESw6EHVoiQYjdHWyZLOuQs=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "522188d4fe94df9958d2c8f1271e21210394523f",
+        "rev": "c92906e4e6425ffe1be7d1a52018c1b8d5b40ca6",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
         "repo": "NUR",
-        "type": "github"
-      }
-    },
-    "nur-slaier": {
-      "inputs": {
-        "nixos": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1655034357,
-        "narHash": "sha256-LNMeS+zcRm0hkvulb9aBH2BkLkjw1RHsgJPAln6z8P4=",
-        "owner": "slaier",
-        "repo": "nur-packages",
-        "rev": "f456178e41d5c34ef0142c20f4cd62ccf415ea9e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "slaier",
-        "repo": "nur-packages",
         "type": "github"
       }
     },
@@ -193,8 +184,8 @@
         "home-manager": "home-manager",
         "indexyz": "indexyz",
         "nixpkgs": "nixpkgs",
-        "nur": "nur",
-        "nur-slaier": "nur-slaier"
+        "nixpkgs-channel": "nixpkgs-channel",
+        "nur": "nur"
       }
     },
     "rust-overlay": {

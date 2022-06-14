@@ -1,20 +1,18 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
+    nixpkgs-channel.url = "https://releases.nixos.org/nixos/22.05/nixos-22.05.915.9ff91ce2e4c/nixexprs.tar.xz";
 
     home-manager.url = "github:nix-community/home-manager/release-22.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = "github:nix-community/NUR";
 
-    nur-slaier.url = "github:slaier/nur-packages";
-    nur-slaier.inputs.nixos.follows = "nixpkgs";
-
     indexyz.url = "github:X01A/nixos";
     indexyz.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, nur-slaier, indexyz }:
+  outputs = { self, nixpkgs, nixpkgs-channel, home-manager, nur, indexyz }:
     let
       inherit (nixpkgs.lib.attrsets) genAttrs mapAttrs attrValues mapAttrsToList;
 
@@ -54,10 +52,11 @@
             ] ++ (mapAttrsToList (_: path: import path) (import ./overlays));
             nixpkgs.config.allowUnfree = true;
             nixpkgs.config.packageOverrides = pkgs: {
-              nur-slaier = nur-slaier.packages.${system};
               indexyz = indexyz.legacyPackages.${system};
             };
+            nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
             nix.registry.sys.flake = nixpkgs;
+            programs.command-not-found.dbPath = "${nixpkgs-channel}/programs.sqlite";
           })
 
           home-manager.nixosModules.home-manager

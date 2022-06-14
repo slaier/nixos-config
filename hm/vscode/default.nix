@@ -4,7 +4,7 @@ lib.mkIf config.slaier.isDesktop {
     enable = true;
     package = pkgs.vscode-fhs;
     extensions = (
-      with pkgs.vscode-extensions; with pkgs.nur-slaier; [
+      with pkgs.vscode-extensions; with pkgs.nur.repos.slaier; [
         coenraads.bracket-pair-colorizer-2
         eamodio.gitlens
         jnoortheen.nix-ide

@@ -1,11 +1,11 @@
 { config, pkgs, lib, ... }:
 with lib;
 let
-  theme = (pkgs.nur-slaier.material-fox);
+  theme = (pkgs.nur.repos.slaier.material-fox);
 
   cfgPath = ".mozilla/firefox";
 
-  profiles = let arkenfox-userjs = fileContents "${pkgs.nur-slaier.arkenfox-userjs}/user.js"; in
+  profiles = let arkenfox-userjs = fileContents "${pkgs.nur.repos.slaier.arkenfox-userjs}/user.js"; in
     {
       default = {
         id = 0;
