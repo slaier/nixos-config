@@ -62,6 +62,8 @@ mkMerge [
     time.timeZone = "Asia/Shanghai";
     time.hardwareClockInLocalTime = true;
 
+    documentation.nixos.enable = false;
+
     system.stateVersion = "22.05";
   }
 
