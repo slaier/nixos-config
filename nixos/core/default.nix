@@ -59,6 +59,9 @@ mkMerge [
       }
     ];
 
+    time.timeZone = "Asia/Shanghai";
+    time.hardwareClockInLocalTime = true;
+
     system.stateVersion = "22.05";
   }
 
