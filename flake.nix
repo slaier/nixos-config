@@ -31,6 +31,11 @@
           host-module = ./hosts/vbox;
           users.nixos = import ./hosts/vbox/hm.nix;
         };
+        pc = {
+          system = "x86_64-linux";
+          host-module = ./hosts/pc;
+          users.nixos = import ./hosts/pc/hm.nix;
+        };
       };
       forAllHosts = f: mapAttrs f hosts;
     in
