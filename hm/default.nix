@@ -7,6 +7,7 @@
     ./i3
     ./neovim
     ./rust
+    ./shell
     ./vscode
   ];
 
