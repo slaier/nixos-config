@@ -11,20 +11,9 @@
       ./hardware-configuration.nix
     ];
 
-  # Use the GRUB 2 boot loader.
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    grub = {
-      enable = true;
-      device = "nodev";
-      gfxmodeEfi = "1920x1080";
-      gfxmodeBios = "1920x1080";
-      efiSupport = true;
-      useOSProber = true;
-    };
-  };
-
-  networking.hostName = "pc";
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   # Enable sound.
   sound.enable = true;

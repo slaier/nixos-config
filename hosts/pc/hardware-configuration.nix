@@ -16,14 +16,55 @@
 
   fileSystems."/" =
     {
-      device = "/dev/disk/by-uuid/95379695-0f64-400f-869b-c796eea4a91c";
-      fsType = "ext4";
+      device = "none";
+      fsType = "tmpfs";
     };
 
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/6FF0-B5CC";
+      device = "/dev/disk/by-uuid/82A2-5715";
       fsType = "vfat";
+    };
+
+  fileSystems."/nix" =
+    {
+      device = "/dev/disk/by-uuid/6529aca8-b6ab-48bf-b6d1-6034b01a9830";
+      fsType = "btrfs";
+      options = [ "subvol=nix" ];
+    };
+
+  fileSystems."/etc" =
+    {
+      device = "/dev/disk/by-uuid/6529aca8-b6ab-48bf-b6d1-6034b01a9830";
+      fsType = "btrfs";
+      options = [ "subvol=etc" ];
+    };
+
+  fileSystems."/var/log" =
+    {
+      device = "/dev/disk/by-uuid/6529aca8-b6ab-48bf-b6d1-6034b01a9830";
+      fsType = "btrfs";
+      options = [ "subvol=log" ];
+    };
+
+  fileSystems."/root" =
+    {
+      device = "/dev/disk/by-uuid/6529aca8-b6ab-48bf-b6d1-6034b01a9830";
+      fsType = "btrfs";
+      options = [ "subvol=root" ];
+    };
+
+  fileSystems."/home" =
+    {
+      device = "/dev/disk/by-uuid/6529aca8-b6ab-48bf-b6d1-6034b01a9830";
+      fsType = "btrfs";
+      options = [ "subvol=home" ];
+    };
+
+  fileSystems."/data" =
+    {
+      device = "/dev/disk/by-uuid/16aa56a5-f994-4edd-8fe0-c75267a238ba";
+      fsType = "btrfs";
     };
 
   swapDevices = [ ];
