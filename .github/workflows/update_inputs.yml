@@ -1,0 +1,12 @@
+name: Update inputs
+on:
+  schedule:
+    # rebuild at 02:11 on Saturday
+    - cron:  '11 2 * * 6'
+  workflow_dispatch:
+jobs:
+  update_nix_inputs:
+    uses: slaier/reusable-workflows/.github/workflows/update_nix_inputs.yml@main
+    secrets:
+      TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+
