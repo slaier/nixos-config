@@ -2,7 +2,6 @@
   programs.fish.enable = true;
 
   users.users.nixos = {
-    password = "nixos";
     isNormalUser = true;
     extraGroups = [
       "adbusers"
