@@ -34,6 +34,7 @@ lib.mkIf config.slaier.isDesktop {
           fonts = {
             names = [ "'Noto Sans CJK SC'" ];
           };
+          trayOutput = null;
         }
       ];
       floating.border = 0;
