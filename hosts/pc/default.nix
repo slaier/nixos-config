@@ -16,6 +16,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Enable sound.
+  # Use pavucontrol or pactl to set volume
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
