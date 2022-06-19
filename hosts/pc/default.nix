@@ -20,10 +20,10 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+  networking.hostName = "pc";
   networking.firewall.enable = false;
 
-  slaier = {
-    isDesktop = true;
-  };
+  # Indicate host is desktop
+  services.xserver.enable = true;
 }
 

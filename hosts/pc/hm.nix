@@ -1,6 +1,5 @@
 { ... }: {
-  slaier = {
-    isDesktop = true;
-  };
+  # Indicate host is desktop
+  xsession.enable = true;
 }
 

@@ -10,7 +10,5 @@
     ./shell
     ./vscode
   ];
-
-  options.slaier.isDesktop = lib.mkEnableOption "desktop";
 }
 

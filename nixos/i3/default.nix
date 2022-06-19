@@ -1,8 +1,7 @@
 { config, lib, ... }:
-lib.mkIf config.slaier.isDesktop {
+lib.mkIf config.services.xserver.enable {
   environment.pathsToLink = [ "/libexec" ];
   services.xserver = {
-    enable = true;
     desktopManager = {
       xterm.enable = false;
     };

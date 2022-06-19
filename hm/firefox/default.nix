@@ -62,7 +62,7 @@ let
     "https://addons.mozilla.org/firefox/downloads/latest/${extension}/latest.xpi"
   );
 in
-mkIf config.slaier.isDesktop {
+mkIf config.xsession.enable {
   home.packages = [
     (pkgs.wrapFirefox pkgs.firefox-unwrapped {
       extraPolicies = {

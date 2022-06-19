@@ -15,7 +15,7 @@ mkMerge [
       zip
     ];
   }
-  (mkIf config.slaier.isDesktop {
+  (mkIf config.xsession.enable {
     home.packages = with pkgs; with indexyz; [
       gimp
       keepassxc

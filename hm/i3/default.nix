@@ -1,6 +1,5 @@
 { config, pkgs, lib, ... }:
-lib.mkIf config.slaier.isDesktop {
-  xsession.enable = true;
+lib.mkIf config.xsession.enable {
   xsession.windowManager.i3 = {
     enable = true;
     config = rec {

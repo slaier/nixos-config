@@ -1,6 +1,0 @@
-{ ... }: {
-  slaier = {
-    isDesktop = true;
-  };
-}
-

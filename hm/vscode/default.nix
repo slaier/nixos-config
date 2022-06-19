@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }:
-lib.mkIf config.slaier.isDesktop {
+lib.mkIf config.xsession.enable {
   programs.vscode = {
     enable = true;
     package = pkgs.vscode-fhs;
