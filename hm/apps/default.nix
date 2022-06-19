@@ -2,11 +2,13 @@
 with lib;
 mkMerge [
   {
-    home.packages = with pkgs; with indexyz; [
+    home.packages = with pkgs; with indexyz; with nur.repos.slaier; [
       bottom
+      clash-speedtest
       dogdns
       hyperfine
       nali
+      nvfetcher
       p7zip
       tealdeer
       thefuck
