@@ -1,4 +1,4 @@
 // begin
-user_pref("network.trr.uri", "https://dns.google/dns-query");
-user_pref("network.trr.bootstrapAddress", "8.8.8.8");
+user_pref("network.trr.uri", "https://puredns.org/dns-query");
+user_pref("network.trr.bootstrapAddr", "146.190.6.13");
 // end
