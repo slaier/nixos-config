@@ -22,7 +22,6 @@ mkMerge [
       gimp
       keepassxc
       libreoffice-fresh
-      motrix
       okular
       quiterss
       spotify

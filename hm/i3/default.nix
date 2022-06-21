@@ -67,8 +67,8 @@ lib.mkIf config.xsession.enable {
       modifier = "Mod4"; # use win key
       startup = [
         { command = "keepassxc"; always = true; notification = false; }
-        { command = "motrix"; always = true; notification = false; }
         { command = "stretchly"; always = true; notification = false; }
+        { command = "quiterss"; always = true; notification = false; }
       ];
       terminal = "--no-startup-id ${pkgs.alacritty}/bin/alacritty";
       window.border = 0;
