@@ -1,5 +1,4 @@
-{ config, pkgs, lib, ... }:
-lib.mkIf config.xsession.enable {
+{ config, pkgs, lib, ... }: {
   programs.vscode = {
     enable = true;
     package = pkgs.vscode-fhs;

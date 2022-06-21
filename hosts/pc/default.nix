@@ -22,8 +22,5 @@
 
   networking.hostName = "pc";
   networking.firewall.enable = false;
-
-  # Indicate host is desktop
-  services.xserver.enable = true;
 }
 

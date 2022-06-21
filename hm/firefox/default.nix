@@ -9,11 +9,11 @@ let
     {
       default = {
         id = 0;
-        extraConfig = arkenfox-userjs + (fileContents ./user-overrides.js) + (fileContents ./default-overrides.js);
+        extraConfig = arkenfox-userjs + (fileContents ./default.js);
       };
       cn = {
         id = 1;
-        extraConfig = arkenfox-userjs + (fileContents ./user-overrides.js) + (fileContents ./cn-overrides.js);
+        extraConfig = arkenfox-userjs + (fileContents ./default.js) + (fileContents ./cn.js);
       };
     };
 
@@ -44,7 +44,6 @@ let
     "violentmonkey"
     "new_tongwentang"
     "keepassxc-browser"
-    "aria2-integration"
     "adnauseam"
     "rsshub-radar"
     "ublacklist"
@@ -62,7 +61,7 @@ let
     "https://addons.mozilla.org/firefox/downloads/latest/${extension}/latest.xpi"
   );
 in
-mkIf config.xsession.enable {
+{
   home.packages = [
     (pkgs.wrapFirefox pkgs.firefox-unwrapped {
       extraPolicies = {

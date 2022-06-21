@@ -29,7 +29,7 @@
         pc = {
           system = "x86_64-linux";
           host-module = ./hosts/pc;
-          users.nixos = import ./hosts/pc/hm.nix;
+          users.nixos = import ./hm;
         };
       };
       forAllHosts = f: mapAttrs f hosts;

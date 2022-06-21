@@ -2,7 +2,6 @@
 {
   imports = [
     ./core.nix
-    ./minor_core.nix
   ];
   fonts = {
     enableDefaultFonts = true;
@@ -36,7 +35,25 @@
   time.timeZone = "Asia/Shanghai";
   time.hardwareClockInLocalTime = true;
 
-  documentation.nixos.enable = false;
+  programs.adb.enable = true;
+
+  virtualisation.virtualbox.host.enable = true;
+
+  environment.systemPackages = with pkgs; with indexyz; with nur.repos.slaier; [
+    bottom
+    cargo
+    clash-speedtest
+    dogdns
+    hyperfine
+    nali
+    nvfetcher
+    p7zip
+    rustc
+    tealdeer
+    unrar
+    unzip
+    zip
+  ];
 
   system.stateVersion = "22.05";
 }

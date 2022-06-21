@@ -18,7 +18,7 @@ let
       ...
     '';
 in
-lib.mkIf config.xsession.enable {
+{
   i18n.inputMethod = {
     enabled = "fcitx5";
     fcitx5.addons = with pkgs; with nur.repos.xddxdd; [
