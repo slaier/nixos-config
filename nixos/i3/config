@@ -253,3 +253,5 @@ exec_always --no-startup-id picom
 exec_always --no-startup-id keepassxc
 exec_always --no-startup-id quiterss
 exec_always --no-startup-id stretchly
+exec_always --no-startup-id qbittorrent
+

@@ -16,7 +16,7 @@
     windowManager.i3 = {
       enable = true;
       package = pkgs.i3-gaps;
-      extraPackages = with pkgs; [
+      extraPackages = with pkgs; with nur.repos.xddxdd; [
         alacritty
         dunst
         gimp
@@ -29,6 +29,7 @@
         okular
         picom
         pavucontrol
+        qbittorrent-enhanced-edition
         quiterss
         rofi
         spotify
