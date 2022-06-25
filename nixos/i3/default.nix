@@ -5,6 +5,7 @@
     XMODIFIERS = "@im=fcitx";
   };
   environment.pathsToLink = [ "/libexec" ];
+  environment.etc."i3status.toml".source = ./i3status.toml;
   services.xserver = {
     enable = true;
     desktopManager = {
@@ -21,8 +22,8 @@
         dunst
         gimp
         gnome.gnome-screenshot
-        i3blocks
         i3lock-fancy
+        i3status-rust
         keepassxc
         libreoffice-fresh
         networkmanagerapplet

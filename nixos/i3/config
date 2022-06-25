@@ -217,7 +217,7 @@ client.background       #212121
 
 # start i3bar to display a workspace bar
 bar {
-    status_command          i3blocks
+    status_command          i3status-rs /etc/i3status.toml
     bindsym button4         nop
     bindsym button5         nop
     position                bottom
@@ -247,7 +247,6 @@ gaps outer 2
 # startup applications
 exec_always --no-startup-id xautolock -time 10 -locker "i3lock-fancy -f Source-Sans-Pro"
 exec_always --no-startup-id nm-applet
-#exec_always --no-startup-id pulseaudio --start
 exec_always --no-startup-id lxpolkit
 exec_always --no-startup-id picom
 exec_always --no-startup-id keepassxc
