@@ -6,7 +6,7 @@
 # i3 config file (v4)
 
 # font for window titles and bar
-font pango:Source Sans Pro 10
+font pango:SauceCodePro Nerd Font Mono 10
 
 # use win key
 set $mod Mod4
@@ -49,7 +49,6 @@ popup_during_fullscreen smart
 bindsym $mod+Return workspace $ws1; exec --no-startup-id alacritty
 
 # start a program launcher
-#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn 'Source Sans Pro-10' -nb '#212121' -sb '#2b83a6' -sf '#ffffff'"
 bindsym $mod+d exec --no-startup-id rofi -show drun
 
 # switching window with win+tab
@@ -158,7 +157,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 # shortcut applications
 bindsym Print                   exec --no-startup-id gnome-screenshot
 bindsym $mod+Print              exec --no-startup-id gnome-screenshot -a
-bindsym $mod+Shift+x            exec --no-startup-id i3lock-fancy -f Source-Sans-Pro
+bindsym $mod+Shift+x            exec --no-startup-id i3lock-fancy -f Noto-Sans-CJK-SC
 
 # volume
 bindsym XF86AudioLowerVolume    exec --no-startup-id amixer -q -D pulse sset Master 5%- unmute
@@ -178,7 +177,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # manage i3 session
-bindsym $mod+Shift+e exec --no-startup-id i3-nagbar -t warning -f "pango:Hack 9" -m "Do you really want to exit?" -B "    Exit " "i3-msg exit" -B "    Lock " "pkill i3-nagbar && i3lock-fancy -f Source-Sans-Pro" -B "    Reboot " "pkill i3-nagbar && reboot" -B "    Shutdown " "pkill i3-nagbar && shutdown -h now"
+bindsym $mod+Shift+e exec --no-startup-id i3-nagbar -t warning -f "pango:Hack Nerd Font Mono 9" -m "Do you really want to exit?" -B "    Exit " "i3-msg exit" -B "    Lock " "pkill i3-nagbar && i3lock-fancy -f Noto-Sans-CJK-SC" -B "    Reboot " "pkill i3-nagbar && reboot" -B "    Shutdown " "pkill i3-nagbar && shutdown -h now"
 
 # resize window
 bindsym $mod+r mode "  "
@@ -245,7 +244,7 @@ gaps inner 8
 gaps outer 2
 
 # startup applications
-exec_always --no-startup-id xautolock -time 10 -locker "i3lock-fancy -f Source-Sans-Pro"
+exec_always --no-startup-id xautolock -time 10 -locker "i3lock-fancy -f Noto-Sans-CJK-SC"
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id lxpolkit
 exec_always --no-startup-id picom
