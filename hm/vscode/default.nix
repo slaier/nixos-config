@@ -4,7 +4,6 @@
     package = pkgs.vscode-fhs;
     extensions = (
       with pkgs.vscode-extensions; with pkgs.nur.repos.slaier; [
-        coenraads.bracket-pair-colorizer-2
         eamodio.gitlens
         jnoortheen.nix-ide
         matklad.rust-analyzer
@@ -23,6 +22,8 @@
       ]
     );
     userSettings = {
+      "editor.bracketPairColorization.enabled" = true;
+      "editor.guides.bracketPairs" = "active";
       "editor.formatOnPaste" = true;
       "editor.formatOnType" = true;
       "editor.minimap.enabled" = false;
