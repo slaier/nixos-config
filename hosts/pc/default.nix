@@ -15,11 +15,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Enable sound.
-  # Use pavucontrol or pactl to set volume
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-
   networking.hostName = "pc";
   networking.firewall.enable = false;
   networking.proxy = {

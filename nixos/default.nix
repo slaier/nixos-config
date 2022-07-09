@@ -1,8 +1,7 @@
 { config, lib, ... }: {
   imports = [
     ./core
-    ./i3
+    ./gui
     ./users
   ];
 }
-
