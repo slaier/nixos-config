@@ -22,6 +22,13 @@ in
 
   font pango:SauceCodePro Nerd Font Mono Medium 10
 
+  # window border settings
+  default_border          none
+  default_floating_border none
+  smart_gaps on
+  gaps inner 8
+  gaps outer 2
+
   ### Key bindings
   #
   # Basics:
