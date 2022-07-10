@@ -1,4 +1,8 @@
-# applications: alacritty stretchly qbittorrent
+# applications:
+#   alacritty
+#   fcitx5
+#   qbittorrent
+#   stretchly
 { menu
 , window-menu
 , msg
@@ -179,8 +183,9 @@ in
   #
   # Startup:
   #
-  exec_always --no-startup-id stretchly
-  exec_always --no-startup-id qbittorrent
+  exec --no-startup-id fcitx5 -d -r
+  exec --no-startup-id qbittorrent
+  exec --no-startup-id stretchly
 
   ${extraConfig.post}
 ''
