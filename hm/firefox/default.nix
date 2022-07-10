@@ -64,6 +64,7 @@ in
 {
   home.packages = [
     (pkgs.wrapFirefox pkgs.firefox-unwrapped {
+      forceWayland = true;
       extraPolicies = {
         Extensions = {
           Install = xpis;
