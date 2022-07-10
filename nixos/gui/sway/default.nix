@@ -36,7 +36,11 @@ let
     floating-modifier-mode = "normal";
     extraConfig = {
       pre = "# sway config file";
-      post = "include /etc/sway/config.d/*";
+      post = ''
+        output * bg ${pkgs.nixos-artwork.wallpapers.dracula}/share/backgrounds/nixos/nix-wallpaper-dracula.png fill
+
+        include /etc/sway/config.d/*
+      '';
     };
   };
 in
