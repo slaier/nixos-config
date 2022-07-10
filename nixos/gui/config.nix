@@ -16,6 +16,8 @@ in
 ''
   ${extraConfig.pre}
 
+  font pango:SauceCodePro Nerd Font Mono Medium 10
+
   ### Key bindings
   #
   # Basics:
