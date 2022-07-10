@@ -7,7 +7,9 @@ let
     floating-modifier-mode = "";
     extraConfig = {
       pre = "# i3 config file (v4)";
-      post = "";
+      post = ''
+        exec --no-startup-id ${pkgs.feh}/bin/feh --bg-scale ${../minecraft.png}
+      '';
     };
   };
 in
