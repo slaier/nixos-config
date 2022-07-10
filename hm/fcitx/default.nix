@@ -19,38 +19,6 @@ let
     '';
 in
 {
-  i18n.inputMethod = {
-    enabled = "fcitx5";
-    fcitx5.addons = with pkgs; with nur.repos.xddxdd; [
-      fcitx5-chinese-addons
-      fcitx5-gtk
-      fcitx5-rime
-      libsForQt5.fcitx5-qt
-      rime-aurora-pinyin
-      rime-data
-      rime-dict
-      rime-moegirl
-      rime-zhwiki
-    ];
-  };
-  systemd.user.sessionVariables = {
-    NIX_RIME_DATA_DIR = "${config.i18n.inputMethod.package}/share/rime-data";
-    NIX_FCITX5_STATIC_PROFILE_PATH = "${config.xdg.configHome}/fcitx5/nix-profile";
-  };
-  xdg.configFile = {
-    "fcitx5/nix-profile".text = ''
-      [Groups/0]
-      Name=Default
-      Default Layout=us
-      DefaultIM=rime
-
-      [Groups/0/Items/0]
-      Name=rime
-
-      [GroupOrder]
-      0=Default
-    '';
-  };
   xdg.dataFile = {
     "fcitx5/themes".source = "${pkgs.nur.repos.xddxdd.fcitx5-breeze}/share/fcitx5/themes";
     "fcitx5/rime/default.custom.yaml".text = builtins.toJSON {
@@ -148,4 +116,3 @@ in
       ];
   };
 }
-
