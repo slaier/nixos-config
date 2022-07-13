@@ -35,9 +35,12 @@
     desktopManager = {
       xterm.enable = false;
     };
-    displayManager.gdm = {
-      enable = true;
-      wayland = true;
+    displayManager = {
+      defaultSession = "sway";
+      gdm = {
+        enable = true;
+        wayland = true;
+      };
     };
   };
 
