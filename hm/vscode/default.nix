@@ -14,9 +14,10 @@
         tamasfe.even-better-toml
         tyriar.sort-lines
 
+        vscode-extension-bmalehorn-vscode-fish
         vscode-extension-ccls-project-ccls
-        vscode-extension-timonwong-shellcheck
         vscode-extension-shardulm94-trailing-spaces
+        vscode-extension-timonwong-shellcheck
         vscode-extension-vscode-icons-team-vscode-icons
       ]
     );
