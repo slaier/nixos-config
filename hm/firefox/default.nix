@@ -40,22 +40,23 @@ let
   };
 
   extensions = [
-    "https-everywhere"
-    "violentmonkey"
-    "new_tongwentang"
-    "keepassxc-browser"
     "adnauseam"
+    "clearurls"
+    "cookie-autodelete"
+    "copy-link-text-webextension"
+    "dictionary-anyvhere"
+    "enhancer-for-youtube"
+    "history-cleaner"
+    "https-everywhere"
+    "i-dont-care-about-cookies"
+    "imagus"
+    "keepassxc-browser"
+    "new_tongwentang"
+    "offline-qr-code-generator"
     "rsshub-radar"
     "ublacklist"
-    "clearurls"
-    "enhancer-for-youtube"
-    "copy-link-text-webextension"
-    "history-cleaner"
-    "imagus"
-    "i-dont-care-about-cookies"
-    "cookie-autodelete"
     "undoclosetabbutton"
-    "offline-qr-code-generator"
+    "violentmonkey"
   ];
   xpis = lib.lists.forEach extensions (extension:
     "https://addons.mozilla.org/firefox/downloads/latest/${extension}/latest.xpi"
@@ -74,4 +75,3 @@ in
   ];
   home.file = mkMerge ([ iniPath ] ++ profilePaths);
 }
-
