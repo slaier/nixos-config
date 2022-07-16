@@ -15,7 +15,6 @@
         tyriar.sort-lines
 
         vscode-extension-ccls-project-ccls
-        vscode-extension-GitHub-copilot
         vscode-extension-timonwong-shellcheck
         vscode-extension-shardulm94-trailing-spaces
         vscode-extension-vscode-icons-team-vscode-icons
@@ -68,4 +67,3 @@
     };
   };
 }
-
