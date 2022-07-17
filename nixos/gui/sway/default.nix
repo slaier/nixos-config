@@ -39,6 +39,7 @@ let
       post = ''
         output * bg ${pkgs.nixos-artwork.wallpapers.dracula}/share/backgrounds/nixos/nix-wallpaper-dracula.png fill
         bar swaybar_command ${pkgs.waybar}/bin/waybar
+        exec ${pkgs.mako}/bin/mako --default-timeout 3000
         include /etc/sway/config.d/*
       '';
     };
