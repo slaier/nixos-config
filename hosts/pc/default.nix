@@ -19,7 +19,6 @@
   networking.firewall.enable = false;
   networking.proxy = {
     default = "http://192.168.10.162:7890";
-    noProxy = "127.0.0.1,localhost";
+    noProxy = "127.0.0.1,localhost,192.168.0.0/16";
   };
 }
-
