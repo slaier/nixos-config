@@ -23,9 +23,8 @@ in
       inherit (cfg) userName userEmail;
 
       enable = true;
-      difftastic = {
+      diff-so-fancy = {
         enable = true;
-        background = "dark";
       };
       extraConfig = {
         core.editor = "vim";
@@ -53,4 +52,3 @@ in
     };
   };
 }
-
