@@ -13,6 +13,6 @@ user_pref("network.trr.wait-for-A-and-AAAA", false);
 /*** [SECTION 2700]: ETP (ENHANCED TRACKING PROTECTION) ***/
 user_pref("browser.contentblocking.category", "standard");
 /*** [SECTION 2800]: SHUTDOWN & SANITIZING ***/
-user_pref("network.cookie.lifetimePolicy", 3);
+user_pref("privacy.clearOnShutdown.cookies", false);
 user_pref("privacy.clearOnShutdown.history", false);
 // end
