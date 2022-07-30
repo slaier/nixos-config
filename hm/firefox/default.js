@@ -10,6 +10,7 @@ user_pref("network.trr.bootstrapAddress", "8.8.8.8");
 user_pref("network.trr.blacklist-duration", 15);
 user_pref("network.trr.request_timeout_mode_trronly_ms", 1500);
 user_pref("network.trr.wait-for-A-and-AAAA", false);
+user_pref("network.proxy.no_proxies_on", "localhost,127.0.0.1,192.168.0.0/16");
 /*** [SECTION 2700]: ETP (ENHANCED TRACKING PROTECTION) ***/
 user_pref("browser.contentblocking.category", "standard");
 /*** [SECTION 2800]: SHUTDOWN & SANITIZING ***/
