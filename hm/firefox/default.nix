@@ -42,7 +42,6 @@ let
   extensions = [
     "adnauseam"
     "clearurls"
-    "cookie-autodelete"
     "copy-link-text-webextension"
     "dictionary-anyvhere"
     "enhancer-for-youtube"

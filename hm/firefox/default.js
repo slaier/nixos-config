@@ -14,6 +14,5 @@ user_pref("network.proxy.no_proxies_on", "localhost,127.0.0.1,192.168.0.0/16");
 /*** [SECTION 2700]: ETP (ENHANCED TRACKING PROTECTION) ***/
 user_pref("browser.contentblocking.category", "standard");
 /*** [SECTION 2800]: SHUTDOWN & SANITIZING ***/
-user_pref("privacy.clearOnShutdown.cookies", false);
 user_pref("privacy.clearOnShutdown.history", false);
 // end
