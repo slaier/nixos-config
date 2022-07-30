@@ -1,7 +1,6 @@
-name: "Check && Cachix"
+name: "Check & Cachix"
 on:
   pull_request:
-    types: [opened, reopened]
   push:
     branches:
       - main
@@ -26,4 +25,3 @@ jobs:
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
     - run: nix -Lv flake check --show-trace
     - run: nix -Lv build ".#nixosConfigurations.pc.config.system.build.toplevel"
-
