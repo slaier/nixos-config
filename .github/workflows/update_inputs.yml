@@ -4,9 +4,57 @@ on:
     # rebuild at 23:11 on Friday
     - cron:  '11 23 * * 5'
   workflow_dispatch:
+env:
+  nixChannel: nixos-22.05
+  workDir: './update_nix'
 jobs:
-  update_nix_inputs:
-    uses: slaier/reusable-workflows/.github/workflows/update_nix_inputs.yml@main
-    secrets:
-      TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
-
+  update_inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          path: ${{ env.workDir }}
+      - name: Install nix
+        uses: cachix/install-nix-action@v17
+        with:
+          nix_path: "nixpkgs=channel:${{ env.nixChannel }}"
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            substituters = https://slaier.cachix.org https://cache.nixos.org
+            trusted-public-keys = slaier.cachix.org-1:NyXPOqlxuGWgyn0ApNHMopkbix3QjMUAcR+JOjjxLtU= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+      - name: Update nixexprs
+        working-directory: ${{ env.workDir }}
+        run: |
+          nixexprs=$(curl -w "%{url_effective}\n" -I -L -s -S $URL -o /dev/null https://nixos.org/channels/${{ env.nixChannel }}/nixexprs.tar.xz)
+          sed -i "s#https://releases\\.nixos\\.org/.*/nixexprs\\.tar\\.xz#${nixexprs}#" flake.nix
+          git add flake.nix
+      - name: Update flake lock
+        working-directory: ${{ env.workDir }}
+        run: |
+          nix flake update
+          git add flake.lock
+      - name: Commit
+        working-directory: ${{ env.workDir }}
+        run: |
+          git config user.name "dependabot[bot]"
+          git config user.email "<49699333+dependabot[bot]@users.noreply.github.com>"
+          git commit -m 'inputs: update dependencies'
+      - name: Push
+        working-directory: ${{ env.workDir }}
+        run: |
+          rev=${{ github.sha }}
+          branch_name="dependabot/nix/update-inputs-${rev::7}"
+          git checkout --force -B "$branch_name"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          git push -u origin "$branch_name" || git push origin -f
+      - name: PR
+        working-directory: ${{ env.workDir }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+        run: |
+          state=$(gh pr status --json state -q '.currentBranch.state')
+          if [ "$state" != "OPEN" ]; then
+            gh pr create --title "inputs: update dependencies" --body "update nix inputs"
+          fi
