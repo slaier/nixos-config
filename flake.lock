@@ -108,11 +108,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1659088882,
-        "narHash": "sha256-lFKeW6FToIg0bYUMc9xHpvdvuMGeGfqZrPfakUyt6Rw=",
+        "lastModified": 1659168683,
+        "narHash": "sha256-0v6uEUdLPqESxdYLROZKrvhtuc1HYvdeGid6cu5De/I=",
         "owner": "X01A",
         "repo": "nixos",
-        "rev": "556f5476c2152558d4d97de6c14801c48c868272",
+        "rev": "6b81e786f70381950eef30c24da06fa3a29e1e09",
         "type": "github"
       },
       "original": {
@@ -139,13 +139,13 @@
     },
     "nixpkgs-channel": {
       "locked": {
-        "narHash": "sha256-8SEWEpn00/Y/5/cs20pfRfPB6EHHiL+sPR/O5QgpkEo=",
+        "narHash": "sha256-QTEnbJTy69L6+2BUI9DkblI4jkPSUsHei2cPFap7vcQ=",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/22.05/nixos-22.05.915.9ff91ce2e4c/nixexprs.tar.xz"
+        "url": "https://releases.nixos.org/nixos/22.05/nixos-22.05.2065.9370544d849/nixexprs.tar.xz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/22.05/nixos-22.05.915.9ff91ce2e4c/nixexprs.tar.xz"
+        "url": "https://releases.nixos.org/nixos/22.05/nixos-22.05.2065.9370544d849/nixexprs.tar.xz"
       }
     },
     "npmlock2nix": {
@@ -166,11 +166,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1659135703,
-        "narHash": "sha256-MnfJEQ4ygn/TMhiyvNuWGbhrSpeN+S2Fdu8SGAI/u8I=",
+        "lastModified": 1659249981,
+        "narHash": "sha256-TBcwyZVJ9G+Z+/MZQkfIZI52EFsTx1yRE7soFky8w4k=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "b04d3d1bbb056580db3d628e2516ebee7a383eff",
+        "rev": "3d0863cc211ff1e159d20d56003a5a412f14698b",
         "type": "github"
       },
       "original": {
