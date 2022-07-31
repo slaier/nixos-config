@@ -8,6 +8,7 @@
       "slaier.cachix.org-1:NyXPOqlxuGWgyn0ApNHMopkbix3QjMUAcR+JOjjxLtU="
     ];
     auto-optimise-store = true;
+    flake-registry = "/etc/nix/registry.json";
   };
 
   nix.extraOptions = ''
@@ -21,4 +22,3 @@
     wget
   ];
 }
-
