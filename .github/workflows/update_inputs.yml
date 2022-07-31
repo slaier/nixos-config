@@ -4,9 +4,34 @@ on:
     # rebuild at 23:11 on Friday
     - cron:  '11 23 * * 5'
   workflow_dispatch:
+env:
+  nixChannel: nixos-22.05
 jobs:
-  update_nix_inputs:
-    uses: slaier/reusable-workflows/.github/workflows/update_nix_inputs.yml@main
-    secrets:
-      TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
-
+  update_inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: main
+      - name: Install nix
+        uses: cachix/install-nix-action@v17
+        with:
+          nix_path: "nixpkgs=channel:${{ env.nixChannel }}"
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            substituters = https://slaier.cachix.org https://cache.nixos.org
+            trusted-public-keys = slaier.cachix.org-1:NyXPOqlxuGWgyn0ApNHMopkbix3QjMUAcR+JOjjxLtU= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+      - name: Update nixexprs
+        run: |
+          nixexprs=$(curl -w "%{url_effective}\n" -I -L -s -S $URL -o /dev/null https://nixos.org/channels/${{ env.nixChannel }}/nixexprs.tar.xz)
+          sed -i "s#https://releases\\.nixos\\.org/.*/nixexprs\\.tar\\.xz#${nixexprs}#" flake.nix
+      - name: Update flake lock
+        run: |
+          nix flake update
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          branch-suffix: "short-commit-hash"
