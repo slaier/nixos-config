@@ -5,6 +5,9 @@ on:
     branches:
       - main
       - develop
+concurrency:
+  group: ${{ github.triggering_actor }}
+  cancel-in-progress: true
 jobs:
   check:
     runs-on: ubuntu-latest
