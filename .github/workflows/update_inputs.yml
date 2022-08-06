@@ -2,7 +2,7 @@ name: Update inputs
 on:
   schedule:
     # rebuild at 23:11 on Friday
-    - cron:  '11 23 * * 5'
+    - cron: "11 23 * * 5"
   workflow_dispatch:
 env:
   nixChannel: nixos-22.05
@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          ref: main
+          ref: dependabot
       - name: Install nix
         uses: cachix/install-nix-action@v17
         with:
@@ -24,14 +24,25 @@ jobs:
             substituters = https://slaier.cachix.org https://cache.nixos.org
             trusted-public-keys = slaier.cachix.org-1:NyXPOqlxuGWgyn0ApNHMopkbix3QjMUAcR+JOjjxLtU= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+      - name: Prepare
+        run: |
+          git reset --hard origin/main
+          git merge origin/main --ff-only
+          git config user.name "dependabot[bot]"
+          git config user.email "<49699333+dependabot[bot]@users.noreply.github.com>"
       - name: Update nixexprs
         run: |
           nixexprs=$(curl -w "%{url_effective}\n" -I -L -s -S $URL -o /dev/null https://nixos.org/channels/${{ env.nixChannel }}/nixexprs.tar.xz)
           sed -i "s#https://releases\\.nixos\\.org/.*/nixexprs\\.tar\\.xz#${nixexprs}#" flake.nix
       - name: Update flake lock
         run: |
-          nix flake update
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
+          nix flake update --commit-lock-file --commit-lockfile-summary "nix(deps): update inputs"
+      - name: Commit & Push
+        run: |
+          git add flake.nix
+          git commit --amend --no-edit
+          git push --force-with-lease
+      - name: Check
+        uses: ./.github/workflows/check
         with:
-          branch-suffix: "short-commit-hash"
+          cachix_auth_token: ${{ secrets.CACHIX_AUTH_TOKEN }}
