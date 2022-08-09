@@ -11,10 +11,6 @@ let
         id = 0;
         extraConfig = arkenfox-userjs + (fileContents ./default.js);
       };
-      cn = {
-        id = 1;
-        extraConfig = arkenfox-userjs + (fileContents ./default.js) + (fileContents ./cn.js);
-      };
     };
 
   profilesINI = (mapAttrs'
