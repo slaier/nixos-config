@@ -42,6 +42,7 @@
   environment.systemPackages = with pkgs; with indexyz; with nur.repos.slaier; [
     bottom
     cargo
+    clang
     clash-speedtest
     dogdns
     hyperfine
