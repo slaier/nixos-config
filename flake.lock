@@ -108,11 +108,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1659896399,
-        "narHash": "sha256-voloGBuFNKuBbXm3KZYPVBTG/WLjcVbHbvxakmirxdk=",
+        "lastModified": 1660580170,
+        "narHash": "sha256-yUcAB8yV4oPqy31ZHJXKVEmwtZlkK4WQdmy6Yqr6sdc=",
         "owner": "X01A",
         "repo": "nixos",
-        "rev": "09c273c9c8da4a7ff0b599d8d17a95d26b01148b",
+        "rev": "0b1f27b3337049de06ef7004bfec709b51c5c33d",
         "type": "github"
       },
       "original": {
@@ -123,11 +123,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1660215038,
-        "narHash": "sha256-tqMyd5QB4MZh59wMHXqpro4hkKjz9ubQxkxFSuCuBGE=",
+        "lastModified": 1660842467,
+        "narHash": "sha256-lSer61lI5X61/3zjMu4OSUqdKSCW2jM1rU6B3WLBOj4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "45c9736ed69800a6ff2164fb4538c9e40dad25d6",
+        "rev": "9b9f4bb4e1125a2b9734b05a4c35ff388cabec05",
         "type": "github"
       },
       "original": {
@@ -139,13 +139,13 @@
     },
     "nixpkgs-channel": {
       "locked": {
-        "narHash": "sha256-7i43s/2egM6+2RJ9NWz/es/qfUX3u42ONDH7RYjeL64=",
+        "narHash": "sha256-JLguDXDBXAUazsSZQHXMNDRimik54DM9/d0ez+BGjd4=",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/22.05/nixos-22.05.2361.45c9736ed69/nixexprs.tar.xz"
+        "url": "https://releases.nixos.org/nixos/22.05/nixos-22.05.2568.9b9f4bb4e11/nixexprs.tar.xz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/22.05/nixos-22.05.2361.45c9736ed69/nixexprs.tar.xz"
+        "url": "https://releases.nixos.org/nixos/22.05/nixos-22.05.2568.9b9f4bb4e11/nixexprs.tar.xz"
       }
     },
     "npmlock2nix": {
@@ -166,11 +166,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1660331633,
-        "narHash": "sha256-rPkUpdTGTWQYvETUMY/g18j0CZImDkuXvagkWkNmczs=",
+        "lastModified": 1660940739,
+        "narHash": "sha256-W90WXs+24U2JnIcvLtFOuW22XGX/1BTyvD7i7eBdPiw=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "1804130c158ee8c21d86ded125f0f21cfd86cbef",
+        "rev": "06963ab332e46659174de0a08e79885c86e3aa49",
         "type": "github"
       },
       "original": {
