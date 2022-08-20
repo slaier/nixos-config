@@ -8,11 +8,13 @@
 
     nur.url = "github:nix-community/NUR";
 
+    impermanence.url = "github:nix-community/impermanence";
+
     indexyz.url = "github:X01A/nixos";
     indexyz.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-channel, home-manager, nur, indexyz }:
+  outputs = { self, nixpkgs, nixpkgs-channel, home-manager, nur, impermanence, indexyz }:
     let
       inherit (nixpkgs.lib.attrsets) genAttrs mapAttrs attrValues mapAttrsToList;
 
@@ -44,6 +46,7 @@
         modules = [
           ({ pkgs, ... }: {
             imports = [
+              impermanence.nixosModules.impermanence
               ./nixos
               host-module
             ];
