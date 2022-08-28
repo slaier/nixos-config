@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Get branch names
         id: branch-names
-        uses: tj-actions/branch-names@v5.4
+        uses: tj-actions/branch-names@v6
   check:
     name: Build NixOS module
     needs: get_info
