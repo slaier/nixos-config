@@ -1,7 +1,9 @@
 name: "Check & Cachix"
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
+      - develop
   pull_request:
   workflow_dispatch:
 jobs:
