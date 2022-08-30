@@ -1,6 +1,5 @@
 { pkgs, config, ... }: {
   imports = [
-    ./i3
     ./sway
   ];
 
@@ -28,20 +27,6 @@
     enable = true;
     alsa.enable = true;
     pulse.enable = true;
-  };
-
-  services.xserver = {
-    enable = true;
-    desktopManager = {
-      xterm.enable = false;
-    };
-    displayManager = {
-      defaultSession = "sway";
-      gdm = {
-        enable = true;
-        wayland = true;
-      };
-    };
   };
 
   environment.systemPackages = with pkgs; with nur.repos.xddxdd; [

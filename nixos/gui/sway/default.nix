@@ -29,7 +29,7 @@ let
     '';
   };
 
-  configStr = import ../config.nix {
+  configStr = import ./config.nix {
     menu = "${rofi} -show drun";
     window-menu = "${sway-window-switcher}/bin/sway-window-switcher";
     msg = "swaymsg";
