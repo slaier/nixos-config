@@ -37,13 +37,15 @@
 
   programs.adb.enable = true;
 
-  virtualisation.virtualbox.host.enable = true;
+  virtualisation.podman.enable = true;
+  virtualisation.podman.dockerCompat = true;
 
   environment.systemPackages = with pkgs; with indexyz; with nur.repos.slaier; [
     bottom
     cargo
     clang
     clash-speedtest
+    distrobox
     dogdns
     hyperfine
     nali
