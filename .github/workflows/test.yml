@@ -6,22 +6,12 @@ on:
       - develop
   pull_request:
   workflow_dispatch:
+concurrency:
+  group: ${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
 jobs:
-  get_info:
-    name: Get branch names
-    runs-on: ubuntu-latest
-    outputs:
-      current_branch: ${{ steps.branch-names.outputs.current_branch }}
-    steps:
-      - name: Get branch names
-        id: branch-names
-        uses: tj-actions/branch-names@v6
   check:
     name: Build NixOS module
-    needs: get_info
-    concurrency:
-      group: ${{ needs.get_info.outputs.current_branch }}
-      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -33,7 +23,9 @@ jobs:
             substituters = https://cache.nixos.org https://slaier.cachix.org
             trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= slaier.cachix.org-1:NyXPOqlxuGWgyn0ApNHMopkbix3QjMUAcR+JOjjxLtU=
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-      - name: Check
-        uses: ./.github/workflows/check
+      - uses: cachix/cachix-action@v10
         with:
-          cachix_auth_token: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          name: slaier
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+      - run: nix -Lv flake check --show-trace
+      - run: nix -Lv build ".#nixosConfigurations.pc.config.system.build.toplevel"
