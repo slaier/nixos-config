@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }: {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode-fhs;
+    package = pkgs.vscode;
     extensions = (
       with pkgs.vscode-extensions; with pkgs.nur.repos.slaier; [
         eamodio.gitlens
@@ -16,6 +16,7 @@
 
         vscode-extension-bmalehorn-vscode-fish
         vscode-extension-ccls-project-ccls
+        vscode-extension-ms-vscode-remote-remote-containers
         vscode-extension-shardulm94-trailing-spaces
         vscode-extension-timonwong-shellcheck
         vscode-extension-vscode-icons-team-vscode-icons
@@ -54,16 +55,17 @@
       };
       "workbench.iconTheme" = "vscode-icons";
 
-      "ccls.launch.command" = "${pkgs.ccls}/bin/ccls";
+      "C_Cpp.autocomplete" = "Disabled";
+      "C_Cpp.errorSquiggles" = "Disabled";
+      "C_Cpp.formatting" = "Disabled";
+      "C_Cpp.intelliSenseEngine" = "Disabled";
       "ccls.highlight.function.face" = [ "enabled" ];
       "ccls.highlight.type.face" = [ "enabled" ];
       "ccls.highlight.variable.face" = [ "enabled" ];
-      "C_Cpp.autocomplete" = "Disabled";
-      "C_Cpp.formatting" = "Disabled";
-      "C_Cpp.errorSquiggles" = "Disabled";
-      "C_Cpp.intelliSenseEngine" = "Disabled";
+      "ccls.launch.command" = "${pkgs.ccls}/bin/ccls";
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "${pkgs.rnix-lsp}/bin/rnix-lsp";
+      "remote.containers.dockerPath" = "podman";
       "shellcheck.executablePath" = "${pkgs.shellcheck}/bin/shellcheck";
     };
   };
