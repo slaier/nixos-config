@@ -23,6 +23,8 @@
 
   services.earlyoom.enable = true;
 
+  services.sshd.enable = true;
+
   security.pam.loginLimits = [
     {
       domain = "*";
