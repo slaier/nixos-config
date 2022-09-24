@@ -35,9 +35,11 @@
 
   fileSystems."/data" =
     {
-      device = "/dev/disk/by-uuid/16aa56a5-f994-4edd-8fe0-c75267a238ba";
+      device = "/dev/disk/by-uuid/13ad50f4-8269-43a5-9fb9-adb1919a5f3c";
       fsType = "btrfs";
     };
+
+  services.fstrim.enable = true;
 
   swapDevices = [ ];
 
