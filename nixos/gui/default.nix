@@ -40,5 +40,6 @@
     stretchly
     tdesktop
     vlc
+    xdg-utils
   ];
 }
