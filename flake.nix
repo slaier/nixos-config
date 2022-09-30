@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
-    nixpkgs-channel.url = "https://releases.nixos.org/nixos/22.05/nixos-22.05.3201.bcc68429a50/nixexprs.tar.xz";
+    nixpkgs-channel.url = "https://releases.nixos.org/nixos/22.05/nixos-22.05.3373.13cbe534ebe/nixexprs.tar.xz";
 
     home-manager.url = "github:nix-community/home-manager/release-22.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
