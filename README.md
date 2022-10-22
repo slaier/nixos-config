@@ -1,2 +1,3 @@
-# nixos-profile
-A nixos generator to build NixOS with configurations.
+# nixos-config
+
+My NixOS configuration/dotfiles/rules.

@@ -1,2 +1,2 @@
-self | https://raw.githubusercontent.com/slaier/nixos-profile/main/hm/firefox/ublacklist/subscription.txt
+self | https://raw.githubusercontent.com/slaier/nixos-config/main/hm/firefox/ublacklist/subscription.txt
 base | https://raw.githubusercontent.com/eallion/uBlacklist-subscription-compilation/main/uBlacklist.txt
