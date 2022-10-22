@@ -4,6 +4,10 @@ on:
     branches:
       - main
       - develop
+    paths-ignore:
+      - '**/*.md'
+      - 'hm/firefox/adblockplus/**'
+      - 'hm/firefox/ublacklist/**'
   pull_request:
   workflow_dispatch:
 concurrency:
