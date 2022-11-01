@@ -1,8 +1,8 @@
 name: Update inputs
 on:
   schedule:
-    # rebuild at 23:11 on Friday
-    - cron: "11 23 * * 5"
+    # rebuild at 8:11 on Friday
+    - cron: "11 8 * * 5"
   workflow_dispatch:
 env:
   nixChannel: nixos-22.05
