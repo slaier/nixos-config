@@ -43,6 +43,7 @@
 
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "${pkgs.rnix-lsp}/bin/rnix-lsp";
+      "remote.containers.dockerComposePath" = "${pkgs.podman-compose}/bin/podman-compose";
       "remote.containers.dockerPath" = "podman";
     };
   };
