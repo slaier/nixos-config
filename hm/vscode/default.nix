@@ -56,6 +56,11 @@
 
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "${pkgs.rnix-lsp}/bin/rnix-lsp";
+      "remote.containers.defaultExtensions" = [
+        "Tyriar.sort-lines"
+        "eamodio.gitlens"
+        "shardulm94.trailing-spaces"
+      ];
       "remote.containers.dockerComposePath" = "${pkgs.podman-compose}/bin/podman-compose";
       "remote.containers.dockerPath" = "podman";
     };
