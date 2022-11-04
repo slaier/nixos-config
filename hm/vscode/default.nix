@@ -49,9 +49,6 @@
       "workbench.colorTheme" = "Monokai";
       "workbench.commandPalette.preserveInput" = true;
       "workbench.editor.enablePreviewFromCodeNavigation" = true;
-      "workbench.editorAssociations" = {
-        "*.ipynb" = "jupyter.notebook.ipynb";
-      };
       "workbench.iconTheme" = "vscode-icons";
 
       "nix.enableLanguageServer" = true;
@@ -62,7 +59,7 @@
         "shardulm94.trailing-spaces"
       ];
       "remote.containers.dockerComposePath" = "${pkgs.podman-compose}/bin/podman-compose";
-      "remote.containers.dockerPath" = "podman";
+      "remote.containers.dockerPath" = "${pkgs.podman}/bin/podman";
     };
   };
 }
