@@ -18,9 +18,9 @@
     );
     userSettings = {
       "editor.bracketPairColorization.enabled" = true;
-      "editor.guides.bracketPairs" = "active";
       "editor.formatOnPaste" = true;
       "editor.formatOnType" = true;
+      "editor.guides.bracketPairs" = "active";
       "editor.minimap.enabled" = false;
       "editor.renderWhitespace" = "all";
       "editor.rulers" = [ 80 120 ];
@@ -31,7 +31,19 @@
       "files.trimTrailingWhitespace" = true;
       "search.collapseResults" = "auto";
       "telemetry.telemetryLevel" = "off";
+      "terminal.integrated.automationProfile.linux" = {
+        "path" = "bash";
+        "icon" = "terminal-bash";
+      };
       "terminal.integrated.copyOnSelection" = true;
+      "terminal.integrated.defaultProfile.linux" = "fish";
+      "terminal.integrated.profiles.linux" = {
+        "fish" = {
+          "path" = "fish";
+        };
+        "ash" = null;
+        "sh" = null;
+      };
       "update.mode" = "none";
       "workbench.colorTheme" = "Monokai";
       "workbench.commandPalette.preserveInput" = true;
