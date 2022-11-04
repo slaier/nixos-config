@@ -21,6 +21,7 @@
       "editor.formatOnPaste" = true;
       "editor.formatOnType" = true;
       "editor.guides.bracketPairs" = "active";
+      "editor.inlayHints.enabled" = "off";
       "editor.minimap.enabled" = false;
       "editor.renderWhitespace" = "all";
       "editor.rulers" = [ 80 120 ];
