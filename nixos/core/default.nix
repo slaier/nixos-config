@@ -56,6 +56,7 @@
     hydra-check
     hyperfine
     nali
+    nix-tree
     nvfetcher
     p7zip
     tealdeer
