@@ -23,7 +23,7 @@
   networking.hostName = "pc";
   networking.firewall.enable = false;
   networking.proxy = {
-    default = "http://127.0.0.1:7890";
+    default = "http://pc.lan:7890";
     noProxy = "127.0.0.1,localhost,192.168.0.0/16";
   };
 }

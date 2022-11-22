@@ -14,7 +14,7 @@
 
   networking.hostName = "n1";
   networking.proxy = {
-    default = "http://127.0.0.1:7890";
+    default = "http://n1.lan:7890";
     noProxy = "127.0.0.1,localhost,192.168.0.0/16";
   };
 }
