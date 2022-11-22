@@ -93,6 +93,11 @@ let
   };
 in
 {
+  programs.fish.loginShellInit = ''
+    set TTY1 (tty)
+    [ "$TTY1" = "/dev/tty1" ] && exec sway
+  '';
+
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
