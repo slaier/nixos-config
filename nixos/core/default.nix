@@ -44,16 +44,12 @@
 
   environment.systemPackages = with pkgs; with indexyz; with nur.repos.slaier; [
     bottom
-    cargo
     clang
-    clash-speedtest
-    distrobox
     dogdns
     hyperfine
     nali
     nvfetcher
     p7zip
-    rustc
     tealdeer
     unrar
     unzip
