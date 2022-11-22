@@ -15,27 +15,6 @@
     experimental-features = nix-command flakes
   '';
 
-  environment.persistence."/nix/persist" = {
-    directories = [
-      "/etc"
-      "/var/log/journal"
-    ];
-    users.nixos = {
-      directories = [
-        ".cache"
-        ".config"
-        ".local"
-        ".mozilla"
-        ".nali"
-        ".ssh"
-        "repos"
-      ];
-      files = [
-        ".git-credentials"
-      ];
-    };
-  };
-
   environment.systemPackages = with pkgs; [
     curl
     git
