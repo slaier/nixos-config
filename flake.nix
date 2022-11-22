@@ -58,7 +58,7 @@
               indexyz = indexyz.legacyPackages.${system};
             };
             nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
-            nix.registry.sys.flake = nixpkgs;
+            nix.registry.nixpkgs.flake = nixpkgs;
             programs.command-not-found.dbPath = "${nixpkgs-channel}/programs.sqlite";
           })
 
