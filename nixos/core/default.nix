@@ -53,6 +53,7 @@
     bottom
     clang
     dogdns
+    hydra-check
     hyperfine
     nali
     nvfetcher
