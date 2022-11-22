@@ -52,7 +52,8 @@
           ({ pkgs, ... }: {
             imports = [
               impermanence.nixosModules.impermanence
-              ./nixos
+              ./nixos/core
+              ./nixos/users
               host-module
             ];
             nixpkgs.overlays = [
