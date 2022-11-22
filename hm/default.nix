@@ -2,10 +2,9 @@
   imports = [
     ./fcitx
     ./firefox
+    ./fish
     ./git
     ./neovim
-    ./shell
     ./vscode
   ];
 }
-
