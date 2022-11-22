@@ -3,27 +3,8 @@
   imports = [
     ./core.nix
   ];
-  fonts = {
-    enableDefaultFonts = true;
-    fonts = with pkgs; [
-      nerdfonts
-      noto-fonts-cjk
-      noto-fonts-emoji
-    ];
-
-    fontconfig = {
-      defaultFonts = {
-        serif = [ "FantasqueSansMono Nerd Font Mono" ];
-        sansSerif = [ "FantasqueSansMono Nerd Font Mono" ];
-        monospace = [ "FantasqueSansMono Nerd Font Mono" "Noto Color Emoji" ];
-        emoji = [ "Noto Color Emoji" ];
-      };
-    };
-  };
 
   services.earlyoom.enable = true;
-
-  services.sshd.enable = true;
 
   security.pam.loginLimits = [
     {
@@ -37,11 +18,15 @@
   time.timeZone = "Asia/Shanghai";
   time.hardwareClockInLocalTime = true;
 
+  i18n.supportedLocales = [
+    "en_US.UTF-8/UTF-8"
+    "zh_CN.GBK/GBK"
+    "zh_CN.UTF-8/UTF-8"
+    "zh_CN/GB2312"
+  ];
+
   programs.adb.enable = true;
   programs.command-not-found.dbPath = "${pkgs.nur.repos.slaier.programs-db}/programs.sqlite";
-
-  virtualisation.podman.enable = true;
-  virtualisation.podman.dockerCompat = true;
 
   slaier.services.clash = with pkgs.nur.repos.slaier; {
     enable = true;
@@ -51,7 +36,6 @@
 
   environment.systemPackages = with pkgs; [
     bottom
-    clang
     dogdns
     hydra-check
     hyperfine

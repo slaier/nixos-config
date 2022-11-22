@@ -82,5 +82,17 @@
             }
           ];
         });
+      colmena = {
+        meta = {
+          nixpkgs = import nixpkgs {
+            system = "x86_64-linux";
+          };
+        };
+      } // mapAttrs
+        (name: value: {
+          nixpkgs.system = value.config.nixpkgs.system;
+          imports = value._module.args.modules;
+        })
+        self.nixosConfigurations;
     };
 }
