@@ -6,6 +6,7 @@
       with pkgs.vscode-extensions; with pkgs.nur.repos.slaier; [
         eamodio.gitlens
         jnoortheen.nix-ide
+        ms-python.python
         ms-vscode-remote.remote-ssh
         redhat.vscode-yaml
         shardulm94.trailing-spaces
@@ -13,6 +14,7 @@
         tyriar.sort-lines
 
         vscode-extension-ms-vscode-remote-remote-containers
+        vscode-extension-timonwong-shellcheck
         vscode-extension-vscode-icons-team-vscode-icons
       ]
     );
@@ -60,6 +62,7 @@
       ];
       "remote.containers.dockerComposePath" = "${pkgs.podman-compose}/bin/podman-compose";
       "remote.containers.dockerPath" = "${pkgs.podman}/bin/podman";
+      "shellcheck.executablePath" = "${pkgs.shellcheck}/bin/shellcheck";
     };
   };
 }
