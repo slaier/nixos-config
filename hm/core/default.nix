@@ -1,7 +1,7 @@
 { ... }: {
   imports = [
-    ./fish
-    ./git
-    ./neovim
+    ./fish.nix
+    ./git.nix
+    ./neovim.nix
   ];
 }

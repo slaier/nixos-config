@@ -1,7 +1,7 @@
 { ... }: {
   imports = [
-    ./fcitx
     ./firefox
-    ./vscode
+    ./fcitx.nix
+    ./vscode.nix
   ];
 }
