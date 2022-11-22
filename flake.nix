@@ -31,12 +31,12 @@
         pc = {
           system = "x86_64-linux";
           host-module = ./hosts/pc;
-          users.nixos = import ./hm;
+          users.nixos = import ./hm/gui;
         };
         n1 = {
           system = "aarch64-linux";
           host-module = ./hosts/phicomm-n1;
-          users.nixos = import ./hm;
+          users.nixos = { };
         };
       };
       forAllHosts = f: mapAttrs f hosts;
@@ -74,7 +74,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               sharedModules = [
-                ./hm
+                ./hm/core
               ];
             };
           }

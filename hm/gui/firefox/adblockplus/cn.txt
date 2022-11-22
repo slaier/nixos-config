@@ -2,7 +2,7 @@
 ! Version: 3
 ! Title: Ad Block CN Supplement
 ! Expires: 7 days
-! Homepage: https://github.com/slaier/nixos-config/tree/main/hm/firefox/adblockplus
+! Homepage: https://github.com/slaier/nixos-config/tree/main/hm/gui/firefox/adblockplus
 ! License: https://raw.githubusercontent.com/slaier/nixos-config/main/LICENSE
 ! Last Modified: 2021-02-15 11:00:00
 
