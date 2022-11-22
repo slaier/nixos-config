@@ -8,7 +8,9 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ../../nixos/core
     ../../nixos/gui
+    ../../nixos/users
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -21,7 +23,7 @@
   networking.hostName = "pc";
   networking.firewall.enable = false;
   networking.proxy = {
-    default = "http://192.168.10.162:7890";
+    default = "http://127.0.0.1:7890";
     noProxy = "127.0.0.1,localhost,192.168.0.0/16";
   };
 }

@@ -1,7 +1,8 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
-    nixpkgs-channel.url = "https://releases.nixos.org/nixos/22.05/nixos-22.05.3954.4f09cfce9c1/nixexprs.tar.xz";
+
+    flake-utils.url = "github:numtide/flake-utils";
 
     home-manager.url = "github:nix-community/home-manager/release-22.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -9,77 +10,77 @@
     nur.url = "github:nix-community/NUR";
 
     impermanence.url = "github:nix-community/impermanence";
-
-    indexyz.url = "github:X01A/nixos";
-    indexyz.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-channel, home-manager, nur, impermanence, indexyz }:
+  outputs = { self, nixpkgs, flake-utils, home-manager, nur, impermanence }:
     let
-      inherit (nixpkgs.lib.attrsets) genAttrs mapAttrs attrValues mapAttrsToList;
+      inherit (nixpkgs.lib) composeManyExtensions attrValues flip mapAttrs;
+      inherit (flake-utils.lib) eachDefaultSystem;
 
-      systems = [
-        "x86_64-linux"
-        "i686-linux"
-        "x86_64-darwin"
-        "aarch64-linux"
-        "armv6l-linux"
-        "armv7l-linux"
-      ];
-      forAllSystems = f: genAttrs systems (system: f system);
       hosts = {
         pc = {
           system = "x86_64-linux";
-          host-module = ./hosts/pc;
-          users.nixos = import ./hm/gui;
+          nixosModule = ./hosts/pc;
+          users.nixos = import ./hosts/pc/home.nix;
         };
         n1 = {
           system = "aarch64-linux";
-          host-module = ./hosts/phicomm-n1;
-          users.nixos = { };
+          nixosModule = ./hosts/phicomm-n1;
+          users.nixos = import ./hosts/phicomm-n1/home.nix;
         };
       };
-      forAllHosts = f: mapAttrs f hosts;
     in
+    (eachDefaultSystem (system: {
+      formatter = (import nixpkgs { inherit system; }).nixpkgs-fmt;
+    })) //
     {
-      formatter = forAllSystems (system:
-        (let pkgs = import nixpkgs { inherit system; }; in pkgs.nixpkgs-fmt)
-      );
-      overlays = mapAttrs (name: path: import path) (import ./overlays);
-      nixosConfigurations = forAllHosts (_: { system, host-module, users }: nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [
-          ({ pkgs, ... }: {
-            imports = [
-              impermanence.nixosModules.impermanence
-              ./nixos/core
-              ./nixos/users
-              host-module
-            ];
-            nixpkgs.overlays = [
-              nur.overlay
-            ] ++ (mapAttrsToList (_: path: import path) (import ./overlays));
-            nixpkgs.config.allowUnfree = true;
-            nixpkgs.config.packageOverrides = pkgs: {
-              indexyz = indexyz.legacyPackages.${system};
-            };
-            nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
-            nix.registry.nixpkgs.flake = nixpkgs;
-            programs.command-not-found.dbPath = "${nixpkgs-channel}/programs.sqlite";
-          })
+      overlay = composeManyExtensions (attrValues self.overlays);
+      overlays = mapAttrs (_n: import) (import ./overlays);
+      nixosConfigurations = flip mapAttrs hosts (_n: host:
+        let
+          inherit (host) system;
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              inherit users;
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              sharedModules = [
-                ./hm/core
-              ];
+          nurWithPkgs = pkgs: import nur {
+            inherit pkgs;
+            nurpkgs = pkgs;
+            ${if builtins ? currentSystem then "repoOverrides" else null} = {
+              slaier = import /home/nixos/repos/nur-packages { inherit pkgs; };
             };
-          }
-        ];
-      });
+          };
+
+          nurOverlay = final: prev: {
+            nur = nurWithPkgs prev;
+          };
+
+          nurModules = nurWithPkgs nixpkgs.legacyPackages.${system};
+        in
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            impermanence.nixosModules.impermanence
+            nurModules.repos.slaier.modules.clash
+
+            {
+              nixpkgs.overlays = [
+                self.overlay
+                nurOverlay
+              ];
+              nixpkgs.config.allowUnfree = true;
+              nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
+              nix.registry.nixpkgs.flake = nixpkgs;
+            }
+
+            host.nixosModule
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                inherit (host) users;
+                useGlobalPkgs = true;
+                useUserPackages = true;
+              };
+            }
+          ];
+        });
     };
 }

@@ -3,20 +3,20 @@
     enable = true;
     package = pkgs.vscode;
     extensions = (
-      with pkgs.vscode-extensions; with pkgs.nur.repos.slaier; [
+      with pkgs.vscode-extensions; [
         eamodio.gitlens
+        file-icons.file-icons
         jnoortheen.nix-ide
         ms-python.python
         ms-vscode-remote.remote-ssh
         redhat.vscode-yaml
         shardulm94.trailing-spaces
         tamasfe.even-better-toml
+        timonwong.shellcheck
         tyriar.sort-lines
-
-        vscode-extension-ms-vscode-remote-remote-containers
-        vscode-extension-timonwong-shellcheck
-        vscode-extension-vscode-icons-team-vscode-icons
-      ]
+      ] ++ (with pkgs.nur.repos.slaier.vscode-extensions; [
+        ms-vscode-remote.remote-containers
+      ])
     );
     userSettings = {
       "editor.bracketPairColorization.enabled" = true;
@@ -51,7 +51,7 @@
       "workbench.colorTheme" = "Monokai";
       "workbench.commandPalette.preserveInput" = true;
       "workbench.editor.enablePreviewFromCodeNavigation" = true;
-      "workbench.iconTheme" = "vscode-icons";
+      "workbench.iconTheme" = "file-icons";
 
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "${pkgs.rnix-lsp}/bin/rnix-lsp";
@@ -62,7 +62,6 @@
       ];
       "remote.containers.dockerComposePath" = "${pkgs.podman-compose}/bin/podman-compose";
       "remote.containers.dockerPath" = "${pkgs.podman}/bin/podman";
-      "shellcheck.executablePath" = "${pkgs.shellcheck}/bin/shellcheck";
     };
   };
 }

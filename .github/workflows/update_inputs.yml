@@ -24,22 +24,12 @@ jobs:
             substituters = https://slaier.cachix.org https://cache.nixos.org
             trusted-public-keys = slaier.cachix.org-1:NyXPOqlxuGWgyn0ApNHMopkbix3QjMUAcR+JOjjxLtU= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-      - name: Prepare
+      - name: Update flake lock
         run: |
           git checkout -B wip-update-inputs
           git config user.name "dependabot[bot]"
           git config user.email "<49699333+dependabot[bot]@users.noreply.github.com>"
-      - name: Update nixexprs
-        run: |
-          nixexprs=$(curl -w "%{url_effective}\n" -I -L -s -S $URL -o /dev/null https://nixos.org/channels/${{ env.nixChannel }}/nixexprs.tar.xz)
-          sed -i "s#https://releases\\.nixos\\.org/.*/nixexprs\\.tar\\.xz#${nixexprs}#" flake.nix
-      - name: Update flake lock
-        run: |
           nix flake update --commit-lock-file --commit-lockfile-summary "nix(deps): update inputs"
-      - name: Commit & Push
-        run: |
-          git add flake.nix
-          git commit --amend --no-edit
           git push origin wip-update-inputs --force-with-lease
       - name: Trigger Workflow
         uses: actions/github-script@v6

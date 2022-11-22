@@ -38,11 +38,18 @@
   time.hardwareClockInLocalTime = true;
 
   programs.adb.enable = true;
+  programs.command-not-found.dbPath = "${pkgs.nur.repos.slaier.programs-db}/programs.sqlite";
 
   virtualisation.podman.enable = true;
   virtualisation.podman.dockerCompat = true;
 
-  environment.systemPackages = with pkgs; with indexyz; with nur.repos.slaier; [
+  slaier.services.clash = with pkgs.nur.repos.slaier; {
+    enable = true;
+    dashboard.path = yacd;
+    geoip.path = "${clash-geoip}/etc/clash/Country.mmdb";
+  };
+
+  environment.systemPackages = with pkgs; [
     bottom
     clang
     dogdns
