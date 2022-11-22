@@ -33,6 +33,11 @@
           host-module = ./hosts/pc;
           users.nixos = import ./hm;
         };
+        n1 = {
+          system = "aarch64-linux";
+          host-module = ./hosts/phicomm-n1;
+          users.nixos = import ./hm;
+        };
       };
       forAllHosts = f: mapAttrs f hosts;
     in
