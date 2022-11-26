@@ -18,6 +18,27 @@
         ms-vscode-remote.remote-containers
       ])
     );
+    keybindings = [
+      {
+        "key" = "ctrl+q";
+        "command" = "-workbench.action.quit";
+      }
+      {
+        "key" = "ctrl+q";
+        "command" = "workbench.action.remote.close";
+        "when" = "resourceScheme == 'vscode-remote'";
+      }
+      {
+        "key" = "ctrl+q";
+        "command" = "workbench.action.closeFolder";
+        "when" = "resourceScheme != 'vscode-remote' && workbenchState != 'empty'";
+      }
+      {
+        "key" = "ctrl+q";
+        "command" = "workbench.action.closeWindow";
+        "when" = "resourceScheme != 'vscode-remote' && workbenchState == 'empty'";
+      }
+    ];
     userSettings = {
       "editor.bracketPairColorization.enabled" = true;
       "editor.formatOnPaste" = true;
