@@ -92,6 +92,7 @@
         (name: value: {
           nixpkgs.system = value.config.nixpkgs.system;
           imports = value._module.args.modules;
+          deployment.allowLocalDeployment = true;
         })
         self.nixosConfigurations;
     };
