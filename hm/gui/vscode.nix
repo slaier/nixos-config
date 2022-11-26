@@ -42,7 +42,10 @@
       "terminal.integrated.defaultProfile.linux" = "fish";
       "terminal.integrated.profiles.linux" = {
         "fish" = {
-          "path" = "fish";
+          "path" = "env";
+          "args" = [
+            "fish"
+          ];
         };
         "ash" = null;
         "sh" = null;
