@@ -14,8 +14,4 @@
   services.openssh.enable = true;
 
   networking.hostName = "n1";
-  networking.proxy = {
-    default = "http://n1.lan:7890";
-    noProxy = "127.0.0.1,localhost,192.168.0.0/16";
-  };
 }
