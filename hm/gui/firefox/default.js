@@ -15,4 +15,6 @@ user_pref("network.proxy.no_proxies_on", "localhost,127.0.0.1,192.168.0.0/16");
 user_pref("browser.contentblocking.category", "standard");
 /*** [SECTION 2800]: SHUTDOWN & SANITIZING ***/
 user_pref("privacy.clearOnShutdown.history", false);
+/*** [SECTION 5000]: OPTIONAL OPSEC ***/
+user_pref("signon.rememberSignons", false);
 // end
