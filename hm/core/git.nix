@@ -8,12 +8,12 @@ in
   options.slaier.git = {
     userName = mkOption {
       type = types.str;
-      default = "slaier";
+      default = "Slaier";
       description = "git user name";
     };
     userEmail = mkOption {
       type = types.str;
-      default = "30682486+slaier@users.noreply.github.com";
+      default = "slaier@users.noreply.github.com";
       description = "git user email";
     };
   };
