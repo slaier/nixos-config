@@ -39,6 +39,7 @@
     dogdns
     hydra-check
     hyperfine
+    librespeed-cli
     nali
     nix-tree
     nvfetcher
