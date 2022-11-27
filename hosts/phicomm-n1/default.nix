@@ -3,6 +3,7 @@
     ./hardware-configuration.nix
     ../../nixos/core
     ../../nixos/users
+    ../../nixos/services/openfortivpn
     ../../nixos/services/qinglong
   ];
 
