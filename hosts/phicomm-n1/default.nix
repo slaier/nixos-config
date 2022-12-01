@@ -15,4 +15,9 @@
   services.openssh.enable = true;
 
   networking.hostName = "n1";
+  networking.firewall.allowedTCPPorts = [
+    3333 # yacd
+    7890 # http_proxy
+    9090 # clashctl
+  ];
 }
