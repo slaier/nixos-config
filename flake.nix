@@ -66,7 +66,12 @@
                 self.overlay
                 nurOverlay
               ];
-              nixpkgs.config.allowUnfree = true;
+              nixpkgs.config = {
+                allowUnfree = true;
+                permittedInsecurePackages = [
+                  "qtwebkit-5.212.0-alpha4"
+                ];
+              };
               nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
               nix.registry.nixpkgs.flake = nixpkgs;
             }
