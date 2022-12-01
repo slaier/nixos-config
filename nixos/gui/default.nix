@@ -10,7 +10,7 @@
       fcitx5-chinese-addons
       fcitx5-gtk
       fcitx5-rime
-      libsForQt6.fcitx5-qt
+      libsForQt5.fcitx5-qt
       rime-aurora-pinyin
       rime-data
       rime-dict

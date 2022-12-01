@@ -5,7 +5,7 @@ on:
     - cron: "11 8 * * 5"
   workflow_dispatch:
 env:
-  nixChannel: nixos-22.05
+  nixChannel: nixos-22.11
 jobs:
   update_inputs:
     runs-on: ubuntu-latest

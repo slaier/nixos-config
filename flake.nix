@@ -1,11 +1,12 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
 
     flake-utils.url = "github:numtide/flake-utils";
 
-    home-manager.url = "github:nix-community/home-manager/release-22.05";
+    home-manager.url = "github:nix-community/home-manager/release-22.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.inputs.utils.follows = "flake-utils";
 
     nur.url = "github:nix-community/NUR";
 
@@ -65,7 +66,12 @@
                 self.overlay
                 nurOverlay
               ];
-              nixpkgs.config.allowUnfree = true;
+              nixpkgs.config = {
+                allowUnfree = true;
+                permittedInsecurePackages = [
+                  "qtwebkit-5.212.0-alpha4"
+                ];
+              };
               nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
               nix.registry.nixpkgs.flake = nixpkgs;
             }
