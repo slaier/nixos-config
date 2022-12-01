@@ -20,4 +20,6 @@
     7890 # http_proxy
     9090 # clashctl
   ];
+
+  documentation.man.enable = false;
 }
