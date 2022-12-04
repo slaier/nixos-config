@@ -11,9 +11,13 @@
     nur.url = "github:nix-community/NUR";
 
     impermanence.url = "github:nix-community/impermanence";
+
+    slaier.url = "github:slaier/nur-packages";
+    slaier.inputs.nixpkgs.follows = "nixpkgs";
+    slaier.inputs.flake-utils.follows = "flake-utils";
   };
 
-  outputs = { self, nixpkgs, flake-utils, home-manager, nur, impermanence }:
+  outputs = { self, nixpkgs, flake-utils, home-manager, nur, impermanence, slaier }:
     let
       inherit (nixpkgs.lib) composeManyExtensions attrValues flip mapAttrs;
       inherit (flake-utils.lib) eachDefaultSystem;
@@ -44,8 +48,8 @@
           nurWithPkgs = pkgs: import nur {
             inherit pkgs;
             nurpkgs = pkgs;
-            ${if builtins ? currentSystem then "repoOverrides" else null} = {
-              slaier = import /home/nixos/repos/nur-packages { inherit pkgs; };
+            repoOverrides = {
+              slaier = import slaier { inherit pkgs; };
             };
           };
 

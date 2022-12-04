@@ -91,7 +91,31 @@
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
-        "nur": "nur"
+        "nur": "nur",
+        "slaier": "slaier"
+      }
+    },
+    "slaier": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1670070875,
+        "narHash": "sha256-cAIAwrGXChLFulsird7W+uHpKe3vcdBbxeiDnvrF9Z8=",
+        "owner": "slaier",
+        "repo": "nur-packages",
+        "rev": "2587bd22c91d273e354f8ad9a6ec8b128c685b8b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "slaier",
+        "repo": "nur-packages",
+        "type": "github"
       }
     }
   },
