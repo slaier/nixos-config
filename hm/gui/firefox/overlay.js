@@ -1,6 +1,8 @@
 // begin
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("svg.context-properties.content.enabled", true);
+user_pref("browser.urlbar.suggest.topsites", false);
+user_pref("browser.warnOnQuitShortcut", false);
 /*** [SECTION 0700]: DNS / DoH / PROXY / SOCKS / IPv6 ***/
 user_pref("network.trr.mode", 3); // enable TRR (without System fallback)
 user_pref("network.dns.skipTRR-when-parental-control-enabled", false);

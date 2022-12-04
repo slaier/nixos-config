@@ -78,6 +78,7 @@ in
       extraConfig = ''
         ${fileContents "${pkgs.nur.repos.slaier.arkenfox-userjs}/user.js"}
         ${fileContents ./overlay.js}
+        user_pref("browser.uiCustomization.state", '${fileContents ./ui.json}');
       '';
       search = {
         default = "Google";
