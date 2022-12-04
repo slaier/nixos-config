@@ -102,13 +102,4 @@
         })
         self.nixosConfigurations;
     };
-
-  nixConfig = {
-    extra-substituters = [
-      "https://slaier.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "slaier.cachix.org-1:NyXPOqlxuGWgyn0ApNHMopkbix3QjMUAcR+JOjjxLtU="
-    ];
-  };
 }
