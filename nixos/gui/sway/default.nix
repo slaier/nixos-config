@@ -18,6 +18,7 @@ let
   };
 
   configStr = import ./config.nix {
+    inherit lib pkgs;
     menu = "${rofi} -show drun";
     window-menu = "${sway-window-switcher}/bin/sway-window-switcher";
     msg = "swaymsg";

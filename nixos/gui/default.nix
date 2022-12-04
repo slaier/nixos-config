@@ -61,7 +61,6 @@
     qbittorrent-enhanced-edition
     quiterss
     spotify
-    stretchly
     tdesktop
     vlc
     xdg-utils

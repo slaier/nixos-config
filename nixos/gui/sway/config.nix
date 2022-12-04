@@ -1,13 +1,10 @@
-# applications:
-#   alacritty
-#   fcitx5
-#   qbittorrent
-#   stretchly
 { menu
 , window-menu
 , msg
 , floating-modifier-mode
 , extraConfig
+, lib
+, pkgs
 , ...
 }:
 let
@@ -174,8 +171,8 @@ in
   # Startup:
   #
   exec --no-startup-id fcitx5 -d -r
-  exec --no-startup-id qbittorrent
-  exec --no-startup-id stretchly
+  exec --no-startup-id ${lib.getExe pkgs.qbittorrent}
+  exec --no-startup-id ${lib.getExe pkgs.safeeyes}
 
   ${extraConfig.post}
 ''
