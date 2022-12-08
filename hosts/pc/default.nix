@@ -11,6 +11,7 @@
     ../../nixos/core
     ../../nixos/gui
     ../../nixos/users
+    ../../nixos/services/kbdrate
   ];
 
   # Use the systemd-boot EFI boot loader.
