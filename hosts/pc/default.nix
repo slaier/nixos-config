@@ -11,7 +11,6 @@
     ../../nixos/core
     ../../nixos/gui
     ../../nixos/users
-    ../../nixos/services/kbdrate
   ];
 
   boot.loader.grub = {
