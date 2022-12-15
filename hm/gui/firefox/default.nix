@@ -55,7 +55,7 @@ in
           bookmarks = [
             { name = "NUR search"; url = "https://nur.nix-community.org/"; }
             { name = "Nix Manual"; url = "https://nixos.org/manual/nix/stable/"; }
-            { name = "Nixpkgs Manual"; url = "https://nixos.org/manual/nixpkgs/stable/"; }
+            { name = "Nixpkgs Manual"; url = "https://ryantm.github.io/nixpkgs/"; }
             { name = "TVL"; url = "https://code.tvl.fyi/"; }
           ];
         }
@@ -74,6 +74,13 @@ in
             { name = "Pling"; url = "https://www.pling.com/"; }
           ];
         }
+        {
+          name = "Post";
+          bookmarks = [
+            { name = "Proxy Env"; url = "https://about.gitlab.com/blog/2021/01/27/we-need-to-talk-no-proxy"; }
+          ];
+        }
+        { name = "Clash Wiki"; url = "https://lancellc.gitbook.io/clash"; }
       ];
       extraConfig = ''
         ${fileContents "${pkgs.nur.repos.slaier.arkenfox-userjs}/user.js"}
