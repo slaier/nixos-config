@@ -69,8 +69,8 @@ let
       tooltip = false;
     };
     disk = {
-      format = "/home {free}";
-      path = "/home";
+      format = "/nix {free}";
+      path = "/nix";
       tooltip = false;
     };
     "disk#data" = {
