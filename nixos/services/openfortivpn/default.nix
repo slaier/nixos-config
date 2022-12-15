@@ -7,11 +7,7 @@
     extraOptions = [
       "--device=/dev/ppp"
       "--cap-add=NET_ADMIN"
-    ];
-    cmd = [
-      "openfortivpn"
-      "-c"
-      "/etc/openfortivpn/config"
+      "--init"
     ];
     ports = [ "1080:1080" ];
     autoStart = false;
