@@ -1,38 +1,6 @@
 { config, lib, pkgs, ... }:
 let
-  jq = "${pkgs.jq}/bin/jq";
-  rofi = "${pkgs.rofi-wayland}/bin/rofi";
-
-  sway-window-switcher = pkgs.writeTextFile {
-    name = "sway-window-switcher";
-    destination = "/bin/sway-window-switcher";
-    executable = true;
-
-    text = ''
-      swaymsg -t get_tree |
-      ${jq} 'until(.type == "con";
-              .focus[:2][-1] as $id | .nodes[] | select(.id == $id)) |
-             select(.focused == false) | .id' |
-      xargs -r -I{} swaymsg "[con_id={}] focus"
-    '';
-  };
-
-  configStr = import ./config.nix {
-    inherit lib pkgs;
-    menu = "${rofi} -show drun";
-    window-menu = "${sway-window-switcher}/bin/sway-window-switcher";
-    msg = "swaymsg";
-    floating-modifier-mode = "normal";
-    extraConfig = {
-      pre = "# sway config file";
-      post = ''
-        output * bg ${pkgs.nixos-artwork.wallpapers.dracula}/share/backgrounds/nixos/nix-wallpaper-dracula.png fill
-        bar swaybar_command ${pkgs.waybar}/bin/waybar
-        exec ${pkgs.mako}/bin/mako --default-timeout 3000
-        include /etc/sway/config.d/*
-      '';
-    };
-  };
+  configStr = import ./config.nix { inherit lib pkgs; };
 
   waybarConfig = {
     modules-left = [

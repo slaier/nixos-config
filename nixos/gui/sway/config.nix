@@ -1,23 +1,27 @@
-{ menu
-, window-menu
-, msg
-, floating-modifier-mode
-, extraConfig
-, lib
-, pkgs
-, ...
-}:
+{ lib, pkgs, ... }:
 let
   mod = "Mod4";
   left = "h";
   down = "j";
   up = "k";
   right = "l";
+
+  sway-window-switcher = pkgs.writeTextFile {
+    name = "sway-window-switcher";
+    destination = "/bin/sway-window-switcher";
+    executable = true;
+
+    text = ''
+      swaymsg -t get_tree |
+      ${lib.getExe pkgs.jq} 'until(.type == "con";
+        .focus[:2][-1] as $id | .nodes[] | select(.id == $id)) |
+        select(.focused == false) | .id' |
+      xargs -r -I{} swaymsg "[con_id={}] focus"
+    '';
+  };
 in
 ''
-  ${extraConfig.pre}
-
-  font pango:SauceCodePro Nerd Font Mono Medium 10
+  # sway config file
 
   # window border settings
   default_border          none
@@ -37,23 +41,23 @@ in
     bindsym ${mod}+Shift+q kill
 
     # Start your launcher
-    bindsym ${mod}+d exec --no-startup-id ${menu}
+    bindsym ${mod}+d exec --no-startup-id ${lib.getExe pkgs.rofi-wayland} -show drun
 
     # switching window
-    bindsym ${mod}+Tab exec --no-startup-id ${window-menu}
+    bindsym ${mod}+Tab exec --no-startup-id ${lib.getExe sway-window-switcher}
 
     # Drag floating windows by holding down ${mod} and left mouse button.
     # Resize them with right mouse button + ${mod}.
     # Despite the name, also works for non-floating windows.
     # Change normal to inverse to use left mouse button for resizing and right
     # mouse button for dragging.
-    floating_modifier ${mod} ${floating-modifier-mode}
+    floating_modifier ${mod} normal
 
     # Reload the configuration file
     bindsym ${mod}+Shift+c reload
 
     # Exit wm
-    bindsym ${mod}+Shift+e exec ${msg} exit
+    bindsym ${mod}+Shift+e exec swaymsg exit
   #
   # Moving around:
   #
@@ -168,11 +172,25 @@ in
   bindsym ${mod}+r mode "resize"
 
   #
+  # Input/Output:
+  #
+  input "type:keyboard" {
+    repeat_delay 300
+    repeat_rate 30
+  }
+  output * bg ${pkgs.nixos-artwork.wallpapers.dracula}/share/backgrounds/nixos/nix-wallpaper-dracula.png fill
+
+  #
   # Startup:
   #
-  exec --no-startup-id fcitx5 -d -r
+  bar swaybar_command ${lib.getExe pkgs.waybar}
+  exec --no-startup-id ${lib.getExe pkgs.mako} --default-timeout 3000
   exec --no-startup-id ${lib.getExe pkgs.qbittorrent}
   exec --no-startup-id ${lib.getExe pkgs.safeeyes}
+  exec --no-startup-id fcitx5 -d -r
 
-  ${extraConfig.post}
+  #
+  # Others:
+  #
+  include /etc/sway/config.d/*
 ''
