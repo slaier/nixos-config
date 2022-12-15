@@ -106,11 +106,6 @@ in
       swaylock
       swayidle
     ];
-    extraSessionCommands = ''
-      source /etc/profile
-      test -f $HOME/.profile && source $HOME/.profile
-      systemctl --user import-environment
-    '';
   };
 
   environment.etc."sway/config".text = configStr;

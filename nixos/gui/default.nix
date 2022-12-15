@@ -42,9 +42,6 @@
       rime-zhwiki
     ];
   };
-  environment.variables = {
-    QT_PLUGIN_PATH = [ "${config.i18n.inputMethod.package}/${pkgs.qt6.qtbase.qtPluginPrefix}" ];
-  };
 
   security.rtkit.enable = true;
   services.pipewire = {
