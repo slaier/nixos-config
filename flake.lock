@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "darkmatter-grub-theme": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1668143189,
+        "narHash": "sha256-mixR9bTkVPLMPaY7vz96XZ5gC6o3rU2cHUNvbEP7OlI=",
+        "owner": "VandalByte",
+        "repo": "darkmatter-grub-theme",
+        "rev": "6094e5ee0e4bd7f204e1da3808aee70ba0d93256",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "VandalByte",
+        "repo": "darkmatter-grub-theme",
+        "type": "gitlab"
+      }
+    },
     "flake-utils": {
       "locked": {
         "lastModified": 1667395993,
@@ -87,6 +107,7 @@
     },
     "root": {
       "inputs": {
+        "darkmatter-grub-theme": "darkmatter-grub-theme",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "impermanence": "impermanence",

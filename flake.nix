@@ -15,9 +15,12 @@
     slaier.url = "github:slaier/nur-packages";
     slaier.inputs.nixpkgs.follows = "nixpkgs";
     slaier.inputs.flake-utils.follows = "flake-utils";
+
+    darkmatter-grub-theme.url = "gitlab:VandalByte/darkmatter-grub-theme";
+    darkmatter-grub-theme.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, flake-utils, home-manager, nur, impermanence, slaier }:
+  outputs = { self, nixpkgs, flake-utils, home-manager, nur, impermanence, slaier, darkmatter-grub-theme }:
     let
       inherit (nixpkgs.lib) composeManyExtensions attrValues flip mapAttrs;
       inherit (flake-utils.lib) eachDefaultSystem;
@@ -64,6 +67,7 @@
           modules = [
             impermanence.nixosModules.impermanence
             nurModules.repos.slaier.modules.clash
+            darkmatter-grub-theme.nixosModule
 
             {
               nixpkgs.overlays = [
