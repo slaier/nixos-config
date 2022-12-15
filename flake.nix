@@ -18,9 +18,11 @@
 
     darkmatter-grub-theme.url = "gitlab:VandalByte/darkmatter-grub-theme";
     darkmatter-grub-theme.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-index-database.url = "github:Mic92/nix-index-database";
   };
 
-  outputs = { self, nixpkgs, flake-utils, home-manager, nur, impermanence, slaier, darkmatter-grub-theme }:
+  outputs = { self, nixpkgs, flake-utils, home-manager, ... } @inputs:
     let
       inherit (nixpkgs.lib) composeManyExtensions attrValues flip mapAttrs;
       inherit (flake-utils.lib) eachDefaultSystem;
@@ -48,16 +50,17 @@
         let
           inherit (host) system;
 
-          nurWithPkgs = pkgs: import nur {
+          nurWithPkgs = pkgs: import inputs.nur {
             inherit pkgs;
             nurpkgs = pkgs;
             repoOverrides = {
-              slaier = import slaier { inherit pkgs; };
+              slaier = import inputs.slaier { inherit pkgs; };
             };
           };
 
-          nurOverlay = final: prev: {
+          depOverlay = final: prev: {
             nur = nurWithPkgs prev;
+            nix-index-database = inputs.nix-index-database.legacyPackages.${system}.database;
           };
 
           nurModules = nurWithPkgs nixpkgs.legacyPackages.${system};
@@ -65,14 +68,14 @@
         nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            impermanence.nixosModules.impermanence
+            inputs.impermanence.nixosModules.impermanence
             nurModules.repos.slaier.modules.clash
-            darkmatter-grub-theme.nixosModule
+            inputs.darkmatter-grub-theme.nixosModule
 
             {
               nixpkgs.overlays = [
                 self.overlay
-                nurOverlay
+                depOverlay
               ];
               nixpkgs.config = {
                 allowUnfree = true;
