@@ -78,7 +78,7 @@
       "workbench.iconTheme" = "file-icons";
 
       "nix.enableLanguageServer" = true;
-      "nix.serverPath" = "${pkgs.rnix-lsp}/bin/rnix-lsp";
+      "nix.serverPath" = "${lib.getExe pkgs.nil}";
       "remote.containers.defaultExtensions" = [
         "Tyriar.sort-lines"
         "eamodio.gitlens"
