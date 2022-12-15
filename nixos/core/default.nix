@@ -36,6 +36,7 @@
 
   environment.systemPackages = with pkgs; [
     bottom
+    croc
     dogdns
     hydra-check
     hyperfine
