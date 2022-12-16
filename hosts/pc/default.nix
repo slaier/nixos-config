@@ -34,7 +34,16 @@
   networking.firewall.enable = false;
   networking.proxy = {
     default = "http://pc.lan:7890";
-    noProxy = "127.0.0.1,localhost,192.168.0.0/16";
+    noProxy = "127.0.0.1,localhost,lan";
+  };
+
+  services.https-dns-proxy = {
+    enable = true;
+    provider.kind = "google";
+  };
+  systemd.services.https-dns-proxy.environment = {
+    http_proxy = "http://n1.lan:7890";
+    https_proxy = "http://n1.lan:7890";
   };
 
   services.openssh.enable = true;
