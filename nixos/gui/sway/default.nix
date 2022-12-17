@@ -78,4 +78,5 @@ in
 
   environment.etc."sway/config".text = configStr;
   environment.etc."xdg/waybar/config".text = builtins.toJSON waybarConfig;
+  environment.etc."xdg/swayr/config.toml".text = import ./swayr.nix { inherit lib pkgs; };
 }

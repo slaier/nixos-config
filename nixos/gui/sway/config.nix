@@ -33,6 +33,8 @@ in
 
     # switching window
     workspace_auto_back_and_forth yes
+    bindsym ${mod}+Shift+d exec ${pkgs.swayr}/bin/swayr switch-window
+    bindsym ${mod}+Tab     exec ${pkgs.swayr}/bin/swayr switch-to-urgent-or-lru-window
 
     # Drag floating windows by holding down ${mod} and left mouse button.
     # Resize them with right mouse button + ${mod}.
@@ -193,6 +195,7 @@ in
   exec --no-startup-id ${lib.getExe pkgs.qbittorrent}
   exec --no-startup-id ${lib.getExe pkgs.safeeyes}
   exec --no-startup-id ${lib.getExe pkgs.spotify}
+  exec --no-startup-id ${pkgs.swayr}/bin/swayrd
   exec --no-startup-id fcitx5 -d -r
   exec --no-startup-id firefox
 
