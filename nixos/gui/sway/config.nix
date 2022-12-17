@@ -19,6 +19,7 @@ let
       xargs -r -I{} swaymsg "[con_id={}] focus"
     '';
   };
+  grimshot = lib.getExe pkgs.sway-contrib.grimshot;
 in
 ''
   # sway config file
@@ -179,6 +180,14 @@ in
     repeat_rate 30
   }
   output * bg ${pkgs.nixos-artwork.wallpapers.dracula}/share/backgrounds/nixos/nix-wallpaper-dracula.png fill
+
+  #
+  # Screenshots:
+  #
+  bindsym ${mod}+p       exec ${grimshot} save window
+  bindsym ${mod}+Shift+p exec ${grimshot} save area
+  bindsym ${mod}+Mod1+p  exec ${grimshot} save output
+  bindsym ${mod}+Ctrl+p  exec ${grimshot} save active
 
   #
   # Startup:
