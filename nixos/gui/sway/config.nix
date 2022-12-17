@@ -192,6 +192,7 @@ in
   exec --no-startup-id ${lib.getExe pkgs.safeeyes}
   exec --no-startup-id ${lib.getExe pkgs.spotify}
   exec --no-startup-id fcitx5 -d -r
+  exec --no-startup-id firefox
 
   #
   # Others:
