@@ -178,6 +178,11 @@ in
   bindsym ${mod}+Ctrl+p  exec ${grimshot} save active
 
   #
+  # Window rules:
+  #
+  for_window [class="Spotify"] move container to workspace number 10
+
+  #
   # Startup:
   #
   bar swaybar_command ${lib.getExe pkgs.waybar}
@@ -185,6 +190,7 @@ in
   exec --no-startup-id ${lib.getExe pkgs.gammastep} -l 31:121
   exec --no-startup-id ${lib.getExe pkgs.qbittorrent}
   exec --no-startup-id ${lib.getExe pkgs.safeeyes}
+  exec --no-startup-id ${lib.getExe pkgs.spotify}
   exec --no-startup-id fcitx5 -d -r
 
   #
