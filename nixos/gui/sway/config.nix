@@ -6,19 +6,6 @@ let
   up = "k";
   right = "l";
 
-  sway-window-switcher = pkgs.writeTextFile {
-    name = "sway-window-switcher";
-    destination = "/bin/sway-window-switcher";
-    executable = true;
-
-    text = ''
-      swaymsg -t get_tree |
-      ${lib.getExe pkgs.jq} 'until(.type == "con";
-        .focus[:2][-1] as $id | .nodes[] | select(.id == $id)) |
-        select(.focused == false) | .id' |
-      xargs -r -I{} swaymsg "[con_id={}] focus"
-    '';
-  };
   grimshot = lib.getExe pkgs.sway-contrib.grimshot;
 in
 ''
@@ -45,7 +32,7 @@ in
     bindsym ${mod}+d exec --no-startup-id ${lib.getExe pkgs.rofi-wayland} -show drun
 
     # switching window
-    bindsym ${mod}+Tab exec --no-startup-id ${lib.getExe sway-window-switcher}
+    workspace_auto_back_and_forth yes
 
     # Drag floating windows by holding down ${mod} and left mouse button.
     # Resize them with right mouse button + ${mod}.
