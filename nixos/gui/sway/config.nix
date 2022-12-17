@@ -181,6 +181,8 @@ in
   # Window rules:
   #
   for_window [class="Spotify"] move container to workspace number 10
+  for_window [app_id="keepassxc"] floating enable
+  for_window [app_id="pavucontrol"] floating enable
 
   #
   # Startup:
