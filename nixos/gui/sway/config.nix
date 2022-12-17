@@ -116,6 +116,7 @@ in
 
     # Toggle the current focus between tiling and floating mode
     bindsym ${mod}+Shift+space floating toggle
+    floating_maximum_size 1280 x 720
 
     # Swap focus between the tiling area and the floating area
     bindsym ${mod}+space focus mode_toggle
