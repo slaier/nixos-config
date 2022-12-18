@@ -77,18 +77,18 @@
       "workbench.editor.enablePreviewFromCodeNavigation" = true;
       "workbench.iconTheme" = "file-icons";
 
+      "dev.containers.defaultExtensions" = [
+        "Tyriar.sort-lines"
+        "eamodio.gitlens"
+        "shardulm94.trailing-spaces"
+      ];
+      "dev.containers.dockerComposePath" = lib.getExe pkgs.podman-compose;
+      "dev.containers.dockerPath" = lib.getExe pkgs.podman;
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "${lib.getExe pkgs.nil}";
       "nix.serverSettings" = {
         nil.formatting.command = [ (lib.getExe pkgs.nixpkgs-fmt) ];
       };
-      "remote.containers.defaultExtensions" = [
-        "Tyriar.sort-lines"
-        "eamodio.gitlens"
-        "shardulm94.trailing-spaces"
-      ];
-      "remote.containers.dockerComposePath" = "${pkgs.podman-compose}/bin/podman-compose";
-      "remote.containers.dockerPath" = "${pkgs.podman}/bin/podman";
     };
   };
 }
