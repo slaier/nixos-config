@@ -196,6 +196,7 @@ in
   exec --no-startup-id ${lib.getExe pkgs.safeeyes}
   exec --no-startup-id ${lib.getExe pkgs.spotify}
   exec --no-startup-id ${pkgs.swayr}/bin/swayrd
+  exec --no-startup-id ${pkgs.wl-clipboard}/bin/wl-paste -p -t text -w ${lib.getExe pkgs.clipman} store --primary --notify
   exec --no-startup-id fcitx5 -d -r
   exec --no-startup-id firefox
 

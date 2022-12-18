@@ -71,8 +71,9 @@ in
     enable = true;
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [
-      swaylock
       swayidle
+      swaylock
+      wl-clipboard
     ];
   };
 
