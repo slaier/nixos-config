@@ -8,13 +8,14 @@
       '-i',
       '-markup-rows',
       '-mesg={prompt}',
+      '-show-icons',
   ]
 
   [format]
   output_format = '{indent}<b>Output {name}</b>    <span alpha=\"20000\">({id})</span>'
   workspace_format = '{indent}<b>Workspace {name} [{layout}]</b>    <span alpha="20000">({id})</span>'
   container_format = '{indent}<b>Container [{layout}]</b> on workspace {workspace_name} <i>{marks}</i>    <span alpha="20000">({id})</span>'
-  window_format = '<i>{app_name}</i> — {urgency_start}<b>“{title}”</b>{urgency_end} on workspace {workspace_name} <i>{marks}</i>    <span alpha="20000">({id})</span>'
+  window_format = "{urgency_start}<b>“{title}”</b>{urgency_end} — <i>{app_name}</i> on workspace {workspace_name}   <span alpha='20000'>({id})</span>\u0000icon\u001f{app_icon}"
   indent = '    '
   urgency_start = '<span background="darkred" foreground="yellow">'
   urgency_end = '</span>'
