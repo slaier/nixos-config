@@ -79,6 +79,9 @@
 
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "${lib.getExe pkgs.nil}";
+      "nix.serverSettings" = {
+        nil.formatting.command = [ (lib.getExe pkgs.nixpkgs-fmt) ];
+      };
       "remote.containers.defaultExtensions" = [
         "Tyriar.sort-lines"
         "eamodio.gitlens"

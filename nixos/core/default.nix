@@ -40,9 +40,11 @@
     dogdns
     hydra-check
     hyperfine
+    killall
     librespeed-cli
     nali
     nix-tree
+    nixpkgs-fmt
     nvfetcher
     p7zip
     tealdeer
