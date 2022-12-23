@@ -82,6 +82,7 @@ in
           ];
         }
         { name = "Clash Wiki"; url = "https://lancellc.gitbook.io/clash"; }
+        { name = "Dns Lookup"; url = "https://dnslookup.online/"; }
       ];
       extraConfig = ''
         ${fileContents "${pkgs.nur.repos.slaier.arkenfox-userjs}/user.js"}
