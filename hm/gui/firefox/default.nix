@@ -78,6 +78,7 @@ in
           name = "Post";
           bookmarks = [
             { name = "Proxy Env"; url = "https://about.gitlab.com/blog/2021/01/27/we-need-to-talk-no-proxy"; }
+            { name = "Google Language Codes"; url = "https://sites.google.com/site/tomihasa/google-language-codes"; }
           ];
         }
         { name = "Clash Wiki"; url = "https://lancellc.gitbook.io/clash"; }
@@ -94,7 +95,17 @@ in
           "Wikipedia (en)".metaData.hidden = true;
           "Bing".metaData.hidden = true;
           "DuckDuckGo".metaData.hidden = true;
-          "Google".metaData.alias = "@g";
+          "Google".metaData.hidden = true;
+          "Google NCR" = {
+            urls = [{
+              template = "https://www.google.com/search";
+              params = [
+                { name = "q"; value = "{searchTerms}"; }
+                { name = "hl"; value = "zh-CN"; }
+              ];
+            }];
+            definedAliases = [ "@g" ];
+          };
           "NixOS packages" = {
             urls = [{
               template = "https://search.nixos.org/packages";
