@@ -58,9 +58,6 @@
         ".ssh"
         "repos"
       ];
-      files = [
-        ".git-credentials"
-      ];
     };
   };
 
