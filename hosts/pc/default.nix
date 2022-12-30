@@ -30,11 +30,16 @@
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   nix.settings.extra-platforms = [ "aarch64-linux" ];
 
-  networking.hostName = "pc";
-  networking.firewall.enable = false;
-  networking.proxy = {
-    default = "http://pc.lan:7890";
-    noProxy = "127.0.0.1,localhost,lan";
+  networking = {
+    hostName = "pc";
+    firewall.enable = false;
+    nameservers = [ "127.0.0.1" ];
+    search = [ "lan" ];
+    dhcpcd.extraConfig = "nohook resolv.conf";
+    proxy = {
+      default = "http://pc.lan:7890";
+      noProxy = "127.0.0.1,localhost,lan";
+    };
   };
 
   services.https-dns-proxy = {
