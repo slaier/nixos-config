@@ -40,6 +40,7 @@
     dogdns
     hydra-check
     hyperfine
+    just
     killall
     librespeed-cli
     nali
