@@ -32,7 +32,6 @@ in
       clearurls
       enhancer-for-youtube
       history-cleaner
-      https-everywhere
       i-dont-care-about-cookies
       keepassxc-browser
       localcdn
