@@ -23,4 +23,6 @@
     neovim
     wget
   ];
+
+  system.stateVersion = "22.11";
 }

@@ -24,7 +24,7 @@
 
   outputs = { self, nixpkgs, flake-utils, home-manager, ... } @inputs:
     let
-      inherit (nixpkgs.lib) composeManyExtensions attrValues flip mapAttrs;
+      inherit (nixpkgs.lib) composeManyExtensions attrValues flip mapAttrs recursiveUpdate;
       inherit (flake-utils.lib) eachDefaultSystem;
 
       hosts = {
@@ -37,6 +37,11 @@
           system = "aarch64-linux";
           nixosModule = ./hosts/phicomm-n1;
           users.nixos = import ./hosts/phicomm-n1/home.nix;
+        };
+        n1-minimal = {
+          system = "aarch64-linux";
+          nixosModule = ./hosts/phicomm-n1/minimal.nix;
+          users = { };
         };
       };
     in
@@ -99,18 +104,20 @@
             }
           ];
         });
-      colmena = {
-        meta = {
-          nixpkgs = import nixpkgs {
-            system = "x86_64-linux";
+      colmena = recursiveUpdate
+        (mapAttrs
+          (name: value: {
+            nixpkgs.system = value.config.nixpkgs.system;
+            imports = value._module.args.modules;
+          })
+          self.nixosConfigurations)
+        {
+          meta = {
+            nixpkgs = import nixpkgs {
+              system = "x86_64-linux";
+            };
           };
+          n1-minimal.deployment.targetHost = "n1";
         };
-      } // mapAttrs
-        (name: value: {
-          nixpkgs.system = value.config.nixpkgs.system;
-          imports = value._module.args.modules;
-          deployment.allowLocalDeployment = true;
-        })
-        self.nixosConfigurations;
     };
 }
