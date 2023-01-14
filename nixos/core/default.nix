@@ -37,13 +37,16 @@
   environment.systemPackages = with pkgs; [
     bottom
     croc
+    curl
     dogdns
+    git
     hydra-check
     hyperfine
     just
     killall
     librespeed-cli
     nali
+    neovim
     nix-tree
     nixpkgs-fmt
     nvfetcher
@@ -51,6 +54,7 @@
     tealdeer
     unrar
     unzip
+    wget
     zip
   ];
 }

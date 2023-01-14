@@ -17,12 +17,9 @@
     max-free = ${toString (1024 * 1024 * 1024)}
   '';
 
-  environment.systemPackages = with pkgs; [
-    curl
-    git
-    neovim
-    wget
-  ];
+  systemd.extraConfig = ''
+    DefaultTimeoutStopSec=10s
+  '';
 
   system.stateVersion = "22.11";
 }

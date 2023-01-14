@@ -36,11 +36,6 @@
         n1 = {
           system = "aarch64-linux";
           nixosModule = ./hosts/phicomm-n1;
-          users.nixos = import ./hosts/phicomm-n1/home.nix;
-        };
-        n1-minimal = {
-          system = "aarch64-linux";
-          nixosModule = ./hosts/phicomm-n1/minimal.nix;
           users = { };
         };
       };
@@ -117,7 +112,6 @@
               system = "x86_64-linux";
             };
           };
-          n1-minimal.deployment.targetHost = "n1";
         };
     };
 }

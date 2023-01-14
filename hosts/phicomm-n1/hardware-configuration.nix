@@ -41,6 +41,9 @@
       };
   };
 
+  # I don't need wireless and bluetooth. Disable firmware to save disk space.
+  hardware.firmware = lib.mkForce [];
+
   fileSystems."/" =
     {
       device = "/dev/mmcblk1p2";

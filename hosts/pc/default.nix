@@ -58,6 +58,9 @@
     colmena
   ];
 
+  programs.fish.enable = true;
+  users.users.nixos.shell = pkgs.fish;
+
   virtualisation.podman.enable = true;
   virtualisation.podman.dockerCompat = true;
 }

@@ -1,6 +1,4 @@
 { pkgs, ... }: {
-  programs.fish.enable = true;
-
   users.users.nixos = {
     isNormalUser = true;
     extraGroups = [
@@ -10,6 +8,5 @@
       "vboxusers"
       "wheel"
     ];
-    shell = pkgs.fish;
   };
 }
