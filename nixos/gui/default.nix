@@ -50,16 +50,17 @@
     pulse.enable = true;
   };
 
-  environment.systemPackages = with pkgs; with nur.repos.xddxdd; [
+  environment.systemPackages = with pkgs; with nur.repos; [
     alacritty
     keepassxc
     okular
     pavucontrol
-    qbittorrent-enhanced-edition
     quiterss
     spotify
     tdesktop
     vlc
     xdg-utils
+    slaier.motrix
+    xddxdd.qbittorrent-enhanced-edition
   ];
 }
