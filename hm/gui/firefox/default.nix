@@ -89,7 +89,7 @@ in
         user_pref("browser.uiCustomization.state", '${fileContents ./ui.json}');
       '';
       search = {
-        default = "Google";
+        default = "Google NCR";
         engines = {
           "Amazon.com".metaData.hidden = true;
           "Wikipedia (en)".metaData.hidden = true;
