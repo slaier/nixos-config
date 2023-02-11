@@ -43,7 +43,6 @@ in
     ]) ++ (with pkgs.nur.repos.slaier.firefox-addons; [
       aria2-integration
       copy-link-text-webextension
-      dictionary-anyvhere
       new_tongwentang
       rsshub-radar
       undoclosetabbutton

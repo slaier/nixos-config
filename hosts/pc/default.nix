@@ -38,7 +38,7 @@
     dhcpcd.extraConfig = "nohook resolv.conf";
     proxy = {
       default = "http://pc.lan:7890";
-      noProxy = "127.0.0.1,localhost,lan";
+      noProxy = "127.0.0.1,localhost,lan,dict.youdao.com";
     };
   };
 
@@ -52,11 +52,6 @@
   };
 
   services.openssh.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    clang
-    colmena
-  ];
 
   programs.fish.enable = true;
   users.users.nixos.shell = pkgs.fish;

@@ -36,6 +36,8 @@
 
   environment.systemPackages = with pkgs; [
     bottom
+    clang
+    colmena
     croc
     curl
     dogdns
@@ -55,6 +57,7 @@
     unrar
     unzip
     wget
+    ydict
     zip
   ];
 }
