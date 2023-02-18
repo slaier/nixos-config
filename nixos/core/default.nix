@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 {
   imports = [
     ./core.nix
@@ -32,6 +32,7 @@
     enable = true;
     dashboard.path = yacd;
     geoip.path = "${clash-geoip}/etc/clash/Country.mmdb";
+    beforeUnits = lib.mkIf (config.services.https-dns-proxy.enable) [ "https-dns-proxy.service" ];
   };
 
   environment.systemPackages = with pkgs; [
