@@ -19,6 +19,7 @@
       enable = true;
       style = "nixos";
     };
+    default = "saved";
     device = "nodev";
     gfxmodeEfi = "1920x1080";
     efiSupport = true;
