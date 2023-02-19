@@ -182,9 +182,7 @@ in
   #
   # Window rules:
   #
-  for_window [class="Spotify"] move container to workspace number 10
   for_window [app_id="keepassxc"] floating enable
-  for_window [app_id="pavucontrol"] floating enable
 
   #
   # Startup:
@@ -194,7 +192,6 @@ in
   exec --no-startup-id ${lib.getExe pkgs.gammastep} -l 31:121
   exec --no-startup-id ${lib.getExe pkgs.qbittorrent}
   exec --no-startup-id ${lib.getExe pkgs.safeeyes}
-  exec --no-startup-id ${lib.getExe pkgs.spotify}
   exec --no-startup-id ${pkgs.swayr}/bin/swayrd
   exec --no-startup-id ${pkgs.wl-clipboard}/bin/wl-paste -p -t text -w ${lib.getExe pkgs.clipman} store --primary --notify
   exec --no-startup-id fcitx5 -d -r

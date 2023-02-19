@@ -1,6 +1,7 @@
 { pkgs, config, ... }: {
   imports = [
     ./sway
+    ./waybar
   ];
 
   fonts = {
@@ -57,6 +58,7 @@
     pavucontrol
     quiterss
     spotify
+    spotifywm
     tdesktop
     vlc
     xdg-utils
