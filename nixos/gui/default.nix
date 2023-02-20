@@ -58,7 +58,6 @@
     pavucontrol
     quiterss
     spotify
-    spotifywm
     tdesktop
     vlc
     xdg-utils
