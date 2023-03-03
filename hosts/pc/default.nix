@@ -31,6 +31,8 @@
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   nix.settings.extra-platforms = [ "aarch64-linux" ];
 
+  services.timesyncd.enable = false;
+
   networking = {
     hostName = "pc";
     firewall.enable = false;
