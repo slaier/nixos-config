@@ -15,8 +15,6 @@ jobs:
           ref: main
       - name: Install nix
         uses: cachix/install-nix-action@v20
-        with:
-          install_url: https://releases.nixos.org/nix/nix-2.13.3/install
       - name: Update flake lock
         run: |
           git checkout -B wip-update-inputs
