@@ -1,8 +1,10 @@
-default: pc
+default: local
 
-pc:
-  sudo nixos-rebuild --flake .#pc switch
+local:
+  colmena apply-local --sudo
 
 n1:
-  colmena build --on n1
-  colmena apply --on n1 --evaluator streaming --no-substitutes
+  colmena apply --on n1 --no-substitutes
+
+build:
+  colmena build

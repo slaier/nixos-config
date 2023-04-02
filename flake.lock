@@ -35,6 +35,26 @@
         "type": "github"
       }
     },
+    "haumea": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1680361221,
+        "narHash": "sha256-AGFgi7BTEDKRGhD+5QDRjru2dbVeJqZHpnXqczmoeL4=",
+        "owner": "nix-community",
+        "repo": "haumea",
+        "rev": "31382d9d956e8bb4d57535c4c373a78b67beeaf4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "haumea",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -143,35 +163,12 @@
       "inputs": {
         "darkmatter-grub-theme": "darkmatter-grub-theme",
         "flake-utils": "flake-utils",
+        "haumea": "haumea",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_2",
-        "nur": "nur",
-        "slaier": "slaier"
-      }
-    },
-    "slaier": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1679660515,
-        "narHash": "sha256-cez7cX62pEYnuyxsXgjRtGcDdNTrPAsEu+ieJ+bChFE=",
-        "owner": "slaier",
-        "repo": "nur-packages",
-        "rev": "67e69fa9e589ccf7ab39165dea470fc4571eadc4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "slaier",
-        "repo": "nur-packages",
-        "type": "github"
+        "nur": "nur"
       }
     }
   },
