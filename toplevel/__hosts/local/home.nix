@@ -1,19 +1,6 @@
-{ src, ... }:
+{ super, ... }:
 {
   nixos = {
-    imports = map (x: x.home) (
-      (with src; [
-        common
-        applications.firefox
-        applications.vscode
-        libraries.gtk
-      ]) ++
-      (with src.tools; [
-        fcitx5
-        fish
-        git
-        neovim
-      ])
-    );
+    imports = map (x: x.home or { }) super.imports;
   };
 }

@@ -1,34 +1,10 @@
-{ src, inputs, ... }:
+{ super, inputs, ... }:
 { config, pkgs, ... }:
 {
-  imports = map (x: x.default)
-    (
-      (with src; [
-        common
-        data.fonts
-        libraries.pipewire
-        services.https-dns-proxy
-        users.nixos
-        virtualisation.podman
-      ]) ++
-      (with src.applications; [
-        firefox
-        safeeyes
-        spotify
-        sway
-        waybar
-      ]) ++
-      (with src.tools; [
-        clash
-        fcitx5
-        fish
-        grub
-        nix-index
-      ])
-    ) ++
-  (with inputs; [
-    nix-index-database.nixosModules.nix-index
-  ]);
+  imports = map (x: x.default or { }) super.imports ++
+    (with inputs; [
+      nix-index-database.nixosModules.nix-index
+    ]);
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   nix.settings.extra-platforms = [ "aarch64-linux" ];
