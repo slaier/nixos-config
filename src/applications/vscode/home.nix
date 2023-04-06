@@ -89,6 +89,7 @@
       "nix.serverSettings" = {
         nil.formatting.command = [ (lib.getExe pkgs.nixpkgs-fmt) ];
       };
+      "redhat.telemetry.enabled" = false;
     };
   };
 }
