@@ -57,6 +57,7 @@
     wget
     xdg-utils
     ydict
+    yt-dlp
     zip
     config.nur.repos.slaier.motrix
     config.nur.repos.xddxdd.qbittorrent-enhanced-edition
