@@ -1,14 +1,39 @@
-{ super, inputs, ... }:
+{ inputs, src, ... }:
 { config, pkgs, ... }:
+let
+  modules = with src; [
+    bluetooth
+    clash
+    common
+    fcitx5
+    firefox
+    fish
+    fonts
+    git
+    grub
+    gtk
+    https-dns-proxy
+    neovim
+    nix-index
+    pipewire
+    podman
+    safeeyes
+    spotify
+    sway
+    users
+    vscode
+    waybar
+  ];
+in
 {
-  imports = map (x: x.default or { }) super.imports ++
+  imports = map (x: x.default or { }) modules ++
     (with inputs; [
       nix-index-database.nixosModules.nix-index
     ]);
 
   home-manager = {
     users.nixos = {
-      imports = map (x: x.home or { }) super.imports;
+      imports = map (x: x.home or { }) modules;
     };
     useGlobalPkgs = true;
     useUserPackages = true;

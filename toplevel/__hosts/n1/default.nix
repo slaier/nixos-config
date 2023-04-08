@@ -2,12 +2,12 @@
 { pkgs, ... }: {
   imports = map (x: x.default) (
     with src; [
+      clash
       common
-      tools.clash
-      users.nixos
-      tools.extlinux
-      virtualisation.openfortivpn
-      virtualisation.qinglong
+      extlinux
+      openfortivpn
+      qinglong
+      users
     ]
   );
 
