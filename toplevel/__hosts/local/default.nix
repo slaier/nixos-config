@@ -14,7 +14,6 @@ let
     gtk
     https-dns-proxy
     neovim
-    nix-index
     pipewire
     podman
     safeeyes
@@ -28,7 +27,9 @@ in
 {
   imports = map (x: x.default or { }) modules ++
     (with inputs; [
+      (nixpkgs-unstable + "/nixos/modules/programs/nix-index.nix")
       nix-index-database.nixosModules.nix-index
+      { programs.command-not-found.enable = false; }
     ]);
 
   home-manager = {

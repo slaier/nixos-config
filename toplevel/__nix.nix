@@ -19,8 +19,12 @@
     max-free = ${toString (1024 * 1024 * 1024)}
   '';
 
-  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+  nix.nixPath = [
+    "nixpkgs=${inputs.nixpkgs}"
+    "nixpkgs-unstable=${inputs.nixpkgs-unstable}"
+  ];
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
+  nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
 
   nixpkgs.overlays = [
     super.overlay
