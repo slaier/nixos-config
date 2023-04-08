@@ -44,6 +44,7 @@ _:
   environment.persistence."/nix/persist" = {
     directories = [
       "/etc"
+      "/var/lib"
       "/var/log/journal"
     ];
     users.nixos = {
@@ -67,6 +68,4 @@ _:
   # networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-  hardware.bluetooth.enable = true;
 }

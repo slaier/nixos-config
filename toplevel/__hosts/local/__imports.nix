@@ -3,6 +3,7 @@ with src;
 [
   common
   data.fonts
+  hardware.bluetooth
   libraries.gtk
   libraries.pipewire
   services.https-dns-proxy
