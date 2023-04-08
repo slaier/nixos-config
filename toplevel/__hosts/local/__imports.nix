@@ -11,16 +11,16 @@ with src;
   virtualisation.podman
 ] ++
 (with applications; [
+  fcitx5
   firefox
   safeeyes
   spotify
   sway
-  waybar
   vscode
+  waybar
 ]) ++
 (with tools; [
   clash
-  fcitx5
   fish
   git
   grub
