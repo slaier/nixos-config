@@ -6,6 +6,14 @@
       nix-index-database.nixosModules.nix-index
     ]);
 
+  home-manager = {
+    users.nixos = {
+      imports = map (x: x.home or { }) super.imports;
+    };
+    useGlobalPkgs = true;
+    useUserPackages = true;
+  };
+
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   nix.settings.extra-platforms = [ "aarch64-linux" ];
 

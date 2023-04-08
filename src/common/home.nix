@@ -1,4 +1,5 @@
+{ nixosConfig, ... }:
 {
   xdg.enable = true;
-  home.stateVersion = "22.11";
+  home.stateVersion = nixosConfig.system.stateVersion;
 }
