@@ -8,3 +8,5 @@ n1:
 
 build:
   colmena build
+
+apply: build local n1
