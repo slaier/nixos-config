@@ -31,8 +31,9 @@ let
       smooth-scrolling-threshold = 10;
       on-scroll-up = "${lib.getExe pkgs.playerctl} -p spotify next";
       on-scroll-down = "${lib.getExe pkgs.playerctl} -p spotify previous";
-      exec = "${pkgs.waybar}/bin/waybar-mediaplayer.py --player spotify 2> /dev/null";
+      exec = "${lib.getExe (pkgs.callPackage ./mediaplayer.nix {})} --player spotify 2> /dev/null";
       exec-if = "pgrep spotify";
+      restart-interval = 2;
     };
     tray = {
       spacing = 10;
