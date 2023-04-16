@@ -61,10 +61,10 @@ let
       interval = 2;
     };
     cpu = {
-      format = "CPU: {usage}%";
+      format = "CPU: {usage:>2}%";
     };
     memory = {
-      format = "MEM: {percentage}%";
+      format = "MEM: {percentage:>2}%";
     };
     temperature = {
       format = "GPU {temperatureC}°C";
