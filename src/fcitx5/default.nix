@@ -14,7 +14,4 @@
       rime-zhwiki
     ];
   };
-  environment.etc."sway/config.d/fcitx5.conf".text = ''
-    exec --no-startup-id fcitx5 -d -r
-  '';
 }
