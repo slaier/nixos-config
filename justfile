@@ -1,12 +1,12 @@
-default: local
+default: (local "test")
 
-local:
-  colmena apply-local --sudo
+local goal="switch":
+  colmena apply-local --sudo {{goal}}
 
-n1:
-  colmena apply --on n1 --no-substitutes
+n1 goal="switch":
+  colmena apply --on n1 --no-substitutes {{goal}}
 
-build:
-  colmena build
+build nodes="local,n1":
+  colmena build --on {{nodes}}
 
-apply: build local n1
+apply goal="switch": build (local goal) (n1 goal)
