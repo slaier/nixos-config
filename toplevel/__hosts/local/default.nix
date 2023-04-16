@@ -55,6 +55,7 @@ in
     };
   };
 
+  nix.settings.max-jobs = 11;
   services.earlyoom.enable = true;
 
   programs.adb.enable = true;
