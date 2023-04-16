@@ -11,6 +11,9 @@ _:
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [
+    "iommu=pt"
+  ];
 
   fileSystems."/" =
     {

@@ -11,6 +11,9 @@ _:
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [
+    "iommu.passthrough=1"
+  ];
 
   hardware.deviceTree = {
     enable = true;
