@@ -59,6 +59,8 @@ def init_player(manager, name):
     player.connect('playback-status', on_play, manager)
     player.connect('metadata', on_metadata, manager)
     manager.manage_player(player)
+    if player.get_title() == '':
+        sys.exit(0)
     on_metadata(player, player.props.metadata, manager)
 
 
