@@ -54,10 +54,11 @@ let
     };
     network = {
       interface = "enp5s0";
-      format-ethernet = "Ethernet: Connected";
+      format-ethernet = "Ethernet: {bandwidthDownBytes:>}";
       format-disconnected = "Ethernet: Disconnected";
       format-alt = "Ethernet | Interface: {ifname} | IP: {ipaddr}/{cidr}";
       tooltip = false;
+      interval = 2;
     };
     cpu = {
       format = "CPU: {usage}%";
