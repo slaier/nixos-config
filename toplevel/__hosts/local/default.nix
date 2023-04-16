@@ -84,11 +84,13 @@ in
     okular
     p7zip
     pavucontrol
+    pciutils
     quiterss
     tdesktop
     tealdeer
     unrar
     unzip
+    usbutils
     vlc
     wget
     xdg-utils
