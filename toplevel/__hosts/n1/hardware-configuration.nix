@@ -17,29 +17,8 @@ _:
 
   hardware.deviceTree = {
     enable = true;
-    name = "amlogic/meson-gxl-s905d-phicomm-n1.dtb";
-    kernelPackage = let kernel = config.boot.kernelPackages.kernel; in
-      pkgs.stdenv.mkDerivation {
-        name = "dtbs-with-symbols";
-        inherit (kernel) src nativeBuildInputs depsBuildBuild;
-        patches = (map (patch: patch.patch) kernel.kernelPatches) ++ [
-          (pkgs.fetchpatch {
-            name = "fix-dtb-of-aml-s905d-phicomm-n1.patch";
-            url = "https://raw.githubusercontent.com/yunsur/phicomm-n1/d31bfec8707b5d6a43ef57d1473a887e54f0731a/patch/kernel/arm-64-legacy/fix-dtb-of-aml-s905d-phicomm-n1.patch";
-            sha256 = "sha256-KuMYzwGE9bmIGigY/fSz1FPtC8MDnGrFdE+2si/pM1k=";
-          })
-        ];
-        buildPhase = ''
-          patchShebangs scripts/*
-          substituteInPlace scripts/Makefile.lib \
-            --replace 'DTC_FLAGS += $(DTC_FLAGS_$(basetarget))' 'DTC_FLAGS += $(DTC_FLAGS_$(basetarget)) -@'
-          make ${pkgs.stdenv.hostPlatform.linux-kernel.baseConfig} ARCH="${pkgs.stdenv.hostPlatform.linuxArch}"
-          make dtbs ARCH="${pkgs.stdenv.hostPlatform.linuxArch}"
-        '';
-        installPhase = ''
-          make dtbs_install INSTALL_DTBS_PATH=$out/dtbs ARCH="${pkgs.stdenv.hostPlatform.linuxArch}"
-        '';
-      };
+    name = "n1.dtb";
+    kernelPackage = config.nur.repos.slaier.ubootPhicommN1.dtb;
   };
 
   # I don't need wireless and bluetooth. Disable firmware to save disk space.
