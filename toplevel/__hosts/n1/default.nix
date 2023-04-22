@@ -7,6 +7,7 @@
       extlinux
       openfortivpn
       qinglong
+      smartdns
       users
     ]
   );

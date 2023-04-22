@@ -12,11 +12,11 @@ let
     git
     grub
     gtk
-    https-dns-proxy
     neovim
     pipewire
     podman
     safeeyes
+    smartdns
     spotify
     sway
     users
@@ -46,9 +46,7 @@ in
 
   networking = {
     firewall.enable = false;
-    nameservers = [ "127.0.0.1" ];
     search = [ "lan" ];
-    dhcpcd.extraConfig = "nohook resolv.conf";
     proxy = {
       default = "http://127.0.0.1:7890";
       noProxy = "127.0.0.1,localhost,lan,dict.youdao.com";
