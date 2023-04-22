@@ -6,7 +6,7 @@ recursiveUpdate
       nixpkgs.system = value.config.nixpkgs.system;
       imports = value._module.args.modules;
       deployment.allowLocalDeployment = true;
-      deployment.targetHost = mkIf (name == "local") null;
+      deployment.targetHost = optionalString (name != "local") (name + ".local");
     })
     super.nixosConfigurations)
 {

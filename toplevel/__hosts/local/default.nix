@@ -2,6 +2,7 @@
 { config, pkgs, ... }:
 let
   modules = with src; [
+    avahi
     bluetooth
     clash
     common
@@ -46,10 +47,9 @@ in
 
   networking = {
     firewall.enable = false;
-    search = [ "lan" ];
     proxy = {
       default = "http://127.0.0.1:7890";
-      noProxy = "127.0.0.1,localhost,lan,dict.youdao.com";
+      noProxy = "127.0.0.1,localhost,local,dict.youdao.com";
     };
   };
 

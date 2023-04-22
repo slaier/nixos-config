@@ -2,6 +2,7 @@
 { pkgs, ... }: {
   imports = map (x: x.default) (
     with src; [
+      avahi
       clash
       common
       extlinux
