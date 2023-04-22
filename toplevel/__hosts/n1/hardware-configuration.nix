@@ -1,12 +1,6 @@
 _:
-{ config, lib, pkgs, modulesPath, ... }:
-
+{ config, lib, pkgs, ... }:
 {
-  imports =
-    [
-      (modulesPath + "/installer/scan/not-detected.nix")
-    ];
-
   boot.initrd.availableKernelModules = [ "usb_storage" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
@@ -21,8 +15,14 @@ _:
     kernelPackage = config.nur.repos.slaier.ubootPhicommN1.dtb;
   };
 
-  # I don't need wireless and bluetooth. Disable firmware to save disk space.
-  hardware.firmware = lib.mkForce [ ];
+  # Only enable wireless firmware to save disk space.
+  hardware.firmware = with pkgs; [
+    (runCommand "wireless-firmware-n1" { } ''
+      mkdir -p $out
+      cd ${raspberrypiWirelessFirmware}
+      cp --no-preserve=mode -t $out --parents lib/firmware/brcm/brcmfmac43455-sdio.{bin,clm_blob,txt}
+    '')
+  ];
 
   fileSystems."/" =
     {
