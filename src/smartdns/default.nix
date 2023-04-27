@@ -16,6 +16,8 @@
   networking.firewall.allowedUDPPorts = [ 53 ];
   environment.etc."resolv.conf".text = ''
     nameserver 127.0.0.1
-    options use-vc
   '';
+  environment.sessionVariables = {
+    RES_OPTIONS = "use-vc";
+  };
 }

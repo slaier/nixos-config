@@ -50,7 +50,7 @@ in
     firewall.enable = false;
     proxy = {
       default = "http://127.0.0.1:7890";
-      noProxy = "127.0.0.1,localhost,local,dict.youdao.com";
+      noProxy = "127.0.0.1,localhost,.local";
     };
   };
 
@@ -93,9 +93,25 @@ in
     vlc
     wget
     xdg-utils
-    ydict
     yt-dlp
     zip
+    (src.lib.wrapper.makeNoProxyWrapper {
+      name = "ydict";
+      pkg = ydict;
+      inherit symlinkJoin makeWrapper;
+    })
+    (src.lib.wrapper.makeNoProxyWrapper {
+      name = "vivaldi";
+      pkg = callPackage (inputs.nixpkgs-unstable + "/pkgs/applications/networking/browsers/vivaldi/default.nix") {
+        proprietaryCodecs = true;
+        enableWidevine = true;
+        commandLineArgs = [
+          "--ozone-platform-hint=auto"
+          "--enable-features=WaylandWindowDecorations"
+        ];
+      };
+      inherit symlinkJoin makeWrapper;
+    })
     config.nur.repos.slaier.motrix
     config.nur.repos.xddxdd.qbittorrent-enhanced-edition
   ];
