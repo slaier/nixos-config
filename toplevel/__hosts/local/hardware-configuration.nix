@@ -52,6 +52,7 @@ _:
     ];
     users.nixos = {
       directories = [
+        ".Genymobile"
         ".cache"
         ".config"
         ".local"
