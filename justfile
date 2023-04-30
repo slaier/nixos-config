@@ -4,7 +4,7 @@ local goal="switch":
   colmena apply-local --sudo {{goal}}
 
 n1 goal="switch":
-  colmena apply --on n1 --no-substitutes {{goal}}
+  colmena apply --on n1 {{goal}}
 
 build nodes="local,n1":
   colmena build --on {{nodes}}

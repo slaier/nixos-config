@@ -15,9 +15,14 @@ nixosSystem {
     home-manager.nixosModules.home-manager
     nur.nixosModules.nur
     nurModules.repos.slaier.modules.clash
-    super.nix
     host.default
     host.hardware-configuration
-    { networking.hostName = hostName; }
+    {
+      _module.args.private = {
+        inherit inputs;
+        inherit (super) overlay;
+      };
+      networking.hostName = hostName;
+    }
   ];
 })

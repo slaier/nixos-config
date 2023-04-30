@@ -1,5 +1,7 @@
-{ super, inputs, ... }:
-{ pkgs, ... }:
+{ pkgs, private, ... }:
+let
+  inherit (private) inputs overlay;
+in
 {
   nix.settings = {
     substituters = [
@@ -29,8 +31,10 @@
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
   nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
 
+  nix.package = pkgs.callPackage ./nix_nss_mdns.nix { };
+
   nixpkgs.overlays = [
-    super.overlay
+    overlay
   ];
 
   nixpkgs.config = {

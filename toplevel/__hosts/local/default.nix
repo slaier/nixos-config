@@ -15,6 +15,8 @@ let
     grub
     gtk
     neovim
+    nix
+    nix-serve
     pipewire
     podman
     safeeyes
