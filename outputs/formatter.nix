@@ -1,4 +1,2 @@
-{ lib, inputs, ... }:
-(lib.eachDefaultSystem (system: {
-  default = (import inputs.nixpkgs { inherit system; }).nixpkgs-fmt;
-})).default
+{ super, ... }:
+super.lib.eachDefaultSystems (pkgs: pkgs.nixpkgs-fmt)

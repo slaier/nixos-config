@@ -3,11 +3,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    flake-utils.url = "github:numtide/flake-utils";
-
     home-manager.url = "github:nix-community/home-manager/release-22.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.inputs.utils.follows = "flake-utils";
 
     nur.url = "github:nix-community/NUR";
 
@@ -24,7 +21,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, flake-utils, haumea, ... } @inputs:
+  outputs = { self, nixpkgs, haumea, ... } @inputs:
     let
       modules = haumea.lib.load {
         src = ./modules;
@@ -39,7 +36,7 @@
       src = ./outputs;
       inputs = {
         inherit modules hosts inputs;
-        lib = nixpkgs.lib // flake-utils.lib;
+        inherit (nixpkgs) lib;
       };
     };
 }
