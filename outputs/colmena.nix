@@ -1,18 +1,25 @@
-{ super, lib, inputs, ... }:
-with lib;
-recursiveUpdate
-  (mapAttrs
-    (name: value: {
-      nixpkgs.system = value.config.nixpkgs.system;
-      imports = value._module.args.modules;
-      deployment.allowLocalDeployment = true;
-      deployment.targetHost = optionalString (name != "local") (name + ".local");
-    })
-    super.nixosConfigurations)
+{ super, lib, inputs, hosts, src, ... }:
 {
   meta = {
     nixpkgs = import inputs.nixpkgs {
-      system = lib.system.x86_64-linux;
+      system = "x86_64-linux";
+    };
+    specialArgs = {
+      inherit src inputs;
+      inherit (super) overlay;
     };
   };
-}
+  defaults = { name, config, pkgs, ... }: {
+    imports = with inputs; [
+      impermanence.nixosModules.impermanence
+      darkmatter-grub-theme.nixosModule
+      home-manager.nixosModules.home-manager
+      nur.nixosModules.nur
+      hosts.${name}.hardware-configuration
+    ];
+
+    networking.hostName = name;
+    deployment.targetHost = name + ".local";
+    deployment.allowLocalDeployment = true;
+  };
+} // (lib.mapAttrs (n: v: v.default) hosts)

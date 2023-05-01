@@ -1,5 +1,4 @@
-{ super, src, ... }:
-{ lib, pkgs, ... }: {
+{ nodes, config, lib, pkgs, src, ... }: {
   imports = map (x: x.default) (
     with src; [
       avahi

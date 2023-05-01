@@ -1,5 +1,4 @@
-{ inputs, src, ... }:
-{ config, pkgs, ... }:
+{ config, pkgs, src, inputs, ... }:
 let
   modules = with src; [
     avahi
@@ -56,7 +55,7 @@ in
     };
   };
 
-  nix.settings.max-jobs = 11;
+  nix.settings.cores = 11;
   services.earlyoom.enable = true;
 
   programs.adb.enable = true;

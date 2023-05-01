@@ -1,4 +1,3 @@
-_:
 { config, lib, pkgs, ... }:
 {
   boot.initrd.availableKernelModules = [ "usb_storage" ];

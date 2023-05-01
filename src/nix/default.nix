@@ -1,7 +1,4 @@
-{ pkgs, private, ... }:
-let
-  inherit (private) inputs overlay;
-in
+{ pkgs, inputs, overlay, ... }:
 {
   nix.settings = {
     substituters = [

@@ -22,10 +22,6 @@
       url = "github:nix-community/haumea";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nix-ld.url = "github:Mic92/nix-ld";
-    nix-ld.inputs.nixpkgs.follows = "nixpkgs";
-    nix-ld.inputs.utils.follows = "flake-utils";
   };
 
   outputs = { self, nixpkgs, flake-utils, haumea, ... } @inputs:
@@ -34,11 +30,15 @@
         src = ./src;
         loader = haumea.lib.loaders.verbatim;
       };
+      hosts = haumea.lib.load {
+        src = ./hosts;
+        loader = haumea.lib.loaders.verbatim;
+      };
     in
     haumea.lib.load {
       src = ./outputs;
       inputs = {
-        inherit src inputs;
+        inherit src hosts inputs;
         lib = nixpkgs.lib // flake-utils.lib;
       };
     };

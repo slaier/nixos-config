@@ -1,4 +1,3 @@
-_:
 { config, lib, pkgs, modulesPath, ... }:
 
 {
@@ -77,4 +76,6 @@ _:
     enable = true;
     enableGraphical = true;
   };
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }
