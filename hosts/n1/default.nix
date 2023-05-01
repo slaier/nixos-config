@@ -1,4 +1,4 @@
-{ nodes, config, lib, pkgs, modules, ... }: {
+{ nodes, lib, modules, ... }: {
   imports = map (x: x.default) (
     with modules; [
       avahi
@@ -13,14 +13,19 @@
     ]
   );
 
-  nix.settings = {
-    substituters = lib.mkForce [
-      "http://local.local:5000"
-    ];
-    trusted-public-keys = lib.mkForce [
-      "local.local-1:rkw0zf/GEln2K7PKAkMH2JtJfaACnMXEl1OGteT1AHE="
-    ];
-  };
+  nix.settings =
+    let
+      hostname = with nodes.local.config.services.avahi; "${hostName}.${domainName}";
+      port = builtins.toString nodes.local.config.services.nix-serve.port;
+    in
+    {
+      substituters = lib.mkForce [
+        "http://${hostname}:${port}"
+      ];
+      trusted-public-keys = lib.mkForce [
+        "${hostname}-1:rkw0zf/GEln2K7PKAkMH2JtJfaACnMXEl1OGteT1AHE="
+      ];
+    };
 
   documentation.man.enable = false;
 }
