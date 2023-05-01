@@ -96,11 +96,12 @@ in
     xdg-utils
     yt-dlp
     zip
-    (pkgs.makeNoProxyWrapper { name = "ydict"; pkg = ydict; })
-    (pkgs.makeNoProxyWrapper { name = "chromium"; pkg = ungoogled-chromium; })
     config.nur.repos.slaier.motrix
     config.nur.repos.xddxdd.qbittorrent-enhanced-edition
-  ];
+  ] ++ (map makeNoProxyWrapper [
+    ydict
+    ungoogled-chromium
+  ]);
 
   environment.etc."sway/config.d/misc.conf".text = ''
     for_window [app_id="keepassxc"] floating enable
