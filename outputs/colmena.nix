@@ -1,11 +1,11 @@
-{ super, lib, inputs, hosts, src, ... }:
+{ super, lib, inputs, hosts, modules, ... }:
 {
   meta = {
     nixpkgs = import inputs.nixpkgs {
       system = "x86_64-linux";
     };
     specialArgs = {
-      inherit src inputs;
+      inherit modules inputs;
       inherit (super) overlay;
     };
   };

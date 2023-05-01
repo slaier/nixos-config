@@ -1,6 +1,6 @@
-{ nodes, config, lib, pkgs, src, ... }: {
+{ nodes, config, lib, pkgs, modules, ... }: {
   imports = map (x: x.default) (
-    with src; [
+    with modules; [
       avahi
       clash
       common

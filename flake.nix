@@ -26,8 +26,8 @@
 
   outputs = { self, nixpkgs, flake-utils, haumea, ... } @inputs:
     let
-      src = haumea.lib.load {
-        src = ./src;
+      modules = haumea.lib.load {
+        src = ./modules;
         loader = haumea.lib.loaders.verbatim;
       };
       hosts = haumea.lib.load {
@@ -38,7 +38,7 @@
     haumea.lib.load {
       src = ./outputs;
       inputs = {
-        inherit src hosts inputs;
+        inherit modules hosts inputs;
         lib = nixpkgs.lib // flake-utils.lib;
       };
     };

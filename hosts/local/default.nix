@@ -1,6 +1,6 @@
-{ config, pkgs, src, inputs, ... }:
+{ config, pkgs, modules, inputs, ... }:
 let
-  modules = with src; [
+  modules-enable = with modules; [
     avahi
     bluetooth
     clash
@@ -28,7 +28,7 @@ let
   ];
 in
 {
-  imports = map (x: x.default or { }) modules ++
+  imports = map (x: x.default or { }) modules-enable ++
     (with inputs; [
       (nixpkgs-unstable + "/nixos/modules/programs/nix-index.nix")
       nix-index-database.nixosModules.nix-index
@@ -37,7 +37,7 @@ in
 
   home-manager = {
     users.nixos = {
-      imports = map (x: x.home or { }) modules;
+      imports = map (x: x.home or { }) modules-enable;
     };
     useGlobalPkgs = true;
     useUserPackages = true;
@@ -96,16 +96,8 @@ in
     xdg-utils
     yt-dlp
     zip
-    (src.lib.wrapper.makeNoProxyWrapper {
-      name = "ydict";
-      pkg = ydict;
-      inherit symlinkJoin makeWrapper;
-    })
-    (src.lib.wrapper.makeNoProxyWrapper {
-      name = "chromium";
-      pkg = ungoogled-chromium;
-      inherit symlinkJoin makeWrapper;
-    })
+    (pkgs.makeNoProxyWrapper { name = "ydict"; pkg = ydict; })
+    (pkgs.makeNoProxyWrapper { name = "chromium"; pkg = ungoogled-chromium; })
     config.nur.repos.slaier.motrix
     config.nur.repos.xddxdd.qbittorrent-enhanced-edition
   ];

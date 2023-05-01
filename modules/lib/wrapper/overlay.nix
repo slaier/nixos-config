@@ -1,10 +1,11 @@
+final: prev:
 {
-  makeNoProxyWrapper = { name, pkg, symlinkJoin, makeWrapper }:
-    symlinkJoin
+  makeNoProxyWrapper = { name, pkg }:
+    final.symlinkJoin
       {
         inherit name;
         paths = [ pkg ];
-        buildInputs = [ makeWrapper ];
+        buildInputs = [ final.makeWrapper ];
         postBuild = ''
           wrapProgram $out/bin/${name} \
             --unset all_proxy          \

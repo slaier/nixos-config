@@ -1,4 +1,4 @@
-{ lib, src, ... }:
+{ lib, modules, ... }:
 with lib;
 let
   collectBlock = name: set: foldl
@@ -11,6 +11,6 @@ let
     ))
     [ ]
     (attrNames set);
-  overlays = listToAttrs (collectBlock "overlay" src);
+  overlays = listToAttrs (collectBlock "overlay" modules);
 in
 overlays
