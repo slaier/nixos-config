@@ -36,7 +36,7 @@
       };
     in
     haumea.lib.load {
-      src = ./toplevel;
+      src = ./outputs;
       inputs = {
         inherit src inputs;
         lib = nixpkgs.lib // flake-utils.lib;
