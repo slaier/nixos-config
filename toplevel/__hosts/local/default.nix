@@ -103,15 +103,8 @@ in
       inherit symlinkJoin makeWrapper;
     })
     (src.lib.wrapper.makeNoProxyWrapper {
-      name = "vivaldi";
-      pkg = callPackage (inputs.nixpkgs-unstable + "/pkgs/applications/networking/browsers/vivaldi/default.nix") {
-        proprietaryCodecs = true;
-        enableWidevine = true;
-        commandLineArgs = [
-          "--ozone-platform-hint=auto"
-          "--enable-features=WaylandWindowDecorations"
-        ];
-      };
+      name = "chromium";
+      pkg = ungoogled-chromium;
       inherit symlinkJoin makeWrapper;
     })
     config.nur.repos.slaier.motrix
