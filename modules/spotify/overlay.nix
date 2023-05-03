@@ -5,10 +5,14 @@ final: prev: {
       install -Dm644 spotifywm.so $out/lib/spotifywm.so
     '';
   });
-  spotify = prev.spotify.overrideAttrs (self: {
-    installPhase = builtins.replaceStrings
-      [ ''--prefix LD_LIBRARY_PATH : "$librarypath"'' ]
-      [ ''--prefix LD_LIBRARY_PATH : "$librarypath" --prefix LD_PRELOAD : "${final.spotifywm}/lib/spotifywm.so"'' ]
-      self.installPhase;
-  });
+
+  spotify = final.symlinkJoin {
+    name = "spotify";
+    paths = [ prev.spotify ];
+    buildInputs = [ final.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/spotify \
+        --prefix LD_PRELOAD : "${final.spotifywm}/lib/spotifywm.so"
+    '';
+  };
 }
