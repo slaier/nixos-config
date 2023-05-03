@@ -6,7 +6,6 @@
     };
     specialArgs = {
       inherit modules inputs;
-      inherit (super) overlay;
     };
   };
   defaults = { name, config, pkgs, ... }: {
@@ -16,6 +15,10 @@
       home-manager.nixosModules.home-manager
       nur.nixosModules.nur
       hosts.${name}.hardware-configuration
+    ];
+
+    nixpkgs.overlays = [
+      super.overlay
     ];
 
     networking.hostName = name;

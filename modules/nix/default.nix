@@ -1,4 +1,4 @@
-{ pkgs, inputs, overlay, ... }:
+{ pkgs, inputs, ... }:
 {
   nix.settings = {
     substituters = [
@@ -29,10 +29,6 @@
   nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
 
   nix.package = pkgs.nix-nss-mdns;
-
-  nixpkgs.overlays = [
-    overlay
-  ];
 
   nixpkgs.config = {
     allowUnfree = true;
