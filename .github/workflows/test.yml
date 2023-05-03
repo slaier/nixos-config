@@ -29,4 +29,4 @@ jobs:
           name: slaier
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
           extraPullNames: nix-community,colmena
-      - run: nix shell github:zhaofengli/colmena -c colmena build
+      - run: nix develop --command just build

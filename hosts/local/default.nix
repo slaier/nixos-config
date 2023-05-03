@@ -5,6 +5,7 @@ let
     bluetooth
     clash
     common
+    direnv
     fcitx5
     firefox
     fish
@@ -64,7 +65,6 @@ in
     alacritty
     bottom
     clang
-    colmena
     croc
     curl
     dogdns
@@ -72,7 +72,6 @@ in
     git
     hydra-check
     hyperfine
-    just
     keepassxc
     killall
     librespeed-cli

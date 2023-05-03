@@ -7,6 +7,7 @@
         eamodio.gitlens
         file-icons.file-icons
         jnoortheen.nix-ide
+        mkhl.direnv
         ms-python.python
         ms-vscode-remote.remote-ssh
         redhat.vscode-yaml
