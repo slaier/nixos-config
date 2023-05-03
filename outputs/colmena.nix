@@ -22,7 +22,7 @@
     ];
 
     networking.hostName = name;
-    deployment.targetHost = name + ".local";
+    deployment.targetHost = with config.services.avahi; "${hostName}.${domainName}";
     deployment.allowLocalDeployment = true;
   };
 } // (lib.mapAttrs (n: v: v.default) hosts)
