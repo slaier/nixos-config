@@ -1,6 +1,4 @@
 // begin
-user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
-user_pref("svg.context-properties.content.enabled", true);
 user_pref("browser.urlbar.suggest.topsites", false);
 user_pref("browser.warnOnQuitShortcut", false);
 /*** [SECTION 0700]: DNS / DoH / PROXY / SOCKS / IPv6 ***/

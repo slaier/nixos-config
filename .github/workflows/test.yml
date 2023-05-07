@@ -19,6 +19,7 @@ jobs:
         uses: docker/setup-qemu-action@v2
       - uses: cachix/install-nix-action@v20
         with:
+          nix_path: nixpkgs=channel:nixos-unstable
           extra_nix_config: |
             auto-optimise-store = true
             extra-platforms = aarch64-linux i686-linux
@@ -29,4 +30,15 @@ jobs:
           name: slaier
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
           extraPullNames: nix-community,colmena
+      - name: Check evaluation
+        run: |
+          nix-env -f . -qa \* --meta --xml \
+            --allowed-uris https://static.rust-lang.org \
+            --option restrict-eval true \
+            --option allow-import-from-derivation true \
+            --drv-path --show-trace \
+            -I nixpkgs=$(nix-instantiate --find-file nixpkgs) \
+            -I $PWD
+      - name: Build nix packages
+        run: nix shell -f '<nixpkgs>' nix-build-uncached -c nix-build-uncached ci.nix -A cacheOutputs
       - run: nix develop --command just build

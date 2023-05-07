@@ -61,7 +61,7 @@ in
 
   programs.adb.enable = true;
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = assert !pkgs ? motrix; with pkgs; [
     alacritty
     bottom
     clang
@@ -95,7 +95,7 @@ in
     xdg-utils
     yt-dlp
     zip
-    config.nur.repos.slaier.motrix
+    (callPackage (inputs.nixpkgs-unstable + "/pkgs/tools/networking/motrix") { })
     config.nur.repos.xddxdd.qbittorrent-enhanced-edition
   ] ++ (map makeNoProxyWrapper [
     ydict

@@ -9,15 +9,14 @@
         jnoortheen.nix-ide
         mkhl.direnv
         ms-python.python
+        ms-vscode-remote.remote-containers
         ms-vscode-remote.remote-ssh
         redhat.vscode-yaml
         shardulm94.trailing-spaces
         tamasfe.even-better-toml
         timonwong.shellcheck
         tyriar.sort-lines
-      ] ++ (with nixosConfig.nur.repos.slaier.vscode-extensions; [
-        ms-vscode-remote.remote-containers
-      ])
+      ]
     );
     keybindings = [
       {

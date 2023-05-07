@@ -11,7 +11,7 @@
   hardware.deviceTree = {
     enable = true;
     name = "n1.dtb";
-    kernelPackage = config.nur.repos.slaier.ubootPhicommN1.dtb;
+    kernelPackage = pkgs.uboot-phicomm-n1;
   };
 
   # Only enable wireless firmware to save disk space.

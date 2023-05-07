@@ -40,7 +40,7 @@ in
       violentmonkey
     ] ++ (with nixosConfig.nur.repos.bandithedoge.firefoxAddons; [
       imagus
-    ]) ++ (with nixosConfig.nur.repos.slaier.firefox-addons; [
+    ]) ++ (with pkgs.firefox-addons; [
       aria2-integration
       copy-link-text-webextension
       new_tongwentang
@@ -84,7 +84,8 @@ in
         { name = "Dns Lookup"; url = "https://dnslookup.online/"; }
       ];
       extraConfig = ''
-        ${fileContents "${nixosConfig.nur.repos.slaier.arkenfox-userjs}/user.js"}
+        ${fileContents pkgs.arkenfox-userjs}
+        ${fileContents "${pkgs.material-fox}/user.js"}
         ${fileContents ./overlay.js}
         user_pref("browser.uiCustomization.state", '${fileContents ./ui.json}');
       '';
@@ -141,7 +142,7 @@ in
     };
   };
   home.file."${profilesPath}/default/chrome" = {
-    source = "${nixosConfig.nur.repos.slaier.material-fox}/chrome";
+    source = "${pkgs.material-fox}/chrome";
     recursive = true;
     force = true;
   };

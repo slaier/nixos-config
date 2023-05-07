@@ -1,10 +1,16 @@
 final: prev: {
-  podman-compose = prev.podman-compose.overrideAttrs (_: {
-    src = prev.fetchFromGitHub {
-      owner = "containers";
-      repo = "podman-compose";
-      rev = "08ffcf6126a3ae4016e3d81e963a3629e4b75986";
-      sha256 = "sha256-ybdwBc//clXQ8WHG3lfGP4g8VLECFvEWSnVxZxjhLLU=";
-    };
-  });
+  podman-compose = prev.podman-compose.overrideAttrs (old:
+    let
+      version = "1.0.6";
+    in
+    assert (builtins.compareVersions old.version "1.0.6") == -1;
+    {
+      inherit version;
+      src = prev.fetchFromGitHub {
+        owner = "containers";
+        repo = "podman-compose";
+        rev = "v${version}";
+        sha256 = "sha256-TsNM5xORqwWge+UCijKptwbAcIz1uZFN9BuIOl28vIU=";
+      };
+    });
 }

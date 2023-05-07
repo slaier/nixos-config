@@ -4,6 +4,7 @@ super.lib.eachDefaultSystems (pkgs: {
     packages = [
       colmena
       just
+      parallel
     ];
   };
 })
