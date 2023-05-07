@@ -15,7 +15,9 @@ jobs:
           ref: main
       - name: Install nix
         uses: cachix/install-nix-action@v20
-      - name: Update flake lock
+        with:
+          nix_path: nixpkgs=channel:nixos-22.11
+      - name: Update inputs
         run: |
           git checkout -B wip-update-inputs
           git config user.name "dependabot[bot]"
