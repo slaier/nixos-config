@@ -5,6 +5,7 @@ let
     bluetooth
     clash
     common
+    croc
     direnv
     fcitx5
     firefox
@@ -65,7 +66,6 @@ in
     alacritty
     bottom
     clang
-    croc
     curl
     dogdns
     gammastep
