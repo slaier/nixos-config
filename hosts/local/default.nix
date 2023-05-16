@@ -75,6 +75,7 @@ in
     keepassxc
     killall
     librespeed-cli
+    meld
     nali
     neovim
     nix-tree
