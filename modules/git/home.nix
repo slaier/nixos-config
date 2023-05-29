@@ -27,7 +27,6 @@ in
         enable = true;
       };
       extraConfig = {
-        core.editor = "vim";
         credential.helper = "store --file=${nixosConfig.sops.secrets.github_token.path}";
         init.defaultBranch = "main";
         merge.conflictstyle = "diff3";
