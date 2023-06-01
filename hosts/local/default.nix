@@ -42,14 +42,7 @@ in
   nix.settings.extra-platforms = [ "aarch64-linux" ];
   boot.supportedFilesystems = [ "ntfs" ];
 
-  sops.secrets.clash = {
-    key = "";
-    sopsFile = ../../secrets/clash_home.yaml;
-    format = "yaml";
-    restartUnits = [ "clash.service" ];
-    owner = "clash";
-    path = "/etc/clash/config.yaml";
-  };
+  sops.secrets.clash.sopsFile = lib.mkForce ../../secrets/clash_home.yaml;
 
   networking = {
     firewall.enable = false;
