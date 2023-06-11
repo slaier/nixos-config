@@ -2,6 +2,7 @@
 { config, pkgs, lib, ... }:
 let
   modules-enable = with modules; [
+    audio
     avahi
     bluetooth
     clash
@@ -19,7 +20,6 @@ let
     neovim
     nix
     nix-serve
-    pipewire
     podman
     smartdns
     sops
