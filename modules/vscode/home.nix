@@ -13,7 +13,6 @@
         ms-python.python
         ms-vscode-remote.remote-containers
         ms-vscode-remote.remote-ssh
-        ms-vscode.makefile-tools
         redhat.vscode-yaml
         shardulm94.trailing-spaces
         tamasfe.even-better-toml
