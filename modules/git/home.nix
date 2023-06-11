@@ -19,6 +19,10 @@ in
   };
 
   config = {
+    sops.secrets.github_token = {
+      path = "${config.xdg.configHome}/git/credentials";
+    };
+
     programs.git = {
       inherit (cfg) userName userEmail;
 
@@ -27,7 +31,7 @@ in
         enable = true;
       };
       extraConfig = {
-        credential.helper = "store --file=${nixosConfig.sops.secrets.github_token.path}";
+        credential.helper = "store";
         init.defaultBranch = "main";
         merge.conflictstyle = "diff3";
         merge.ff = "only";
