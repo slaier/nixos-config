@@ -44,8 +44,6 @@
     ];
     userSettings = {
       "editor.bracketPairColorization.enabled" = true;
-      "editor.formatOnPaste" = true;
-      "editor.formatOnType" = true;
       "editor.guides.bracketPairs" = "active";
       "editor.inlayHints.enabled" = "off";
       "editor.minimap.enabled" = false;
