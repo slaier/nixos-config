@@ -17,6 +17,7 @@ let
     git
     grub
     gtk
+    liferea
     neovim
     nix
     nix-serve
@@ -82,7 +83,6 @@ in
     p7zip
     pavucontrol
     pciutils
-    quiterss
     safeeyes
     tdesktop
     tealdeer
