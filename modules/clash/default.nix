@@ -30,12 +30,15 @@
       config.environment.etc."clash/config.yaml".source
       config.sops.secrets.clash.sopsFile
     ];
-    script = "exec clash -d /etc/clash";
+    script = "exec clash -d /etc/clash -secret $(cat ${config.sops.secrets.clash_secret.path})";
 
     # Don't start if the config file doesn't exist.
     unitConfig = {
       # NOTE: configPath is for the original config which is linked to the following path.
-      ConditionPathExists = "/etc/clash/config.yaml";
+      ConditionPathExists = [
+        "/etc/clash/config.yaml"
+        config.sops.secrets.clash_secret.path
+      ];
     };
     serviceConfig = {
       # CAP_NET_BIND_SERVICE: Bind arbitary ports by unprivileged user.
@@ -45,6 +48,10 @@
       User = "clash";
       Restart = "on-failure";
     };
+  };
+
+  sops.secrets.clash_secret = {
+    owner = "clash";
   };
 
   sops.secrets.clash = {
