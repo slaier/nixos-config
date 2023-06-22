@@ -18,6 +18,7 @@
     ];
     etc."clash/Country.mmdb".source = "${pkgs.clash-geoip}/etc/clash/Country.mmdb";
     etc."clash/yacd".source = config.nur.repos.linyinfeng.yacd;
+    etc."clash/config.yaml".source = if config.networking.proxy.httpsProxy == null then ./office.yaml else ./home.yaml;
   };
 
   systemd.services.clash = {
@@ -25,6 +26,10 @@
     description = "Clash networking service";
     after = [ "network.target" "sops-nix.service" ];
     wantedBy = [ "multi-user.target" ];
+    restartTriggers = [
+      config.environment.etc."clash/config.yaml".source
+      config.sops.secrets.clash.sopsFile
+    ];
     script = "exec clash -d /etc/clash";
 
     # Don't start if the config file doesn't exist.
@@ -43,12 +48,11 @@
   };
 
   sops.secrets.clash = {
-    key = "";
-    sopsFile = ../../secrets/clash_office.yaml;
     format = "yaml";
-    restartUnits = [ "clash.service" ];
+    key = "";
+    sopsFile = ../../secrets/clash.yaml;
     owner = "clash";
-    path = "/etc/clash/config.yaml";
+    path = "/etc/clash/combination.yaml";
   };
 
   networking.firewall.allowedTCPPorts = [
