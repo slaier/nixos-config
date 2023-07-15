@@ -65,8 +65,10 @@ in
     dogdns
     gammastep
     git
+    gocryptfs
     hydra-check
     hyperfine
+    iotop
     keepassxc
     killall
     librespeed-cli
@@ -81,7 +83,9 @@ in
     p7zip
     pavucontrol
     pciutils
+    rust-petname
     safeeyes
+    sops
     tdesktop
     tealdeer
     unrar
