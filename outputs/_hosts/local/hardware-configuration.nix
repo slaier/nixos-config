@@ -9,8 +9,11 @@ _:
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot.kernelModules = [ "it87" "kvm-amd" ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ it87 ];
+  boot.extraModprobeConfig = ''
+    options it87 ignore_resource_conflict=1
+  '';
   boot.kernelParams = [
     "iommu=pt"
   ];
