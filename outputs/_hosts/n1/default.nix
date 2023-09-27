@@ -8,7 +8,6 @@ let
     extlinux
     nix
     openfortivpn
-    qinglong
     smartdns
     sops
     users
