@@ -7,7 +7,6 @@ let
     common
     extlinux
     nix
-    openfortivpn
     smartdns
     sops
     users

@@ -20,6 +20,7 @@ let
     neovim
     nix
     nix-serve
+    openfortivpn
     podman
     smartdns
     sops
