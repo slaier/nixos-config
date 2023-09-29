@@ -29,6 +29,7 @@ let
     users
     vscode
     waybar
+    inputs.nix-index-database.hmModules.nix-index
   ];
 in
 {
