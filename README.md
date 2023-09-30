@@ -116,7 +116,6 @@ $ nix flake show github:slaier/nixos-config
 │   └───sd-image-aarch64-installer: NixOS configuration
 ├───overlay: Nixpkgs overlay
 ├───overlays
-│   ├───arkenfox-userjs: Nixpkgs overlay
 │   ├───spotify: Nixpkgs overlay
 │   ├───sway: Nixpkgs overlay
 │   ├───uboot-phicomm-n1: Nixpkgs overlay
@@ -125,12 +124,10 @@ $ nix flake show github:slaier/nixos-config
 │   └───wrapper: Nixpkgs overlay
 └───packages
     ├───aarch64-linux
-    │   ├───arkenfox-userjs: package 'arkenfox-userjs-117.0'
     │   ├───uboot-phicomm-n1: package 'uboot-phicomm-n1-unstable-2023-04-29'
     │   ├───vscode-extensions-ms-vscode-remote-remote-containers: package 'vscode-extension-ms-vscode-remote-remote-containers-0.294.0'
     │   └───wavefox: package 'wavefox-1.6.118'
     └───x86_64-linux
-        ├───arkenfox-userjs: package 'arkenfox-userjs-117.0'
         ├───uboot-phicomm-n1: package 'uboot-phicomm-n1-unstable-2023-04-29'
         ├───vscode-extensions-ms-vscode-remote-remote-containers: package 'vscode-extension-ms-vscode-remote-remote-containers-0.294.0'
         └───wavefox: package 'wavefox-1.6.118'
