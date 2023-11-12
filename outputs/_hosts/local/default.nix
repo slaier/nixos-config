@@ -53,7 +53,10 @@ in
     };
   };
 
-  nix.settings.cores = 11;
+  nix.settings = {
+    cores = 11;
+    keep-outputs = true;
+  };
   services.earlyoom.enable = true;
 
   programs.adb.enable = true;
