@@ -2,7 +2,6 @@
 { config, pkgs, lib, ... }:
 let
   modules-enable = with modules; [
-    audio
     avahi
     bluetooth
     clash
