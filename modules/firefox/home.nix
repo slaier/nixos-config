@@ -79,7 +79,6 @@ in
             { name = "Google Language Codes"; url = "https://sites.google.com/site/tomihasa/google-language-codes"; }
           ];
         }
-        { name = "Clash Wiki"; url = "https://lancellc.gitbook.io/clash"; }
         { name = "Dns Lookup"; url = "https://dnslookup.online/"; }
       ];
       extraConfig = ''
