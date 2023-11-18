@@ -134,6 +134,12 @@ in
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = [ "@hm" ];
           };
+          "Github" = {
+            urls = [{
+              template = "https://github.com/search?q={searchTerms}&ref=opensearch&type=code";
+            }];
+            definedAliases = [ "@gh" ];
+          };
         };
         force = true;
       };
