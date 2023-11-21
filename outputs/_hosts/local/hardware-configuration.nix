@@ -18,6 +18,7 @@ _:
   boot.kernelParams = [
     "iommu=pt"
     "amdgpu.ppfeaturemask=0xfffd7fff"
+    "zswap.enabled=1"
   ];
 
   fileSystems."/data" =
