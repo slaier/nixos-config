@@ -72,6 +72,7 @@ in
     keepassxc
     killall
     librespeed-cli
+    lsof
     meld
     motrix
     mpv
