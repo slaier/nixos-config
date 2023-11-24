@@ -52,7 +52,6 @@ in
             { name = "NUR search"; url = "https://nur.nix-community.org/"; }
             { name = "Nix Manual"; url = "https://nixos.org/manual/nix/stable/"; }
             { name = "Nixpkgs Manual"; url = "https://ryantm.github.io/nixpkgs/"; }
-            { name = "TVL"; url = "https://code.tvl.fyi/"; }
           ];
         }
         {
