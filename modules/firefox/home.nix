@@ -33,7 +33,6 @@ in
         aria2-integration
         clearurls
         copy-link-text
-        enhancer-for-youtube
         history-cleaner
         i-dont-care-about-cookies
         keepassxc-browser
