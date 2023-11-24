@@ -11,8 +11,10 @@
       "--save-session=/var/lib/aria2/aria2.session"
       "--input-file=/var/lib/aria2/aria2.session"
       "--save-session-interval=5"
-      "--https-proxy=http://127.0.0.1:7890"
       "--force-save=true"
+      "--bt-save-metadata=true"
+      "--bt-load-saved-metadata=true"
+      "--https-proxy=http://127.0.0.1:7890"
     ];
   };
 }
