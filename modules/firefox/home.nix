@@ -41,7 +41,6 @@ in
         offline-qr-code-generator
         rsshub-radar
         ublacklist
-        undoclosetabbutton
         violentmonkey
       ] ++ (with nixosConfig.nur.repos.bandithedoge.firefoxAddons; [
         imagus
