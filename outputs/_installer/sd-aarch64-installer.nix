@@ -1,7 +1,8 @@
-{ inputs, modules, ... }:
+{ inputs, modules, root, ... }:
 let
   local-modules = with modules; [
     nix.default
+    root.nixosModules.phicomm-n1
   ];
 in
 inputs.nixos-generators.nixosGenerate {
@@ -16,6 +17,13 @@ inputs.nixos-generators.nixosGenerate {
       options.sops = lib.mkSinkUndeclaredOptions { };
     })
     ({ pkgs, ... }: {
+      sdImage = {
+        populateFirmwareCommands = ''
+          cp ${root.packages."aarch64-linux".uboot-phicomm-n1}/{s905_autoscript,uboot} firmware/
+        '';
+        compressImage = false;
+      };
+
       environment.systemPackages = with pkgs; [
         ethtool
         inputs.disko.packages."aarch64-linux".disko
