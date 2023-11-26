@@ -1,4 +1,4 @@
-{ inputs, config, ... }:
+{ inputs, config, lib, options, ... }:
 {
   nix.settings = {
     auto-allocate-uids = true;
@@ -26,7 +26,7 @@
     persistent = false;
   };
 
-  nix.extraOptions = ''
+  nix.extraOptions = lib.mkIf (options.sops ? secrets) ''
     !include ${config.sops.secrets.nix_access_token.path}
   '';
 

@@ -1,7 +1,20 @@
-{ inputs, ... }:
+{ inputs, modules, ... }:
+let
+  local-modules = with modules; [
+    nix.default
+  ];
+in
 inputs.nixos-generators.nixosGenerate {
   system = "x86_64-linux";
-  modules = [
+  modules = local-modules ++ [
+    {
+      _module.args = {
+        inherit inputs;
+      };
+    }
+    ({ lib, ... }: {
+      options.sops = lib.mkSinkUndeclaredOptions { };
+    })
     ({ pkgs, ... }: {
       environment.systemPackages = with pkgs; [
         ethtool
