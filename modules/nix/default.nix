@@ -1,9 +1,10 @@
 { inputs, config, ... }:
 {
   nix.settings = {
+    auto-allocate-uids = true;
     auto-optimise-store = true;
     connect-timeout = 5;
-    experimental-features = "cgroups nix-command flakes";
+    experimental-features = "auto-allocate-uids cgroups nix-command flakes";
     flake-registry = "/etc/nix/registry.json";
     stalled-download-timeout = 10;
     substituters = [
