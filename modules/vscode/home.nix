@@ -1,5 +1,15 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+let
+  getName = x: x.meta.mainProgram or (lib.getName x);
+in
+{
   home.sessionVariables.EDITOR = "code -w";
+  home.packages = with pkgs; [
+    clang-tools
+    jsonnet-language-server
+    podman
+    podman-compose
+  ];
   programs.vscode = {
     enable = true;
     package = pkgs.vscode;
@@ -81,19 +91,15 @@
       "workbench.editor.enablePreviewFromCodeNavigation" = true;
       "workbench.iconTheme" = "file-icons";
 
-      "clangd.path" = pkgs.clang-tools + "/bin/clangd";
       "dev.containers.defaultExtensions" = [
         "Tyriar.sort-lines"
         "eamodio.gitlens"
         "shardulm94.trailing-spaces"
       ];
-      "dev.containers.dockerComposePath" = lib.getExe pkgs.podman-compose;
-      "dev.containers.dockerPath" = lib.getExe' pkgs.podman "podman";
+      "dev.containers.dockerComposePath" = getName pkgs.podman-compose;
+      "dev.containers.dockerPath" = getName pkgs.podman;
       "direnv.restart.automatic" = true;
-      "jsonnet.languageServer" = {
-        enableAutoUpdate = false;
-        pathToBinary = lib.getExe' pkgs.jsonnet-language-server "jsonnet-language-server";
-      };
+      "jsonnet.languageServer.enableAutoUpdate" = false;
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "${lib.getExe pkgs.nil}";
       "nix.serverSettings" = {
