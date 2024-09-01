@@ -36,4 +36,15 @@
       };
     };
   };
+  programs.fish.functions.naviq = {
+    body = ''
+      set -l match (navi --print -q "^$argv[1]," $argv[2..])
+      if test -z "$match"
+        return
+      end
+      commandline -p "$match"
+      commandline -f repaint
+    '';
+    wraps = "navi";
+  };
 }
