@@ -33,6 +33,7 @@ in
         ms-vscode-remote.remote-ssh
         redhat.vscode-yaml
         shardulm94.trailing-spaces
+        shd101wyy.markdown-preview-enhanced
         skellock.just
         tamasfe.even-better-toml
         timonwong.shellcheck
@@ -113,6 +114,7 @@ in
         formatting.enabled = true;
         linter.muon.enabled = true;
       };
+      "markdown-preview-enhanced.previewTheme" = "monokai.css";
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "${lib.getExe pkgs.nil}";
       "nix.serverSettings" = {
