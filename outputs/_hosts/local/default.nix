@@ -23,6 +23,8 @@
     };
   };
 
+  documentation.man.generateCaches = false;
+
   nix.settings = {
     cores = 11;
     keep-outputs = true;
