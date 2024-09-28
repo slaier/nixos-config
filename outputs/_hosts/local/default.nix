@@ -5,11 +5,14 @@
     (with inputs; [
       nix-index-database.nixosModules.nix-index
       { programs.command-not-found.enable = false; }
+      niri.nixosModules.niri
     ]);
 
   home-manager.users.nixos.imports = map (x: x.home or { }) (lib.attrValues modules) ++ [
     inputs.nix-index-database.hmModules.nix-index
   ];
+
+  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   nix.settings.extra-platforms = [ "aarch64-linux" ];
@@ -38,11 +41,11 @@
     bottom
     curl
     doggo
-    gammastep
     git
     gocryptfs
     hydra-check
     hyperfine
+    ianny
     iotop
     keepassxc
     killall
@@ -60,7 +63,6 @@
     pciutils
     qrencode
     rust-petname
-    safeeyes
     sops
     tdesktop
     unrar
@@ -75,10 +77,4 @@
     kodi-wayland
     ungoogled-chromium
   ]);
-
-  services.safeeyes.enable = true;
-
-  environment.etc."sway/config.d/misc.conf".text = ''
-    exec --no-startup-id gammastep -l 31:121
-  '';
 }
