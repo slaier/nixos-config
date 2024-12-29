@@ -42,6 +42,7 @@
     curl
     doggo
     gdu
+    geo
     git
     gocryptfs
     hydra-check
