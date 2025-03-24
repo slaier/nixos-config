@@ -11,4 +11,6 @@ user_pref("privacy.clearOnShutdown.history", false);
 user_pref("privacy.clearOnShutdown_v2.historyFormDataAndDownloads", false);
 /*** [SECTION 5000]: OPTIONAL OPSEC ***/
 user_pref("signon.rememberSignons", false);
+/*** [SECTION 9999]: OTHERS ***/
+user_pref("browser.translations.automaticallyPopup", false);
 // end
