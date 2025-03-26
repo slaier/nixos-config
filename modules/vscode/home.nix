@@ -37,6 +37,7 @@ in
         llvm-vs-code-extensions.vscode-clangd
         mesonbuild.mesonbuild
         mkhl.direnv
+        ms-python.black-formatter
         ms-python.python
         ms-python.vscode-pylance
         ms-vscode-remote.remote-containers
