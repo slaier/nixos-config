@@ -75,6 +75,7 @@
     python3
     qrencode
     rust-petname
+    scrcpy
     sops
     tdesktop
     unrar
