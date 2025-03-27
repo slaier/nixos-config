@@ -24,6 +24,8 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-+c682+ZD0zGzFkGqoDYqYm7jCjCNZRW6sufScH3MMOA=";
   };
 
+  patches = [ ./longpress.patch ];
+
   pnpmDeps = pnpm_9.fetchDeps {
     inherit (finalAttrs) pname version src;
     hash = "sha256-JlEFXmGzeRp8svwI5FzeKTrugefFQeqe2QRQ2F0ehc8=";
