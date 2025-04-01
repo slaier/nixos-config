@@ -45,6 +45,7 @@
 
   environment.systemPackages = with pkgs; [
     alacritty
+    audiorelay
     bottom
     curl
     doggo
