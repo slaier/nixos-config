@@ -56,6 +56,7 @@ _:
         ".mozilla"
         ".nali"
         ".pki"
+        ".platformio"
         ".ssh"
         "repos"
       ];

@@ -42,6 +42,8 @@ in
         ms-python.vscode-pylance
         ms-vscode-remote.remote-containers
         ms-vscode-remote.remote-ssh
+        ms-vscode.cpptools
+        platformio.platformio-ide
         redhat.vscode-yaml
         shardulm94.trailing-spaces
         shd101wyy.markdown-preview-enhanced
@@ -145,6 +147,7 @@ in
           nixpkgsInputName = "nixpkgs";
         };
       };
+      "platformio-ide.customPyPiIndexUrl" = "https://mirror.nju.edu.cn/pypi/web/simple";
       "redhat.telemetry.enabled" = false;
     };
   };

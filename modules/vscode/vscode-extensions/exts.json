@@ -16,5 +16,11 @@
     "name": "mesonbuild",
     "version": "1.24.0",
     "sha256": "sha256-n7c2CUiTIej2Y/QMGWpv6anuCDjqpo2W+hJylfvvMVE="
+  },
+  {
+    "publisher": "platformio",
+    "name": "platformio-ide",
+    "version": "3.3.4",
+    "sha256": "sha256-qfNz4IYjCmCMFLtAkbGTW5xnsVT8iDnFWjrgkmr2Slk="
   }
 ]
