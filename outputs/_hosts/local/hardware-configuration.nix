@@ -47,6 +47,8 @@ _:
     ];
     users.nixos = {
       directories = [
+        ".arduino15"
+        ".arduinoIDE"
         ".cache"
         ".cmake"
         ".config"
