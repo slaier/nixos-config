@@ -22,5 +22,11 @@
     "name": "platformio-ide",
     "version": "3.3.4",
     "sha256": "sha256-qfNz4IYjCmCMFLtAkbGTW5xnsVT8iDnFWjrgkmr2Slk="
+  },
+  {
+    "publisher": "Wokwi",
+    "name": "wokwi-vscode",
+    "version": "2.6.5",
+    "sha256": "sha256-ygGc+1f7ZaKzu6gGHE63pYyX0qmqLioMWt9JOcZszDM="
   }
 ]

@@ -28,6 +28,7 @@ in
     });
     extensions = (
       with pkgs.vscode-extensions; [
+        Wokwi.wokwi-vscode
         eamodio.gitlens
         file-icons.file-icons
         github.copilot

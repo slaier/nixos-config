@@ -58,6 +58,7 @@ _:
         ".pki"
         ".platformio"
         ".ssh"
+        ".wokwi"
         "repos"
       ];
     };
