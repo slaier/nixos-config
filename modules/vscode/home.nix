@@ -34,7 +34,6 @@ in
           file-icons.file-icons
           github.copilot
           github.copilot-chat
-          grafana.vscode-jsonnet
           jnoortheen.nix-ide
           llvm-vs-code-extensions.vscode-clangd
           mesonbuild.mesonbuild
@@ -45,7 +44,7 @@ in
           ms-vscode-remote.remote-containers
           ms-vscode-remote.remote-ssh
           ms-vscode.cpptools
-          platformio.platformio-ide
+          platformio.platformio-vscode-ide
           redhat.vscode-yaml
           shardulm94.trailing-spaces
           shd101wyy.markdown-preview-enhanced
@@ -131,7 +130,6 @@ in
         "dev.containers.dockerComposePath" = getName pkgs.podman-compose;
         "dev.containers.dockerPath" = getName pkgs.podman;
         "direnv.restart.automatic" = true;
-        "jsonnet.languageServer.enableAutoUpdate" = false;
         "markdown-preview-enhanced.previewTheme" = "monokai.css";
         "mesonbuild.buildFolder" = "build";
         "mesonbuild.downloadLanguageServer" = false;
