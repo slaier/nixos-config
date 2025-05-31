@@ -131,15 +131,12 @@ in
         "dev.containers.dockerComposePath" = getName pkgs.podman-compose;
         "dev.containers.dockerPath" = getName pkgs.podman;
         "direnv.restart.automatic" = true;
-        "github.copilot.editor.enableAutoCompletions" = false;
         "jsonnet.languageServer.enableAutoUpdate" = false;
-        mesonbuild = {
-          buildFolder = "build";
-          downloadLanguageServer = false;
-          formatting.enabled = true;
-          linter.muon.enabled = true;
-        };
         "markdown-preview-enhanced.previewTheme" = "monokai.css";
+        "mesonbuild.buildFolder" = "build";
+        "mesonbuild.downloadLanguageServer" = false;
+        "mesonbuild.formatting.enabled" = true;
+        "mesonbuild.linter.muon.enabled" = true;
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "${lib.getExe pkgs.nil}";
         "nix.serverSettings" = {
