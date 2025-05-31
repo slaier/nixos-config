@@ -58,6 +58,7 @@
     ianny
     iotop
     just
+    kdePackages.okular
     keepassxc
     killall
     librespeed-cli
@@ -69,7 +70,6 @@
     nix-tree
     nixpkgs-fmt
     nvfetcher
-    okular
     p7zip
     pavucontrol
     pciutils
