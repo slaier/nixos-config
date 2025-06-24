@@ -61,6 +61,7 @@
     kdePackages.okular
     keepassxc
     killall
+    libreoffice
     librespeed-cli
     localsend
     lsof
