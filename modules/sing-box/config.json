@@ -104,6 +104,21 @@
           "cn"
         ],
         "outbound": "DIRECT"
+      },
+      {
+        "geosite": [
+          "github"
+        ],
+        "outbound": "proxy"
+      },
+      {
+        "geosite": [
+          "microsoft"
+        ],
+        "domain": [
+          "cache.nixos.org"
+        ],
+        "outbound": "us"
       }
     ],
     "final": "proxy"
