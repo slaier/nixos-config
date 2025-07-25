@@ -226,6 +226,14 @@ in
         };
         force = true;
       };
+      containersForce = true;
+      containers = {
+        work = {
+          id = 2;
+          icon = "briefcase";
+          color = "orange";
+        };
+      };
     };
   };
   home.file."${profilesPath}/default/chrome" = {
