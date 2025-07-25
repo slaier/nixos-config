@@ -67,6 +67,7 @@
     lsof
     meld
     minicom
+    mtr
     nali
     neovim
     nix-tree
