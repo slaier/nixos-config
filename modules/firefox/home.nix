@@ -233,7 +233,4 @@ in
     recursive = true;
     force = true;
   };
-  home.file.".mozilla/native-messaging-hosts/passff.json" = {
-    source = "${pkgs.passff-host}/lib/mozilla/native-messaging-hosts/passff.json";
-  };
 }
