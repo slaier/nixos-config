@@ -91,6 +91,7 @@
     xdg-utils
     yt-dlp
     zip
+    (makeElectronWrapper teams-for-linux)
   ] ++ (map makeNoProxyWrapper [
     ydict
     kodi-wayland
