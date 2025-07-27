@@ -41,7 +41,6 @@ in
         new_tongwentang
         offline-qr-code-generator
         rsshub-radar
-        ublacklist
         violentmonkey
       ] ++ (with pkgs.nur.repos.bandithedoge.firefoxAddons; [
         imagus
