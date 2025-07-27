@@ -82,7 +82,6 @@
     rust-petname
     satty
     scrcpy
-    scrcpy-mask
     sops
     tdesktop
     unrar
