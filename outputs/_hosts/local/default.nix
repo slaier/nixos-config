@@ -56,6 +56,7 @@
     hydra-check
     hyperfine
     ianny
+    input-leap
     iotop
     just
     kdePackages.okular
