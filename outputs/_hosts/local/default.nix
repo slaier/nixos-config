@@ -49,6 +49,7 @@
     bottom
     curl
     doggo
+    filezilla
     gdu
     geo
     git
@@ -78,6 +79,7 @@
     pavucontrol
     pciutils
     python3
+    qalculate-qt
     qrencode
     remmina
     rust-petname
