@@ -83,18 +83,26 @@ _:
     enableGraphical = true;
   };
 
-  environment.variables = {
-    ROC_ENABLE_PRE_VEGA = "1";
-  };
+  nixpkgs.overlays = [
+    (_final: prev: {
+      rocmPackages = prev.rocmPackages.overrideScope (
+        _final: prev: {
+          clr = (prev.clr.override {
+            localGpuTargets = [ "gfx803" ];
+          }).overrideAttrs (prev: {
+            patches = prev.patches ++ [ ./clr.patch ];
+          });
+        }
+      );
+    })
+  ];
+
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
     extraPackages = with pkgs; [
       amdvlk
-      rocmPackages_5.clr.icd
-      rocmPackages_5.clr
-      rocmPackages_5.rocminfo
-      rocmPackages_5.rocm-runtime
+      rocmPackages.clr.icd
     ];
     extraPackages32 = with pkgs; [
       driversi686Linux.amdvlk
@@ -102,23 +110,9 @@ _:
   };
 
   environment.systemPackages = with pkgs; [
+    amdgpu_top
     clinfo
   ];
-
-  systemd.tmpfiles.rules =
-    let
-      rocmEnv = pkgs.symlinkJoin {
-        name = "rocm-combined";
-        paths = with pkgs.rocmPackages_5; [
-          rocblas
-          hipblas
-          clr
-        ];
-      };
-    in
-    [
-      "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
-    ];
 
   hardware.fancontrol =
     let
