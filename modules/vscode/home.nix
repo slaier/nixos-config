@@ -1,13 +1,12 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 let
   getName = x: x.meta.mainProgram or (lib.getName x);
   profileCommon = {
     extensions = (
       with pkgs.vscode-extensions; [
+        Continue.continue
         eamodio.gitlens
         file-icons.file-icons
-        github.copilot
-        github.copilot-chat
         llvm-vs-code-extensions.vscode-clangd
         mesonbuild.mesonbuild
         mkhl.direnv
@@ -106,11 +105,19 @@ let
       "mesonbuild.formatting.enabled" = true;
       "mesonbuild.linter.muon.enabled" = true;
       "redhat.telemetry.enabled" = false;
+      "yaml.schemas" = {
+        "file://${config.home.homeDirectory}/.vscode/extensions/Continue.continue/config-yaml-schema.json" = [
+          ".continue/**/*.yaml"
+        ];
+      };
     };
   };
 in
 {
-  home.sessionVariables.EDITOR = "code -w";
+  home.sessionVariables = {
+    EDITOR = "code -w";
+    CONTINUE_GLOBAL_DIR = "${config.xdg.configHome}/continue";
+  };
   home.packages = with pkgs; [
     clang
     clang-tools
