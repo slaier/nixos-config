@@ -74,6 +74,7 @@
     neovim
     nix-tree
     nixpkgs-fmt
+    nomacs
     nvfetcher
     p7zip
     pavucontrol
