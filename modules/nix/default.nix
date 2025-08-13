@@ -24,14 +24,9 @@
     persistent = false;
   };
 
-  nix.extraOptions = lib.mkIf (options.sops ? secrets) ''
+  nix.extraOptions = lib.mkIf (options ? sops) ''
     !include ${config.sops.secrets.nix_access_token.path}
   '';
-
-  sops.secrets.nix_access_token = {
-    mode = "0440";
-    group = config.users.groups.keys.name;
-  };
 
   nix.nixPath = [
     "nixpkgs=${inputs.nixpkgs}"
