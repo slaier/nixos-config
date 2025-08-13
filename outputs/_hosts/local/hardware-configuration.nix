@@ -28,12 +28,7 @@ _:
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = false;
-  networking.interfaces.br0.useDHCP = lib.mkDefault true;
-  networking.bridges = {
-    br0 = {
-      interfaces = [ "enp5s0" ];
-    };
-  };
+  networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
