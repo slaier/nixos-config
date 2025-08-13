@@ -1,17 +1,16 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
-  models = pkgs.linkFarm "models" [
-    {
-      name = "phi4-mini";
-      path = pkgs.fetchurl {
-        name = "Phi-4-mini-instruct.Q4_K_M.gguf";
-        url = "https://huggingface.co/MaziyarPanahi/Phi-4-mini-instruct-GGUF/resolve/main/Phi-4-mini-instruct.Q4_K_M.gguf?download=true";
-        sha256 = "sha256-hVz2D3+BCHE/sOc5yrcv2dv2xtQWC9f/A1gULHSuMoc=";
-      };
-    }
-  ];
+  model = "/var/lib/llama-cpp/qwen2.5-coder-3b.guff";
 in
 {
+  services.ollama = {
+    enable = true;
+    loadModels = [ "qwen2.5-coder:3b" ];
+    environmentVariables = {
+      https_proxy = config.networking.proxy.default;
+    };
+  };
+
   services.llama-cpp = {
     enable = true;
     package = pkgs.llama-cpp.override {
@@ -21,11 +20,14 @@ in
       "-ngl"
       "99"
     ];
-    model = "${models}/phi4-mini";
+    model = model;
   };
   systemd.services.llama-cpp = {
     environment = {
       HOME = "/var/lib/llama-cpp";
+    };
+    unitConfig = {
+      ConditionPathExists = model;
     };
     serviceConfig = {
       StateDirectory = [ "llama-cpp" ];
