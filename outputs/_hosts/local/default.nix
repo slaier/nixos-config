@@ -53,15 +53,12 @@
     gdu
     geo
     git
-    gocryptfs
     hydra-check
     hyperfine
     ianny
-    input-leap
     iotop
     just
     kdePackages.okular
-    keepassxc
     killall
     libreoffice
     librespeed-cli
@@ -75,7 +72,6 @@
     nix-tree
     nixpkgs-fmt
     nomacs
-    nvfetcher
     p7zip
     pavucontrol
     pciutils
