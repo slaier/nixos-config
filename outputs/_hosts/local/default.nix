@@ -41,6 +41,8 @@
   };
   services.earlyoom.enable = true;
 
+  services.speechd.enable = false;
+
   programs.nix-ld.enable = true;
   environment.systemPackages = with pkgs; [
     alacritty
