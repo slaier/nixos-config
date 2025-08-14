@@ -60,7 +60,6 @@
     ianny
     iotop
     just
-    kdePackages.okular
     killall
     libreoffice
     librespeed-cli
@@ -79,13 +78,13 @@
     pciutils
     python3
     qalculate-qt
+    qpdfview
     qrencode
     remmina
     rust-petname
     satty
     scrcpy
     sops
-    tdesktop
     unrar
     unzip
     usbutils
