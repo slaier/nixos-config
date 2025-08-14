@@ -38,7 +38,6 @@ in
         bitwarden
         buster-captcha-solver
         clearurls
-        copy-link-text
         history-cleaner
         i-dont-care-about-cookies
         imagus
@@ -47,6 +46,25 @@ in
         offline-qr-code-generator
         rsshub-radar
         violentmonkey
+        (buildFirefoxXpiAddon {
+          pname = "copy-link-text-sytelix";
+          version = "1.5.0";
+          addonId = "{7f069302-8ecc-45b1-84be-745f021d040e}";
+          url = "https://addons.mozilla.org/firefox/downloads/file/4397391/copy_link_text_sytelix-1.5.0.xpi";
+          sha256 = "0aff955e12ae8b99d207bbbe7d945b24c0cb50de450095ffd212842ede86d830";
+          meta = with lib;
+            {
+              description = "The only extension that lets you effortlessly copy link text on both desktop and mobile—via right-click, Alt+C shortcut, or Copy Mode activation.";
+              license = licenses.mpl20;
+              mozPermissions = [
+                "activeTab"
+                "clipboardWrite"
+                "contextMenus"
+                "<all_urls>"
+              ];
+              platforms = platforms.all;
+            };
+        })
       ];
       bookmarks = {
         force = true;
