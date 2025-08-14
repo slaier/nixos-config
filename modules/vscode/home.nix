@@ -1,6 +1,5 @@
 { config, pkgs, lib, ... }:
 let
-  getName = x: x.meta.mainProgram or (lib.getName x);
   profileCommon = {
     extensions = (
       with pkgs.vscode-extensions; [
@@ -13,7 +12,6 @@ let
         ms-python.black-formatter
         ms-python.python
         ms-python.vscode-pylance
-        ms-vscode-remote.remote-containers
         ms-vscode-remote.remote-ssh
         redhat.vscode-yaml
         shardulm94.trailing-spaces
@@ -91,13 +89,6 @@ let
       "workbench.editor.enablePreviewFromCodeNavigation" = true;
       "workbench.iconTheme" = "file-icons";
 
-      "dev.containers.defaultExtensions" = [
-        "Tyriar.sort-lines"
-        "eamodio.gitlens"
-        "shardulm94.trailing-spaces"
-      ];
-      "dev.containers.dockerComposePath" = getName pkgs.podman-compose;
-      "dev.containers.dockerPath" = getName pkgs.podman;
       "direnv.restart.automatic" = true;
       "markdown-preview-enhanced.previewTheme" = "monokai.css";
       "mesonbuild.buildFolder" = "build";
@@ -126,8 +117,6 @@ in
     muon
     ninja
     pkg-config
-    podman
-    podman-compose
     pkgs.nur.repos.bandithedoge.mesonlsp-bin
   ];
   programs.vscode = {
