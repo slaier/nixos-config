@@ -37,14 +37,13 @@ in
         copy-link-text
         history-cleaner
         i-dont-care-about-cookies
+        imagus
         localcdn
         new_tongwentang
         offline-qr-code-generator
         rsshub-radar
         violentmonkey
-      ] ++ (with pkgs.nur.repos.bandithedoge.firefoxAddons; [
-        imagus
-      ]);
+      ];
       bookmarks = {
         force = true;
         settings = [

@@ -114,10 +114,10 @@ in
     clang-tools
     jsonnet-language-server
     meson
+    mesonlsp
     muon
     ninja
     pkg-config
-    pkgs.nur.repos.bandithedoge.mesonlsp-bin
   ];
   programs.vscode = {
     enable = true;
