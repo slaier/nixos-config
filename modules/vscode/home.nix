@@ -3,7 +3,6 @@ let
   profileCommon = {
     extensions = (
       with pkgs.vscode-extensions; [
-        Continue.continue
         eamodio.gitlens
         file-icons.file-icons
         llvm-vs-code-extensions.vscode-clangd
@@ -96,11 +95,6 @@ let
       "mesonbuild.formatting.enabled" = true;
       "mesonbuild.linter.muon.enabled" = true;
       "redhat.telemetry.enabled" = false;
-      "yaml.schemas" = {
-        "file://${config.home.homeDirectory}/.vscode/extensions/Continue.continue/config-yaml-schema.json" = [
-          ".continue/**/*.yaml"
-        ];
-      };
     };
   };
 in
@@ -133,13 +127,24 @@ in
       profileCommon
       {
         extensions = with pkgs.vscode-extensions; [
-          Wokwi.wokwi-vscode
           jnoortheen.nix-ide
           ms-vscode.cpptools
           platformio.platformio-vscode-ide
           skellock.just
-        ];
+        ] ++ (with pkgs.vscode-marketplace; [
+          google.geminicodeassist
+          wokwi.wokwi-vscode
+        ]);
         userSettings = {
+          "geminicodeassist.enableTelemetry" = false;
+          "geminicodeassist.customCommands" = {
+            "add-comment" = "comment the code";
+            "refactor" = "refactor the code";
+          };
+          "geminicodeassist.rules" = ''
+            Never ask "Would you like me to make this change for you?" Just do it.
+          '';
+          "geminicodeassist.inlineSuggestions.enableAuto" = false;
           "nix.enableLanguageServer" = true;
           "nix.serverPath" = "${lib.getExe pkgs.nil}";
           "nix.serverSettings" = {
@@ -156,8 +161,17 @@ in
     profiles.work = lib.mkMerge [
       profileCommon
       {
+        extensions = with pkgs.vscode-marketplace; [
+          continue.continue
+        ];
         userSettings = {
           "git.alwaysSignOff" = true;
+
+          "yaml.schemas" = {
+            "file://${config.home.homeDirectory}/.vscode/extensions/continue.continue/config-yaml-schema.json" = [
+              ".continue/**/*.yaml"
+            ];
+          };
         };
       }
     ];
