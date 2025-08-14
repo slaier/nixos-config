@@ -61,7 +61,6 @@
     iotop
     just
     killall
-    libreoffice
     librespeed-cli
     localsend
     lsof
