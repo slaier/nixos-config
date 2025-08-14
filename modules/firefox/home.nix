@@ -10,8 +10,8 @@ in
 {
   programs.firefox = {
     enable = true;
-    package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
-      extraPolicies = {
+    package = pkgs.firefox.override (prev: {
+      extraPolicies = (prev.extraPolicies or { }) // {
         CaptivePortal = false;
         DisableFirefoxStudies = true;
         DisablePocket = true;
@@ -26,7 +26,11 @@ in
           SkipOnboarding = true;
         };
       };
-    };
+      extraPrefsFiles = (prev.extraPrefsFiles or [ ]) ++ [
+        "${pkgs.arkenfox-userjs}/user.cfg"
+        "${./overlay.js}"
+      ];
+    });
     profiles.default = {
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         adnauseam
@@ -160,14 +164,6 @@ in
         "userChrome.Menu.Size.Compact.Enabled" = true;
         "userChrome.Menu.Icons.Regular.Enabled" = true;
       };
-      extraConfig =
-        let
-          src = lib.sourceFilesBySuffices ./. [ ".js" ];
-        in
-        ''
-          ${fileContents "${pkgs.nur.repos.ataraxiasjel.arkenfox-userjs}/share/user.js/user.js"}
-          ${fileContents "${src}/overlay.js"}
-        '';
       search = {
         default = "Google NCR";
         engines = {
