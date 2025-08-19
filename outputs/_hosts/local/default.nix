@@ -53,6 +53,7 @@
     doggo
     filezilla
     gdu
+    gemini-cli
     geo
     git
     hydra-check

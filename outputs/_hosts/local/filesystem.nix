@@ -21,6 +21,7 @@
         ".cache"
         ".cmake"
         ".config"
+        ".gemini"
         ".local"
         ".mozilla"
         ".nali"
