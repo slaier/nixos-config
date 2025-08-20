@@ -52,6 +52,7 @@ let
       }
     ];
     userSettings = {
+      "diffEditor.codeLens" = true;
       "diffEditor.ignoreTrimWhitespace" = false;
       "editor.bracketPairColorization.enabled" = true;
       "editor.guides.bracketPairs" = "active";
