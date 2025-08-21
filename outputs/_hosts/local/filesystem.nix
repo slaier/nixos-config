@@ -28,6 +28,7 @@
         ".pki"
         ".platformio"
         ".ssh"
+        ".steam"
         ".wokwi"
         "repos"
       ];
