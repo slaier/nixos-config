@@ -114,7 +114,10 @@
         "geosite": [
           "reddit"
         ],
-        "outbound": "reddit"
+        "domain": [
+          "nixos.wiki"
+        ],
+        "outbound": "clean"
       },
       {
         "geosite": [
