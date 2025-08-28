@@ -52,6 +52,7 @@
     curl
     doggo
     filezilla
+    freerdp
     gdu
     gemini-cli
     geo
@@ -80,7 +81,6 @@
     qalculate-qt
     qpdfview
     qrencode
-    remmina
     rust-petname
     satty
     scrcpy
