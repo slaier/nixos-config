@@ -144,6 +144,7 @@ in
               "You will ONLY output the commit message itself, nothing else."
               "No explanations, no questions, no additional comments."
               "Commits should follow the Conventional Commits specification."
+              "To get the changes, you can use `git diff HEAD`."
               "Write your output to .git/COMMIT_EDITMSG."
               "50 is the maximum number of characters of the commit title."
               "72 is the maximum character length of the commit body."
