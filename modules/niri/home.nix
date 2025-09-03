@@ -1,15 +1,16 @@
 { pkgs, ... }:
 let
   bg = "backgrounds/nixos/nix-wallpaper-dracula.png";
+  bgPath = "${pkgs.nixos-artwork.wallpapers.dracula}/share/${bg}";
 in
 {
   home.packages = [ pkgs.swaybg ];
-  xdg.dataFile."${bg}".source = "${pkgs.nixos-artwork.wallpapers.dracula}/share/${bg}";
+  xdg.dataFile."${bg}".source = bgPath;
   xdg.configFile."niri/config.kdl".source = ./niri.kdl;
   services.swayidle =
     let
       # Lock command
-      lock = "${pkgs.swaylock}/bin/swaylock --daemonize";
+      lock = "${pkgs.swaylock}/bin/swaylock --daemonize -i ${bgPath}";
       # Niri
       display = status: "${pkgs.niri}/bin/niri msg action power-${status}-monitors";
     in
