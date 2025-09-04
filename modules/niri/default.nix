@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 {
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  environment.systemPackages = with pkgs; [ fuzzel swaylock xwayland-satellite ];
+  environment.systemPackages = with pkgs; [ fuzzel niriswitcher swaylock xwayland-satellite ];
   programs.niri = {
     enable = true;
     package = pkgs.niri;
