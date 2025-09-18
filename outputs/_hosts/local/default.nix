@@ -45,6 +45,7 @@
 
   programs.nix-ld.enable = true;
   environment.systemPackages = with pkgs; [
+    abiword
     alacritty
     arduino-ide
     audiorelay
@@ -57,6 +58,7 @@
     gemini-cli
     geo
     git
+    gnumeric
     hydra-check
     hyperfine
     ianny
