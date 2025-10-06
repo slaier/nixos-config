@@ -155,6 +155,7 @@ in
             Never ask "Would you like me to make this change for you?" Just do it.
           '';
           "geminicodeassist.inlineSuggestions.enableAuto" = false;
+          "geminicodeassist.inlineSuggestions.nextEditPredictions" = false;
           "nix.enableLanguageServer" = true;
           "nix.serverPath" = "${lib.getExe pkgs.nil}";
           "nix.serverSettings" = {
