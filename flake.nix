@@ -84,8 +84,7 @@
               inherit inputs;
             };
             imports = (mylib.recursiveValuesToList nixosModules) ++ [
-              ./outputs/_hosts/local/default.nix
-              ./outputs/_hosts/local/hardware-configuration.nix
+              ./hosts/local
             ];
 
             nixpkgs.overlays = overlayList ++ [

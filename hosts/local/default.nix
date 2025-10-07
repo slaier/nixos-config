@@ -3,6 +3,7 @@
   imports =
     [
       { programs.command-not-found.enable = false; }
+      ./hardware-configuration.nix
     ];
 
   home-manager.users.nixos.imports = [
