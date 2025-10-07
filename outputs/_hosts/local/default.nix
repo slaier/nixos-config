@@ -49,7 +49,6 @@
     abiword
     alacritty
     arduino-ide
-    audiorelay
     bottom
     curl
     doggo
