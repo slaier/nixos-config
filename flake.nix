@@ -9,8 +9,6 @@
     nur.url = "github:nix-community/NUR";
     nur.inputs.nixpkgs.follows = "nixpkgs";
 
-    impermanence.url = "github:nix-community/impermanence";
-
     darkmatter-grub-theme.url = "gitlab:VandalByte/darkmatter-grub-theme";
     darkmatter-grub-theme.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -19,9 +17,6 @@
 
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs-unstable";
-
-    disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
 
     niri = {
       url = "github:sodiboo/niri-flake";
@@ -68,21 +63,23 @@
       };
     in
     {
-      packages.${system} = mylib.flattenAttrset packages;
+      packages.${system} = (mylib.flattenAttrset packages) // {
+        nixos-installer = pkgs.writeShellScriptBin "nixos-installer" ''
+          exec nixos-install --flake "${self}#${hostname}" "$@"
+        '';
+      };
       formatter.${system} = pkgs.nixpkgs-fmt;
       inherit overlays;
       inherit nixosModules;
       nixosConfigurations.${hostname} = lib.nixosSystem {
         modules = with inputs; [
           darkmatter-grub-theme.nixosModule
-          disko.nixosModules.disko
           home-manager.nixosModules.home-manager
-          impermanence.nixosModules.impermanence
           niri.nixosModules.niri
           nix-index-database.nixosModules.nix-index
           nur.modules.nixos.default
           sops-nix.nixosModules.sops
-          ({ config, ... }: {
+          ({ config, lib, ... }: {
             _module.args = {
               inherit inputs;
             };
@@ -110,13 +107,24 @@
               users.nixos.imports = mylib.recursiveValuesToList homeModules;
             };
 
-            networking.hostName = hostname;
+            networking.hostName = lib.mkDefault hostname;
           })
+        ];
+      };
+      nixosConfigurations."ins" = self.nixosConfigurations.${hostname}.extendModules {
+        modules = [
+          {
+            environment.systemPackages = [
+              self.packages.${system}.nixos-fs-init
+              self.packages.${system}.nixos-fs-mount
+              self.packages.${system}.nixos-installer
+            ];
+            networking.hostName = "ins";
+          }
         ];
       };
       devShells.${system}.default = with pkgs; mkShell {
         packages = [
-          disko
           just
           nixos-rebuild
           sops
