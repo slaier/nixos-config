@@ -34,7 +34,6 @@ in
     profiles.default = {
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         adnauseam
-        aria2-integration
         bitwarden
         buster-captcha-solver
         clearurls
