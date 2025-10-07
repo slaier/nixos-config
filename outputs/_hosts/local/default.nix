@@ -1,15 +1,11 @@
-{ modules, inputs, ... }:
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 {
-  imports = map (x: x.default or { }) (lib.attrValues modules) ++
-    (with inputs; [
-      nix-index-database.nixosModules.nix-index
+  imports =
+    [
       { programs.command-not-found.enable = false; }
-      niri.nixosModules.niri
-    ]);
+    ];
 
-  home-manager.users.nixos.imports = map (x: x.home or { }) (lib.attrValues modules) ++ [
-    inputs.nix-index-database.homeModules.nix-index
+  home-manager.users.nixos.imports = [
     ({ lib, ... }: {
       xdg.configFile."pip/pip.conf".text = lib.generators.toINI { } {
         global = {
@@ -18,8 +14,6 @@
       };
     })
   ];
-
-  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   nix.settings.extra-platforms = [ "aarch64-linux" ];
