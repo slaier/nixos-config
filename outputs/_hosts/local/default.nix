@@ -43,6 +43,7 @@
 
   services.speechd.enable = false;
 
+  programs.adb.enable = true;
   programs.nix-ld.enable = true;
   environment.systemPackages = with pkgs; [
     abiword
