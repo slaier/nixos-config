@@ -17,6 +17,12 @@ layout {
     default-column-width { proportion 1.0; }
 }
 
+gestures {
+    hot-corners {
+        off
+    }
+}
+
 spawn-at-startup "bash" "-c" "swaybg -i $XDG_DATA_HOME/backgrounds/nixos/nix-wallpaper-dracula.png"
 spawn-at-startup "niriswitcher"
 
