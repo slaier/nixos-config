@@ -129,6 +129,7 @@ in
       {
         extensions = with pkgs.vscode-extensions; [
           jnoortheen.nix-ide
+          ms-vscode-remote.remote-containers
           ms-vscode.cpptools
           platformio.platformio-vscode-ide
           skellock.just
