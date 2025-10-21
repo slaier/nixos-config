@@ -165,6 +165,7 @@ in
             };
           };
           "platformio-ide.customPyPiIndexUrl" = "https://mirror.nju.edu.cn/pypi/web/simple";
+          "remote.autoForwardPorts" = false;
         };
       }
     ];
