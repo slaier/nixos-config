@@ -33,6 +33,11 @@ window-rule {
     default-window-height { fixed 662; }
 }
 
+window-rule {
+    match app-id="steam_app_0"
+    open-floating false
+}
+
 prefer-no-csd
 
 cursor {
