@@ -120,7 +120,6 @@ in
       preFixup = prev.preFixup + ''
         gappsWrapperArgs+=(
           --unset NIXOS_OZONE_WL
-          --set DISPLAY :0
         )
       '';
     });
