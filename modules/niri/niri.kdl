@@ -132,6 +132,9 @@ binds {
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }
 
+    Mod+V       { toggle-window-floating; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
     Mod+P { screenshot; }
     Mod+Ctrl+P { screenshot-screen; }
     Mod+Alt+P { screenshot-window; }
