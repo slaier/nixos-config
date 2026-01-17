@@ -45,6 +45,7 @@
     alacritty
     arduino-ide
     bottom
+    cloudflared
     curl
     doggo
     filezilla
