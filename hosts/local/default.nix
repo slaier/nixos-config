@@ -61,6 +61,7 @@
     iotop
     just
     killall
+    kodi-wayland
     librespeed-cli
     localsend
     lsof
@@ -83,18 +84,17 @@
     satty
     scrcpy
     sops
+    ungoogled-chromium
     unrar
     unzip
     usbutils
     wget
     xdg-utils
+    ydict
     yt-dlp
     zip
     (makeElectronWrapper teams-for-linux)
-  ] ++ (map makeNoProxyWrapper [
-    ydict
-    kodi-wayland
-    ungoogled-chromium
-  ]);
+  ]
+  ;
   nixpkgs.config.chromium.commandLineArgs = "--enable-wayland-ime --wayland-text-input-version=3";
 }
