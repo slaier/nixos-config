@@ -149,9 +149,6 @@
         "rule_set": [
           "geosite-microsoft"
         ],
-        "domain": [
-          "cache.nixos.org"
-        ],
         "outbound": "us"
       }
     ],
