@@ -89,6 +89,7 @@ in
               min-p = 0.0;
               presence-penalty = 0.0;
               repeat-penalty = 1.0;
+              reasoning = "off";
             };
             # OCR
             "Nanonets-OCR-s" = {
@@ -159,4 +160,5 @@ in
             ;;
     esac
   '';
+  environment.systemPackages = [ (pkgs.callPackage ./claude-code-best.nix { }) ];
 }
