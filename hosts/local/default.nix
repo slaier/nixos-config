@@ -41,29 +41,40 @@
   programs.adb.enable = true;
   programs.nix-ld.enable = true;
   environment.systemPackages = with pkgs; [
+    # dailyuse
     abiword
-    alacritty
+    gnumeric
+    kodi-wayland
+    localsend
+    nomacs
+    pavucontrol
+    qalculate-qt
+    qbittorrent-enhanced
+    qpdfview
+    satty
+    scrcpy
+    ungoogled-chromium
+    # development
     arduino-ide
+    filezilla
+    freerdp
+    # cli
+    alacritty
     bottom
     cloudflared
     curl
     doggo
-    filezilla
-    freerdp
     gdu
-    geminicommit
     geo
     git
-    gnumeric
     hydra-check
     hyperfine
     ianny
     iotop
+    jq
     just
     killall
-    kodi-wayland
     librespeed-cli
-    localsend
     lsof
     meld
     minicom
@@ -72,30 +83,22 @@
     neovim
     nix-tree
     nixpkgs-fmt
-    nomacs
     p7zip
-    pavucontrol
     pciutils
     python3
-    qalculate-qt
-    qbittorrent-enhanced
-    qpdfview
     qrencode
+    ripgrep
     rust-petname
-    satty
-    scrcpy
     sops
-    ungoogled-chromium
     unrar
     unzip
     usbutils
     wget
     xdg-utils
     ydict
+    yq-go
     yt-dlp
     zip
-    (makeElectronWrapper teams-for-linux)
-  ]
-  ;
+  ];
   nixpkgs.config.chromium.commandLineArgs = "--enable-wayland-ime --wayland-text-input-version=3";
 }
