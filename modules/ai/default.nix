@@ -160,5 +160,8 @@ in
             ;;
     esac
   '';
-  environment.systemPackages = [ (pkgs.callPackage ./claude-code-best.nix { }) ];
+  environment.systemPackages = [
+    (pkgs.callPackage ./aicommits.nix { })
+    (pkgs.callPackage ./claude-code-best.nix { })
+  ];
 }
