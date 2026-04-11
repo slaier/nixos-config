@@ -90,6 +90,7 @@ in
               presence-penalty = 0.0;
               repeat-penalty = 1.0;
               reasoning = "off";
+              ctx-size = 16384;
             };
             # OCR
             "Nanonets-OCR-s" = {
