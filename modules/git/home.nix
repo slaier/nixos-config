@@ -31,7 +31,7 @@ in
           ''${config.programs.git.settings.user.email} ${nixosConfig.programs.ssh.knownHosts."local.lan".publicKey}''}'';
       user.signingkey = "${config.home.homeDirectory}/.ssh/id_ed25519";
       commit.gpgsign = true;
-      aliases = {
+      alias = {
         lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
       };
     };
