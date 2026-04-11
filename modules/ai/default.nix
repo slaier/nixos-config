@@ -78,19 +78,8 @@ in
               kv-unified = true;
             };
             # Coder
-            "Llama-3.2-3B-Instruct" = {
-              hf = "unsloth/Llama-3.2-3B-Instruct-GGUF:Q4_K_M";
-            };
-            "Qwen3.5-4B" = {
-              hf = "unsloth/Qwen3.5-4B-GGUF:Q4_K_M";
-              temperature = 0.6;
-              top-p = 0.95;
-              top-k = 20;
-              min-p = 0.0;
-              presence-penalty = 0.0;
-              repeat-penalty = 1.0;
-              reasoning = "off";
-              ctx-size = 16384;
+            "gemma-4-E4B-it" = {
+              hf = "unsloth/gemma-4-E4B-it-GGUF:UD-Q4_K_XL";
             };
             # OCR
             "Nanonets-OCR-s" = {
