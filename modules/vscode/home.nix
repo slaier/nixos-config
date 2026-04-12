@@ -136,6 +136,11 @@ in
           wokwi.wokwi-vscode
         ]);
         userSettings = {
+          "extensions.allowed" = {
+            "*" = true;
+            "ms-vscode.cpptools" = false;
+            "platformio.platformio-ide" = false;
+          };
           "nix.enableLanguageServer" = true;
           "nix.serverPath" = "${lib.getExe pkgs.nil}";
           "nix.serverSettings" = {
