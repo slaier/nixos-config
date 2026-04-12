@@ -131,6 +131,7 @@ in
           ms-vscode-remote.remote-containers
           ms-vscode.cpptools
           platformio.platformio-vscode-ide
+          rust-lang.rust-analyzer
           skellock.just
         ] ++ (with pkgs.vscode-marketplace; [
           wokwi.wokwi-vscode
