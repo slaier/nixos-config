@@ -81,6 +81,9 @@ in
             "gemma-4-E4B-it" = {
               hf = "unsloth/gemma-4-E4B-it-GGUF:UD-Q4_K_XL";
             };
+            "gemma-4-26B-A4B-it" = {
+              hf = "unsloth/gemma-4-26B-A4B-it-GGUF:UD-Q4_K_XL";
+            };
             # OCR
             "Nanonets-OCR-s" = {
               hf = "unsloth/Nanonets-OCR-s-GGUF:UD-Q4_K_XL";
