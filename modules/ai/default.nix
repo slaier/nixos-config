@@ -76,6 +76,7 @@ in
               flash-attn = "on";
               fit = "on";
               kv-unified = true;
+              ctx-size = 16384;
             };
             # Coder
             "gemma-4-E4B-it" = {

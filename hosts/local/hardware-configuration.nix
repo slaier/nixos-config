@@ -18,6 +18,7 @@
     "iommu=pt"
     "amdgpu.ppfeaturemask=0xfffd7fff"
     "zswap.enabled=1"
+    "ttm.pages_limit=6291456"
   ];
 
   services.fstrim.enable = true;
