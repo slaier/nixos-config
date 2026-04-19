@@ -69,7 +69,6 @@
     filezilla
     freerdp
     # cli
-    alacritty
     bottom
     cloudflared
     curl
