@@ -1,15 +1,7 @@
 { config, pkgs, nixosConfig, ... }:
-let
-  workDir = "${config.home.homeDirectory}/repos/work";
-in
 {
   sops.secrets.github_token = {
     path = "${config.xdg.configHome}/git/credentials";
-  };
-  sops.secrets.gitconfig = {
-    format = "binary";
-    sopsFile = ../../secrets/gitconfig;
-    path = "${workDir}/.gitconfig";
   };
 
   programs.git = {
@@ -35,13 +27,6 @@ in
         lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
       };
     };
-
-    includes = [
-      {
-        path = config.sops.secrets.gitconfig.path;
-        condition = "gitdir:${workDir}/";
-      }
-    ];
 
     ignores = [
       ".cache"
