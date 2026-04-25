@@ -109,6 +109,9 @@ in
               min-p = 0;
               presence-penalty = 1.5;
               repeat-penalty = 1.0;
+              ctx-size = 32768;
+              ctk = "q8_0";
+              ctv = "q8_0";
             };
             # OCR
             "Nanonets-OCR-s" = {
