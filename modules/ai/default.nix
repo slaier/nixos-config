@@ -1,4 +1,4 @@
-{ pkgs, lib, utils, ... }:
+{ pkgs, lib, utils, inputs, ... }:
 let
   llama-cpp-vulkan = pkgs.llama-cpp-vulkan.overrideAttrs (prev: rec {
     version = "8833";
@@ -186,6 +186,9 @@ in
   '';
   environment.systemPackages = [
     llama-cpp-vulkan
+    (pkgs.callPackage "${inputs.nixpkgs-unstable}/pkgs/by-name/ch/cherry-studio/package.nix" {
+      pnpm_10_29_2 = pkgs.pnpm;
+    })
     (pkgs.callPackage ./aicommits.nix { })
     (pkgs.callPackage ./claude-code-best.nix { })
   ];
