@@ -109,7 +109,7 @@ in
               min-p = 0;
               presence-penalty = 1.5;
               repeat-penalty = 1.0;
-              ctx-size = 32768;
+              ctx-size = 49152;
               ctk = "q8_0";
               ctv = "q8_0";
             };
