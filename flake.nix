@@ -69,8 +69,6 @@
         '';
       };
       formatter.${system} = pkgs.nixpkgs-fmt;
-      inherit overlays;
-      inherit nixosModules;
       nixosConfigurations.${hostname} = lib.nixosSystem {
         modules = with inputs; [
           darkmatter-grub-theme.nixosModule
@@ -108,18 +106,6 @@
 
             networking.hostName = lib.mkDefault hostname;
           })
-        ];
-      };
-      nixosConfigurations."ins" = self.nixosConfigurations.${hostname}.extendModules {
-        modules = [
-          {
-            environment.systemPackages = [
-              self.packages.${system}.nixos-fs-init
-              self.packages.${system}.nixos-fs-mount
-              self.packages.${system}.nixos-installer
-            ];
-            networking.hostName = "ins";
-          }
         ];
       };
       nixosConfigurations."ins-iso" = lib.nixosSystem {
