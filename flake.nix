@@ -115,15 +115,6 @@
               self.packages.${system}.nixos-fs-init
               self.packages.${system}.nixos-fs-mount
             ];
-            environment.etc."install-closure".source =
-              let
-                closureInfo = pkgs.closureInfo {
-                  rootPaths = [
-                    self.nixosConfigurations.${hostname}.config.system.build.toplevel
-                  ];
-                };
-              in
-              "${closureInfo}/store-paths";
             nix.settings = {
               auto-allocate-uids = true;
               auto-optimise-store = true;
