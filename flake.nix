@@ -63,11 +63,7 @@
       };
     in
     {
-      packages.${system} = (mylib.flattenAttrset packages) // {
-        nixos-installer = pkgs.writeShellScriptBin "nixos-installer" ''
-          exec nixos-install --flake "${self}#${hostname}" "$@"
-        '';
-      };
+      packages.${system} = mylib.flattenAttrset packages;
       formatter.${system} = pkgs.nixpkgs-fmt;
       nixosConfigurations.${hostname} = lib.nixosSystem {
         modules = with inputs; [
@@ -118,7 +114,6 @@
               git
               self.packages.${system}.nixos-fs-init
               self.packages.${system}.nixos-fs-mount
-              self.packages.${system}.nixos-installer
             ];
             environment.etc."install-closure".source =
               let
