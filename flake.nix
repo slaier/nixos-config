@@ -85,9 +85,6 @@
               bluetooth-player.overlays."${config.nixpkgs.hostPlatform.system}".default
               niri.overlays.niri
               nix-vscode-extensions.overlays.default
-              (final: _prev: {
-                niriswitcher = final.callPackage "${inputs.nixpkgs-unstable}/pkgs/by-name/ni/niriswitcher/package.nix" { };
-              })
             ];
 
             home-manager = {
