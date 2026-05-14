@@ -8,3 +8,9 @@ rollback:
 
 iso:
   nix build .#nixosConfigurations.installer.config.system.build.isoImage
+
+update:
+  nix-update CloudflareSpeedTest --flake
+  nix-update aicommits --url https://github.com/Nutlope/aicommits --flake
+  nix-update claude-code-best --url https://github.com/claude-code-best/claude-code --flake
+  nix-update wokwigw --flake
