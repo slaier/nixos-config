@@ -104,13 +104,7 @@
       nixosConfigurations."installer" = lib.nixosSystem {
         inherit system;
         modules = [
-          ({ pkgs, modulesPath, ... }: {
-            imports = [ ./hosts/installer ];
-            environment.systemPackages = [
-              self.packages.${system}.nixos-fs-init
-              self.packages.${system}.nixos-fs-mount
-            ];
-          })
+          ./hosts/installer
         ];
       };
       devShells.${system}.default = with pkgs; mkShell {

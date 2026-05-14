@@ -1,9 +1,44 @@
-{ pkgs, modulesPath, ... }:
+{ lib, pkgs, modulesPath, ... }:
+let
+  nixos-fs-init = pkgs.replaceVarsWith {
+    src = ./nixos-fs-init.sh;
+    dir = "bin";
+    isExecutable = true;
+
+    replacements = {
+      path = lib.makeBinPath (with pkgs; [
+        btrfs-progs
+        coreutils
+        dosfstools
+        parted
+        mount
+        umount
+      ]);
+    };
+  };
+
+  nixos-fs-mount = pkgs.replaceVarsWith {
+    src = ./nixos-fs-mount.sh;
+    dir = "bin";
+    isExecutable = true;
+
+    replacements = {
+      path = lib.makeBinPath (with pkgs; [
+        btrfs-progs
+        coreutils
+        mount
+        umount
+      ]);
+    };
+  };
+in
 {
   imports = [ (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix") ];
   isoImage.squashfsCompression = "gzip -Xcompression-level 1";
   environment.systemPackages = with pkgs; [
     git
+    nixos-fs-init
+    nixos-fs-mount
   ];
   nix.settings = {
     auto-allocate-uids = true;
