@@ -56,11 +56,24 @@
         filename = "package.nix";
         transformer = pkg: pkgs.callPackage pkg { };
       };
-      overlays = mylib.fromDirectoryRecursive {
+      packageOverlays = mylib.fromDirectoryRecursive {
+        directory = ./modules;
+        filename = "package.nix";
+        transformer = pkg:
+          let
+            name = builtins.baseNameOf (builtins.dirOf pkg);
+          in
+          final: prev:
+            assert !(lib.hasAttr name prev);
+            {
+              "${name}" = final.callPackage pkg { };
+            };
+      };
+      overlays = (mylib.fromDirectoryRecursive {
         directory = ./modules;
         filename = "overlay.nix";
         transformer = import;
-      };
+      }) // packageOverlays;
     in
     {
       packages.${system} = mylib.flattenAttrset packages;
