@@ -10,7 +10,7 @@
 }:
 
 llama-cpp-vulkan.overrideAttrs (prev: rec {
-  version = "9150";
+  version = "9151";
 
   outputs = [
     "out"
@@ -21,7 +21,7 @@ llama-cpp-vulkan.overrideAttrs (prev: rec {
     owner = "ggml-org";
     repo = "llama.cpp";
     tag = "b${version}";
-    hash = "sha256-eWWUmzuUggU0VM3ITSge4rDKJ9ntAwP6wCcBb1W9yZk=";
+    hash = "sha256-oJZC2S92JKtj7LMmeQEVNmMlAWj1NuplHIx3umDr0HQ=";
     leaveDotGit = true;
     postFetch = ''
       git -C "$out" rev-parse --short HEAD > $out/COMMIT
