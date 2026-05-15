@@ -169,7 +169,39 @@
         model = "Qwen3.6-35B-A3B";
         apiBase = "http://localhost:8080/v1";
         apiKey = "dummy";
-        roles = [ "chat" "edit" "apply" ];
+        roles = [ "chat" "edit" ];
+      }
+      {
+        name = "Qwen2.5-Coder-1.5B-Instruct";
+        provider = "openai";
+        model = "Qwen2.5-Coder-1.5B-Instruct";
+        apiBase = "http://localhost:8080/v1";
+        apiKey = "dummy";
+        roles = [ "autocomplete" ];
+      }
+      {
+        name = "FastApply-1.5B-v1.0";
+        provider = "openai";
+        model = "FastApply-1.5B-v1.0";
+        apiBase = "http://localhost:8080/v1";
+        apiKey = "dummy";
+        roles = [ "apply" ];
+      }
+      {
+        name = "nomic-embed-text-v1.5";
+        provider = "openai";
+        model = "nomic-embed-text-v1.5";
+        apiBase = "http://localhost:8080/v1";
+        apiKey = "dummy";
+        roles = [ "embed" ];
+      }
+      {
+        name = "zerank-1-small";
+        provider = "openai";
+        model = "zerank-1-small";
+        apiBase = "http://localhost:8080/v1";
+        apiKey = "dummy";
+        roles = [ "rerank" ];
       }
     ];
   };

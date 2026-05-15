@@ -26,10 +26,9 @@
               n-gpu-layers = 99;
               flash-attn = "on";
               fit = "on";
-              fit-target = 512;
+              fit-target = 1024;
               prio = 3;
               kv-unified = true;
-              ctx-size = 16384;
               repeat-penalty = 1.05;
               reasoning = "off";
             };
@@ -45,7 +44,6 @@
               repeat-penalty = 1.0;
               fit = "off";
               ot = ''blk\.[0-9]+\.ffn_.*exps.*=CPU'';
-              ctx-size = 65536;
               ctk = "q8_0";
               ctv = "q8_0";
               no-mmap = true;
@@ -58,9 +56,20 @@
               min-p = 0;
               presence-penalty = 1.5;
               repeat-penalty = 1.0;
-              ctx-size = 49152;
               ctk = "q8_0";
               ctv = "q8_0";
+            };
+            "Qwen2.5-Coder-1.5B-Instruct" = {
+              hf = "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF:Q4_K_M";
+            };
+            "FastApply-1.5B-v1.0" = {
+              hf = "MaziyarPanahi/FastApply-1.5B-v1.0-GGUF:Q5_K_M";
+            };
+            "nomic-embed-text-v1.5" = {
+              hf = "nomic-ai/nomic-embed-text-v1.5-GGUF:F32";
+            };
+            "zerank-1-small" = {
+              hf = "mradermacher/zerank-1-small-GGUF:Q4_K_M";
             };
             # OCR
             "Nanonets-OCR-s" = {
@@ -74,8 +83,6 @@
             "8080"
             "--models-preset"
             "${preset}"
-            "--models-max"
-            "1"
           ];
         in
         "${pkgs.llama-cpp-unstable}/bin/llama-server ${utils.escapeSystemdExecArgs args}";
