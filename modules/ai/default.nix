@@ -44,7 +44,8 @@
               presence-penalty = 1.5;
               repeat-penalty = 1.0;
               fit = "off";
-              ot = ''blk\.[1-2]?[0-9]\.ffn_.*exps.*=CPU'';
+              ot = ''blk\.[0-9]+\.ffn_.*exps.*=CPU'';
+              ctx-size = 65536;
               ctk = "q8_0";
               ctv = "q8_0";
               no-mmap = true;

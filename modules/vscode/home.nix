@@ -25,6 +25,7 @@
     });
     mutableExtensionsDir = false;
     extensions = (with pkgs.vscode-extensions; [
+      continue.continue
       eamodio.gitlens
       file-icons.file-icons
       jnoortheen.nix-ide
@@ -119,6 +120,11 @@
         "workbench.commandPalette.preserveInput" = true;
         "workbench.editor.enablePreviewFromCodeNavigation" = true;
         "workbench.iconTheme" = "file-icons";
+        "yaml.schemas" = {
+          "file://${config.home.homeDirectory}/.vscode/extensions/Continue.continue/config-yaml-schema.json" = [
+            ".continue/**/*.yaml"
+          ];
+        };
 
         "direnv.restart.automatic" = true;
         "markdown-preview-enhanced.previewTheme" = "monokai.css";
@@ -153,4 +159,19 @@
       enable-crash-reporter = false;
       crash-reporter-id = "ed2b3d47-3938-47db-a79b-19c13fe3bc1f";
     };
+  xdg.configFile."continue/config.yaml".text = builtins.toJSON {
+    name = "Local Agent";
+    version = "1.0.0";
+    schema = "v1";
+    models = [
+      {
+        name = "Qwen3.6-35B-A3B";
+        provider = "openai";
+        model = "Qwen3.6-35B-A3B";
+        apiBase = "http://localhost:8080/v1";
+        apiKey = "dummy";
+        roles = [ "chat" "edit" "apply" ];
+      }
+    ];
+  };
 }
