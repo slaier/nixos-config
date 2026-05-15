@@ -94,6 +94,11 @@
         "editor.rulers" = [ 80 120 ];
         "extensions.autoCheckUpdates" = false;
         "extensions.autoUpdate" = false;
+        "extensions.allowed" = {
+          "*" = true;
+          "ms-vscode.cpptools" = false;
+          "platformio.platformio-ide" = false;
+        };
         "files.insertFinalNewline" = true;
         "files.trimFinalNewlines" = true;
         "files.trimTrailingWhitespace" = true;
@@ -133,12 +138,6 @@
         "mesonbuild.formatting.enabled" = true;
         "mesonbuild.linter.muon.enabled" = true;
         "redhat.telemetry.enabled" = false;
-
-        "extensions.allowed" = {
-          "*" = true;
-          "ms-vscode.cpptools" = false;
-          "platformio.platformio-ide" = false;
-        };
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "${lib.getExe pkgs.nil}";
         "nix.serverSettings" = {
