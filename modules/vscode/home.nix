@@ -82,6 +82,7 @@
         }
       ];
       userSettings = {
+        "chat.disableAIFeatures" = true;
         "diffEditor.codeLens" = true;
         "diffEditor.ignoreTrimWhitespace" = false;
         "editor.bracketPairColorization.enabled" = true;
