@@ -22,6 +22,7 @@
             "*" = {
               np = 1;
               no-mmproj = true;
+              no-warmup = true;
               sleep-idle-seconds = 600;
               n-gpu-layers = 99;
               flash-attn = "on";
@@ -46,7 +47,6 @@
               ot = ''blk\.[0-9]+\.ffn_.*exps.*=CPU'';
               ctk = "q8_0";
               ctv = "q8_0";
-              no-mmap = true;
             };
             "Jan-v3-4B-base-instruct" = {
               hf = "janhq/Jan-v3-4B-base-instruct-gguf";
