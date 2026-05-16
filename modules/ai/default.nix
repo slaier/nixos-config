@@ -140,15 +140,17 @@
             ;;
     esac
   '';
-  environment.systemPackages = with pkgs; [
-    aicommits
-    claude-code-best
-    llama-cpp-unstable
-    (pkgs.callPackage "${inputs.nixpkgs-unstable}/pkgs/by-name/ch/cherry-studio/package.nix" {
-      pnpm_10_29_2 = pkgs.pnpm;
-    })
-    (pkgs.callPackage "${inputs.nixpkgs-unstable}/pkgs/by-name/st/stable-diffusion-cpp/package.nix" {
-      vulkanSupport = true;
-    })
-  ];
+  environment.systemPackages = assert !(lib.hasAttr "stable-diffusion-cpp" pkgs); with pkgs;
+    [
+      aicommits
+      claude-code-best
+      llama-cpp-unstable
+      (pkgs.callPackage "${inputs.nixpkgs-unstable}/pkgs/by-name/ch/cherry-studio/package.nix" {
+        pnpm_10_29_2 = pkgs.pnpm;
+      })
+      (pkgs.callPackage "${inputs.nixpkgs-unstable}/pkgs/by-name/st/stable-diffusion-cpp/package.nix" {
+        vulkanSupport = true;
+        stdenv = ccacheStdenv;
+      })
+    ];
 }
