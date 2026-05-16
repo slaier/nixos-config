@@ -1,5 +1,71 @@
-{ pkgs, lib, utils, inputs, ... }:
+{ config, lib, pkgs, utils, inputs, ... }:
 {
+  services.litellm = {
+    enable = true;
+    package = pkgs.litellmUnstable;
+    port = 4000;
+    environmentFile = config.sops.secrets.litellm.path;
+    settings = {
+      model_list = [
+        {
+          model_name = "gemini-chat";
+          litellm_params = {
+            model = "gemini/gemini-3.1-flash-lite";
+            api_base = "os.environ/GEMINI_API_BASE";
+            api_key = "os.environ/GEMINI_API_KEY";
+            rpm = 15;
+            tpm = 250000;
+            weight = 1;
+          };
+        }
+        {
+          model_name = "gemini-chat";
+          litellm_params = {
+            model = "gemini/gemma-4-26b-a4b-it";
+            api_base = "os.environ/GEMINI_API_BASE";
+            api_key = "os.environ/GEMINI_API_KEY";
+            rpm = 15;
+            weight = 3;
+          };
+        }
+        {
+          model_name = "gemini-chat";
+          litellm_params = {
+            model = "gemini/gemma-4-31b-it";
+            api_base = "os.environ/GEMINI_API_BASE";
+            api_key = "os.environ/GEMINI_API_KEY";
+            rpm = 15;
+            weight = 3;
+          };
+        }
+        {
+          model_name = "gemini-embedding";
+          litellm_params = {
+            model = "gemini/gemini-embedding-2";
+            api_base = "os.environ/GEMINI_API_BASE";
+            api_key = "os.environ/GEMINI_API_KEY";
+            rpm = 100;
+            tpm = 30000;
+          };
+        }
+        {
+          model_name = "gemini-embedding";
+          litellm_params = {
+            model = "gemini/gemini-embedding-1";
+            api_base = "os.environ/GEMINI_API_BASE";
+            api_key = "os.environ/GEMINI_API_KEY";
+            rpm = 100;
+            tpm = 30000;
+          };
+        }
+      ];
+    };
+  };
+  sops.secrets.litellm = {
+    format = "dotenv";
+    key = "";
+    sopsFile = ../../secrets/litellm.env;
+  };
   systemd.services.llama-cpp = {
     description = "LLaMA C++ server";
     after = [ "network.target" ];
@@ -59,8 +125,8 @@
               ctk = "q8_0";
               ctv = "q8_0";
             };
-            "Qwen2.5-Coder-1.5B-Instruct" = {
-              hf = "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF:Q4_K_M";
+            "Qwen2.5-Coder-1.5B-CodeFIM" = {
+              hf = "mradermacher/Qwen2.5-Coder-1.5B-CodeFIM-GGUF:Q4_K_M";
             };
             "FastApply-1.5B-v1.0" = {
               hf = "MaziyarPanahi/FastApply-1.5B-v1.0-GGUF:Q5_K_M";
