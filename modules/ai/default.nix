@@ -66,6 +66,7 @@
           model_name = "mimo-v2.5-pro";
           litellm_params = {
             model = "xiaomi_mimo/mimo-v2.5-pro";
+            api_base = "os.environ/XIAOMI_MIMO_API_BASE";
             api_key = "os.environ/XIAOMI_MIMO_API_KEY";
             rpm = 100;
             tpm = 10000000;
@@ -78,6 +79,7 @@
           type = "disk";
           disk_cache_dir = "/var/cache/litellm";
         };
+        drop_params = true;
       };
     };
   };
@@ -242,5 +244,6 @@
         vulkanSupport = true;
         stdenv = ccacheStdenv;
       })
+      nur.repos.MiyakoMeow.continue-cli
     ];
 }
