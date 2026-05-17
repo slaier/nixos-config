@@ -53,6 +53,7 @@
   environment.systemPackages = with pkgs; [
     # dailyuse
     abiword
+    ariang
     gnumeric
     kodi-wayland
     localsend
