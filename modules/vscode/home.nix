@@ -172,6 +172,7 @@
         llama-cpp = "http://localhost:8080/v1";
       in
       [
+        (mkModel { name = "mimo-v2.5-pro"; apiBase = litellm; roles = [ "chat" "edit" ]; })
         (mkModel { name = "gemini-chat"; apiBase = litellm; roles = [ "chat" "edit" ]; })
         (mkModel { name = "Qwen3.6-35B-A3B-MTP"; apiBase = llama-cpp; roles = [ "chat" "edit" ]; })
         (mkModel { name = "Qwen2.5-Coder-1.5B-CodeFIM"; apiBase = llama-cpp; roles = [ "autocomplete" ]; })

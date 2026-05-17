@@ -62,6 +62,15 @@
             tpm = 30000;
           };
         }
+        {
+          model_name = "mimo-v2.5-pro";
+          litellm_params = {
+            model = "xiaomi_mimo/mimo-v2.5-pro";
+            api_key = "os.environ/XIAOMI_MIMO_API_KEY";
+            rpm = 100;
+            tpm = 10000000;
+          };
+        }
       ];
       litellm_settings = {
         cache = true;
