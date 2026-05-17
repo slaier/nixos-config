@@ -10,7 +10,7 @@
 }:
 
 llama-cpp-vulkan.overrideAttrs (prev: rec {
-  version = "9150";
+  version = "9190";
 
   outputs = [
     "out"
@@ -21,7 +21,7 @@ llama-cpp-vulkan.overrideAttrs (prev: rec {
     owner = "ggml-org";
     repo = "llama.cpp";
     tag = "b${version}";
-    hash = "sha256-eWWUmzuUggU0VM3ITSge4rDKJ9ntAwP6wCcBb1W9yZk=";
+    hash = "sha256-zajArFzrLUUVsfG1xBttwzwaT9QNlKzDbvSxvof+FMQ=";
     leaveDotGit = true;
     postFetch = ''
       git -C "$out" rev-parse --short HEAD > $out/COMMIT
@@ -33,12 +33,13 @@ llama-cpp-vulkan.overrideAttrs (prev: rec {
     installShellFiles
     nodejs
     npmHooks.npmConfigHook
+    spirv-headers
   ];
 
-  buildInputs = prev.buildInputs ++ [ openssl spirv-headers ];
+  buildInputs = prev.buildInputs ++ [ openssl ];
 
-  npmRoot = "tools/server/webui";
-  npmDepsHash = "sha256-cV3noOyKmst9vfxyvkCNhihPgwfVGhmPPT4UMloeWZM=";
+  npmRoot = "tools/ui";
+  npmDepsHash = "sha256-WaEePrEZ7O/7deP2KJhe0AwiSKYA8HOqETmMHUkmBe0=";
   npmDeps = fetchNpmDeps {
     name = "${prev.pname}-${version}-npm-deps";
     inherit src;

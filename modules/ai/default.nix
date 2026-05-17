@@ -113,6 +113,21 @@
             };
 
             # Coder
+            "Qwen3.6-35B-A3B-MTP" = {
+              hf = "unsloth/Qwen3.6-35B-A3B-MTP-GGUF:UD-Q4_K_XL";
+              temperature = 0.7;
+              top-p = 0.8;
+              top-k = 20;
+              min-p = 0;
+              presence-penalty = 1.5;
+              repeat-penalty = 1.0;
+              fit = "off";
+              ot = ''blk\.[0-9]+\.ffn_.*exps.*=CPU'';
+              ctk = "q8_0";
+              ctv = "q8_0";
+              spec-type = "draft-mtp";
+              spec-draft-n-max = 6;
+            };
             "Qwen3.6-35B-A3B" = {
               hf = "unsloth/Qwen3.6-35B-A3B-GGUF:UD-Q4_K_M";
               temperature = 0.7;
