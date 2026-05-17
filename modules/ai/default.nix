@@ -2,7 +2,11 @@
 {
   services.litellm = {
     enable = true;
-    package = pkgs.litellmUnstable;
+    package = pkgs.litellmUnstable.overrideAttrs (prev: {
+      propagatedBuildInputs = prev.propagatedBuildInputs ++ [
+        pkgs.python3Packages.diskcache
+      ];
+    });
     port = 4000;
     environmentFile = config.sops.secrets.litellm.path;
     settings = {
@@ -59,8 +63,16 @@
           };
         }
       ];
+      litellm_settings = {
+        cache = true;
+        cache_params = {
+          type = "disk";
+          disk_cache_dir = "/var/cache/litellm";
+        };
+      };
     };
   };
+  systemd.services.litellm.serviceConfig.CacheDirectory = "litellm";
   sops.secrets.litellm = {
     format = "dotenv";
     key = "";
