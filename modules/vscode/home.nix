@@ -173,7 +173,7 @@
       in
       [
         (mkModel { name = "gemini-chat"; apiBase = litellm; roles = [ "chat" "edit" ]; })
-        (mkModel { name = "Qwen3.6-35B-A3B"; apiBase = llama-cpp; roles = [ "chat" "edit" ]; })
+        (mkModel { name = "Qwen3.6-35B-A3B-MTP"; apiBase = llama-cpp; roles = [ "chat" "edit" ]; })
         (mkModel { name = "Qwen2.5-Coder-1.5B-CodeFIM"; apiBase = llama-cpp; roles = [ "autocomplete" ]; })
         (mkModel { name = "FastApply-1.5B-v1.0"; apiBase = llama-cpp; roles = [ "apply" ]; })
         (mkModel { name = "gemini-embedding"; apiBase = litellm; roles = [ "embed" ]; })
