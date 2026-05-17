@@ -13,6 +13,7 @@
   boot.extraModulePackages = with config.boot.kernelPackages; [ it87 ];
   boot.extraModprobeConfig = ''
     options it87 ignore_resource_conflict=1
+    options snd_hda_intel power_save=0
   '';
   boot.kernelParams = [
     "iommu=pt"
