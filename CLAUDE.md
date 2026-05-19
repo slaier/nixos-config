@@ -61,8 +61,8 @@ Each program module typically has:
 - **Secrets**: Encrypted with sops using age keys stored in `secrets/secrets.yaml`
 
 ### Inputs
-- `nixpkgs/nixos-25.11` (stable), `nixpkgs/nixos-unstable` (unstable)
-- `home-manager/release-25.11`
+- `nixpkgs/nixos-unstable`
+- `home-manager/master`
 - `NUR` (Nix Unstable Repository)
 - `sops-nix` (encrypted secrets)
 - Custom inputs like niri, bluetooth-player, etc.

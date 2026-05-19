@@ -30,10 +30,8 @@
 
   nix.nixPath = [
     "nixpkgs=${inputs.nixpkgs}"
-    "nixpkgs-unstable=${inputs.nixpkgs-unstable}"
   ];
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
-  nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -50,5 +48,5 @@
     ];
   };
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
 }

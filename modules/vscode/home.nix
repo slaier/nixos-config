@@ -24,7 +24,7 @@
       '';
     });
     mutableExtensionsDir = false;
-    extensions = (with pkgs.vscode-extensions; [
+    profiles.default.extensions = (with pkgs.vscode-extensions; [
       continue.continue
       eamodio.gitlens
       file-icons.file-icons

@@ -1,8 +1,8 @@
-{ config, lib, pkgs, utils, inputs, ... }:
+{ config, lib, pkgs, utils, ... }:
 {
   services.litellm = {
     enable = true;
-    package = pkgs.litellmUnstable.overrideAttrs (prev: {
+    package = pkgs.litellm.overrideAttrs (prev: {
       propagatedBuildInputs = prev.propagatedBuildInputs ++ [
         pkgs.python3Packages.diskcache
       ];
@@ -232,18 +232,13 @@
             ;;
     esac
   '';
-  environment.systemPackages = assert !(lib.hasAttr "stable-diffusion-cpp" pkgs); with pkgs;
+  environment.systemPackages = with pkgs;
     [
       aicommits
+      cherry-studio
       claude-code-best
       llama-cpp-unstable
-      (pkgs.callPackage "${inputs.nixpkgs-unstable}/pkgs/by-name/ch/cherry-studio/package.nix" {
-        pnpm_10_29_2 = pkgs.pnpm;
-      })
-      (pkgs.callPackage "${inputs.nixpkgs-unstable}/pkgs/by-name/st/stable-diffusion-cpp/package.nix" {
-        vulkanSupport = true;
-        stdenv = ccacheStdenv;
-      })
+      stable-diffusion-cpp-vulkan
       nur.repos.MiyakoMeow.continue-cli
     ];
 }

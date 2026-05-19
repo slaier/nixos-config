@@ -38,7 +38,7 @@
     "net.ipv4.route.flush" = 1;
   };
 
-  documentation.man.generateCaches = false;
+  documentation.man.cache.enable = false;
 
   nix.settings = {
     cores = 11;
@@ -48,7 +48,6 @@
 
   services.speechd.enable = false;
 
-  programs.adb.enable = true;
   programs.nix-ld.enable = true;
   environment.systemPackages = with pkgs; [
     # dailyuse
@@ -70,6 +69,7 @@
     filezilla
     freerdp
     # cli
+    android-tools
     axel
     bottom
     cloudflared
