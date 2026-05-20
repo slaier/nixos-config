@@ -239,6 +239,5 @@
       claude-code-best
       llama-cpp-unstable
       stable-diffusion-cpp-vulkan
-      nur.repos.MiyakoMeow.continue-cli
     ];
 }
