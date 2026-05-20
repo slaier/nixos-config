@@ -43,12 +43,8 @@
   programs.ccache = {
     enable = true;
     cacheDir = "/nix/var/cache/ccache";
-    packageNames = [
-      "llama-cpp"
-    ];
+    packageNames = [ ];
   };
-
-  systemd.services.nix-daemon.serviceConfig.CPUQuota = "1100%";
 
   system.stateVersion = "26.05";
 }

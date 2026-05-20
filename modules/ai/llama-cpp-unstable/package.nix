@@ -1,15 +1,15 @@
 { lib
 , fetchFromGitHub
 , fetchNpmDeps
-, llama-cpp-vulkan
-, installShellFiles
-, nodejs
-, npmHooks
-, openssl
-, spirv-headers
+, llama-cpp
+, ccache
+, clangStdenv
 }:
 
-llama-cpp-vulkan.overrideAttrs (prev: rec {
+(llama-cpp.override {
+  vulkanSupport = true;
+  stdenv = clangStdenv;
+}).overrideAttrs (prev: rec {
   version = "9190";
 
   outputs = [
@@ -29,15 +29,6 @@ llama-cpp-vulkan.overrideAttrs (prev: rec {
     '';
   };
 
-  nativeBuildInputs = prev.nativeBuildInputs ++ [
-    installShellFiles
-    nodejs
-    npmHooks.npmConfigHook
-    spirv-headers
-  ];
-
-  buildInputs = prev.buildInputs ++ [ openssl ];
-
   npmRoot = "tools/ui";
   npmDepsHash = "sha256-WaEePrEZ7O/7deP2KJhe0AwiSKYA8HOqETmMHUkmBe0=";
   npmDeps = fetchNpmDeps {
@@ -56,7 +47,12 @@ llama-cpp-vulkan.overrideAttrs (prev: rec {
     popd
   '';
 
+  nativeBuildInputs = prev.nativeBuildInputs ++ [
+    ccache
+  ];
+
   cmakeFlags = prev.cmakeFlags ++ [
-    (lib.cmakeBool "LLAMA_OPENSSL" true)
+    (lib.cmakeFeature "CMAKE_C_COMPILER_LAUNCHER" "ccache")
+    (lib.cmakeFeature "CMAKE_CXX_COMPILER_LAUNCHER" "ccache")
   ];
 })
