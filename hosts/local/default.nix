@@ -41,7 +41,6 @@
   documentation.man.cache.enable = false;
 
   nix.settings = {
-    cores = 11;
     keep-outputs = true;
   };
   services.earlyoom.enable = true;

@@ -48,5 +48,7 @@
     ];
   };
 
+  systemd.services.nix-daemon.serviceConfig.CPUQuota = "1100%";
+
   system.stateVersion = "26.05";
 }
