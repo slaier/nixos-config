@@ -126,6 +126,7 @@
             options.nixos.expr = "(builtins.getFlake (toString ./.)).nixosConfigurations.local.options";
           };
         };
+        "nix.hiddenLanguageServerErrors" = [ "textDocument/definition" ];
         "remote.autoForwardPorts" = false;
       };
     };
