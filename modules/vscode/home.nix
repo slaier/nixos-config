@@ -15,13 +15,6 @@
   ];
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode.overrideAttrs (prev: {
-      preFixup = prev.preFixup + ''
-        gappsWrapperArgs+=(
-          --unset NIXOS_OZONE_WL
-        )
-      '';
-    });
     mutableExtensionsDir = false;
     profiles.default.extensions = (with pkgs.vscode-extensions; [
       eamodio.gitlens
