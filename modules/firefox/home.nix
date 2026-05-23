@@ -249,6 +249,10 @@ in
                     value = "packages";
                   }
                   {
+                    name = "channel";
+                    value = "unstable";
+                  }
+                  {
                     name = "query";
                     value = "{searchTerms}";
                   }
@@ -266,6 +270,10 @@ in
                   {
                     name = "type";
                     value = "options";
+                  }
+                  {
+                    name = "channel";
+                    value = "unstable";
                   }
                   {
                     name = "query";
