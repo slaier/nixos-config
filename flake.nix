@@ -25,9 +25,6 @@
       url = "github:slaier/bluetooth-player";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-    nix-vscode-extensions.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, ... } @inputs:
@@ -105,7 +102,6 @@
             nixpkgs.overlays = overlayList ++ [
               bluetooth-player.overlays."${config.nixpkgs.hostPlatform.system}".default
               niri.overlays.niri
-              nix-vscode-extensions.overlays.default
             ];
 
             home-manager = {

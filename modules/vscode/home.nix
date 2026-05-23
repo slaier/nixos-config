@@ -6,7 +6,6 @@
   home.packages = with pkgs; [
     clang
     clang-tools
-    jsonnet-language-server
     meson
     mesonlsp
     muon
@@ -16,7 +15,7 @@
   programs.vscode = {
     enable = true;
     mutableExtensionsDir = false;
-    profiles.default.extensions = (with pkgs.vscode-extensions; [
+    profiles.default.extensions = with pkgs.vscode-extensions; [
       eamodio.gitlens
       file-icons.file-icons
       jnoortheen.nix-ide
@@ -28,8 +27,6 @@
       ms-python.vscode-pylance
       ms-vscode-remote.remote-containers
       ms-vscode-remote.remote-ssh
-      ms-vscode.cpptools
-      platformio.platformio-vscode-ide
       redhat.vscode-yaml
       rust-lang.rust-analyzer
       shardulm94.trailing-spaces
@@ -39,9 +36,7 @@
       timonwong.shellcheck
       tyriar.sort-lines
       yzhang.markdown-all-in-one
-    ]) ++ (with pkgs.vscode-marketplace; [
-      wokwi.wokwi-vscode
-    ]);
+    ];
     profiles.default = {
       keybindings = [
         {
@@ -85,11 +80,6 @@
         "editor.rulers" = [ 80 120 ];
         "extensions.autoCheckUpdates" = false;
         "extensions.autoUpdate" = false;
-        "extensions.allowed" = {
-          "*" = true;
-          "ms-vscode.cpptools" = false;
-          "platformio.platformio-ide" = false;
-        };
         "files.insertFinalNewline" = true;
         "files.trimFinalNewlines" = true;
         "files.trimTrailingWhitespace" = true;
@@ -133,7 +123,6 @@
             nixpkgsInputName = "nixpkgs";
           };
         };
-        "platformio-ide.customPyPiIndexUrl" = "https://mirror.nju.edu.cn/pypi/web/simple";
         "remote.autoForwardPorts" = false;
       };
     };
