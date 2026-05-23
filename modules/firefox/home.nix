@@ -1,9 +1,10 @@
-{ pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 with lib;
-let
-  profilesPath =
-    if pkgs.stdenv.isDarwin then "Library/Application Support/Firefox/Profiles" else ".mozilla/firefox";
-in
 {
   programs.firefox = {
     enable = true;
@@ -307,7 +308,7 @@ in
       };
     };
   };
-  home.file."${profilesPath}/default/chrome" =
+  home.file."${config.programs.firefox.configPath}/default/chrome" =
     let
       theme = pkgs.fetchFromGitHub {
         owner = "akkva";
