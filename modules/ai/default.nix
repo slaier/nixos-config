@@ -160,6 +160,11 @@ in
                 ctk = "q8_0";
                 ctv = "q8_0";
               };
+              "preset/Qwen2.5-Coder-3B-Instruct-128K" = {
+                hf = "unsloth/Qwen2.5-Coder-3B-Instruct-128K-GGUF:Q4_K_M";
+                ctk = "q8_0";
+                ctv = "q8_0";
+              };
             }
           );
           args = [
