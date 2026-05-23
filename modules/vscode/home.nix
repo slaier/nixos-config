@@ -115,12 +115,12 @@
         "mesonbuild.linter.muon.enabled" = true;
         "redhat.telemetry.enabled" = false;
         "nix.enableLanguageServer" = true;
-        "nix.serverPath" = "${lib.getExe pkgs.nil}";
+        "nix.serverPath" = "${lib.getExe pkgs.nixd}";
         "nix.serverSettings" = {
-          nil.formatting.command = [ (lib.getExe pkgs.nixpkgs-fmt) ];
-          nix = {
-            autoEvalInputs = true;
-            nixpkgsInputName = "nixpkgs";
+          nixd = {
+            nixpkgs.expr = "import (builtins.getFlake (toString ./.)).inputs.nixpkgs { }";
+            formatting.command = [ (lib.getExe pkgs.nixfmt) ];
+            options.nixos.expr = "(builtins.getFlake (toString ./.)).nixosConfigurations.local.options";
           };
         };
         "remote.autoForwardPorts" = false;

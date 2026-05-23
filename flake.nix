@@ -82,7 +82,7 @@
     in
     {
       packages.${system} = mylib.flattenAttrset packages;
-      formatter.${system} = pkgs.nixpkgs-fmt;
+      formatter.${system} = pkgs.nixfmt;
       nixosConfigurations.${hostname} = lib.nixosSystem {
         modules = with inputs; [
           darkmatter-grub-theme.nixosModule
