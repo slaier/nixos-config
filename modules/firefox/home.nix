@@ -152,12 +152,14 @@ with lib;
       };
       search = {
         default = "Google NCR";
+        privateDefault = "Google NCR";
         engines = {
           "amazondotcom-us".metaData.hidden = true;
           "wikipedia".metaData.hidden = true;
           "bing".metaData.hidden = true;
           "ddg".metaData.hidden = true;
           "google".metaData.hidden = true;
+          "perplexity".metaData.hidden = true;
           "Google NCR" = {
             urls = [
               {
@@ -170,6 +172,14 @@ with lib;
                   {
                     name = "hl";
                     value = "zh-CN";
+                  }
+                  {
+                    name = "client";
+                    value = "firefox-b-d";
+                  }
+                  {
+                    name = "channel";
+                    value = "entpr";
                   }
                 ];
               }
