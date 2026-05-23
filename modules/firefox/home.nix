@@ -2,10 +2,7 @@
 with lib;
 let
   profilesPath =
-    if pkgs.stdenv.isDarwin then
-      "Library/Application Support/Firefox/Profiles"
-    else
-      ".mozilla/firefox";
+    if pkgs.stdenv.isDarwin then "Library/Application Support/Firefox/Profiles" else ".mozilla/firefox";
 in
 {
   programs.firefox = {
@@ -51,18 +48,17 @@ in
           addonId = "{7f069302-8ecc-45b1-84be-745f021d040e}";
           url = "https://addons.mozilla.org/firefox/downloads/file/4397391/copy_link_text_sytelix-1.5.0.xpi";
           sha256 = "0aff955e12ae8b99d207bbbe7d945b24c0cb50de450095ffd212842ede86d830";
-          meta = with lib;
-            {
-              description = "The only extension that lets you effortlessly copy link text on both desktop and mobile—via right-click, Alt+C shortcut, or Copy Mode activation.";
-              license = licenses.mpl20;
-              mozPermissions = [
-                "activeTab"
-                "clipboardWrite"
-                "contextMenus"
-                "<all_urls>"
-              ];
-              platforms = platforms.all;
-            };
+          meta = with lib; {
+            description = "The only extension that lets you effortlessly copy link text on both desktop and mobile—via right-click, Alt+C shortcut, or Copy Mode activation.";
+            license = licenses.mpl20;
+            mozPermissions = [
+              "activeTab"
+              "clipboardWrite"
+              "contextMenus"
+              "<all_urls>"
+            ];
+            platforms = platforms.all;
+          };
         })
       ];
       bookmarks = {
@@ -71,35 +67,71 @@ in
           {
             name = "Nix sites";
             bookmarks = [
-              { name = "NUR search"; url = "https://nur.nix-community.org/"; }
-              { name = "Nix Manual"; url = "https://nixos.org/manual/nix/stable/"; }
-              { name = "Nixpkgs Manual"; url = "https://ryantm.github.io/nixpkgs/"; }
-              { name = "Noogle"; url = "https://noogle.dev/"; }
+              {
+                name = "NUR search";
+                url = "https://nur.nix-community.org/";
+              }
+              {
+                name = "Nix Manual";
+                url = "https://nixos.org/manual/nix/stable/";
+              }
+              {
+                name = "Nixpkgs Manual";
+                url = "https://ryantm.github.io/nixpkgs/";
+              }
+              {
+                name = "Noogle";
+                url = "https://noogle.dev/";
+              }
             ];
           }
           {
             name = "Learn";
             bookmarks = [
-              { name = "Rust OS"; url = "https://learningos.github.io/rust-based-os-comp2022/"; }
-              { name = "nLab"; url = "https://ncatlab.org/nlab/show/HomePage"; }
+              {
+                name = "Rust OS";
+                url = "https://learningos.github.io/rust-based-os-comp2022/";
+              }
+              {
+                name = "nLab";
+                url = "https://ncatlab.org/nlab/show/HomePage";
+              }
             ];
           }
           {
             name = "Collection";
             bookmarks = [
-              { name = "ACGN"; url = "https://www.myiys.com/"; }
-              { name = "MirrorZ"; url = "https://mirrorz.org/site"; }
-              { name = "Pling"; url = "https://www.pling.com/"; }
+              {
+                name = "ACGN";
+                url = "https://www.myiys.com/";
+              }
+              {
+                name = "MirrorZ";
+                url = "https://mirrorz.org/site";
+              }
+              {
+                name = "Pling";
+                url = "https://www.pling.com/";
+              }
             ];
           }
           {
             name = "Post";
             bookmarks = [
-              { name = "Proxy Env"; url = "https://about.gitlab.com/blog/2021/01/27/we-need-to-talk-no-proxy"; }
-              { name = "Google Language Codes"; url = "https://sites.google.com/site/tomihasa/google-language-codes"; }
+              {
+                name = "Proxy Env";
+                url = "https://about.gitlab.com/blog/2021/01/27/we-need-to-talk-no-proxy";
+              }
+              {
+                name = "Google Language Codes";
+                url = "https://sites.google.com/site/tomihasa/google-language-codes";
+              }
             ];
           }
-          { name = "Dns Lookup"; url = "https://dnslookup.online/"; }
+          {
+            name = "Dns Lookup";
+            url = "https://dnslookup.online/";
+          }
         ];
       };
       settings = {
@@ -190,48 +222,76 @@ in
           "ddg".metaData.hidden = true;
           "google".metaData.hidden = true;
           "Google NCR" = {
-            urls = [{
-              template = "https://www.google.com/search";
-              params = [
-                { name = "q"; value = "{searchTerms}"; }
-                { name = "hl"; value = "zh-CN"; }
-              ];
-            }];
+            urls = [
+              {
+                template = "https://www.google.com/search";
+                params = [
+                  {
+                    name = "q";
+                    value = "{searchTerms}";
+                  }
+                  {
+                    name = "hl";
+                    value = "zh-CN";
+                  }
+                ];
+              }
+            ];
             definedAliases = [ "@g" ];
           };
           "NixOS packages" = {
-            urls = [{
-              template = "https://search.nixos.org/packages";
-              params = [
-                { name = "type"; value = "packages"; }
-                { name = "query"; value = "{searchTerms}"; }
-              ];
-            }];
+            urls = [
+              {
+                template = "https://search.nixos.org/packages";
+                params = [
+                  {
+                    name = "type";
+                    value = "packages";
+                  }
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = [ "@np" ];
           };
           "NixOS options" = {
-            urls = [{
-              template = "https://search.nixos.org/options";
-              params = [
-                { name = "type"; value = "options"; }
-                { name = "query"; value = "{searchTerms}"; }
-              ];
-            }];
+            urls = [
+              {
+                template = "https://search.nixos.org/options";
+                params = [
+                  {
+                    name = "type";
+                    value = "options";
+                  }
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = [ "@no" ];
           };
           "Home Manager options" = {
-            urls = [{
-              template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master";
-            }];
+            urls = [
+              {
+                template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master";
+              }
+            ];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = [ "@hm" ];
           };
           "Github" = {
-            urls = [{
-              template = "https://github.com/search?q={searchTerms}&ref=opensearch&type=code";
-            }];
+            urls = [
+              {
+                template = "https://github.com/search?q={searchTerms}&ref=opensearch&type=code";
+              }
+            ];
             definedAliases = [ "@gh" ];
           };
         };

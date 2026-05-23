@@ -1,8 +1,9 @@
-{ stdenv
-, bun
-, fetchurl
-, makeWrapper
-, ...
+{
+  stdenv,
+  bun,
+  fetchurl,
+  makeWrapper,
+  ...
 }:
 stdenv.mkDerivation (final: {
   pname = "claude-code-best";

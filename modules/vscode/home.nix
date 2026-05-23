@@ -77,7 +77,10 @@
         "editor.inlayHints.enabled" = "off";
         "editor.minimap.enabled" = false;
         "editor.renderWhitespace" = "all";
-        "editor.rulers" = [ 80 120 ];
+        "editor.rulers" = [
+          80
+          120
+        ];
         "extensions.autoCheckUpdates" = false;
         "extensions.autoUpdate" = false;
         "files.insertFinalNewline" = true;
@@ -127,10 +130,9 @@
       };
     };
   };
-  home.file.".vscode/argv.json".text = builtins.toJSON
-    {
-      password-store = "gnome-libsecret";
-      enable-crash-reporter = false;
-      crash-reporter-id = "ed2b3d47-3938-47db-a79b-19c13fe3bc1f";
-    };
+  home.file.".vscode/argv.json".text = builtins.toJSON {
+    password-store = "gnome-libsecret";
+    enable-crash-reporter = false;
+    crash-reporter-id = "ed2b3d47-3938-47db-a79b-19c13fe3bc1f";
+  };
 }

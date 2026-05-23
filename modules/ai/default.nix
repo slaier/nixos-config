@@ -1,4 +1,10 @@
-{ config, lib, pkgs, utils, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  utils,
+  ...
+}:
 let
   llama-cpp = pkgs.llama-cpp-vulkan;
 in
@@ -110,67 +116,69 @@ in
       ];
       ExecStart =
         let
-          preset = pkgs.writeText "llama-models.ini" (lib.generators.toINI { } {
-            "*" = {
-              np = 1;
-              no-mmproj = true;
-              no-warmup = true;
-              sleep-idle-seconds = 600;
-              n-gpu-layers = 99;
-              flash-attn = "on";
-              fit = "on";
-              fit-target = 1024;
-              prio = 3;
-              kv-unified = true;
-              repeat-penalty = 1.05;
-              reasoning = "off";
-            };
+          preset = pkgs.writeText "llama-models.ini" (
+            lib.generators.toINI { } {
+              "*" = {
+                np = 1;
+                no-mmproj = true;
+                no-warmup = true;
+                sleep-idle-seconds = 600;
+                n-gpu-layers = 99;
+                flash-attn = "on";
+                fit = "on";
+                fit-target = 1024;
+                prio = 3;
+                kv-unified = true;
+                repeat-penalty = 1.05;
+                reasoning = "off";
+              };
 
-            # Coder
-            "Qwen3.6-35B-A3B-MTP" = {
-              hf = "unsloth/Qwen3.6-35B-A3B-MTP-GGUF:UD-Q4_K_XL";
-              temperature = 0.7;
-              top-p = 0.8;
-              top-k = 20;
-              min-p = 0;
-              presence-penalty = 1.5;
-              repeat-penalty = 1.0;
-              fit = "off";
-              ot = ''blk\.[0-9]+\.ffn_.*exps.*=CPU'';
-              ctx-size = 204800;
-              ctk = "q8_0";
-              ctv = "q8_0";
-              spec-type = "draft-mtp";
-              spec-draft-n-max = 1;
-            };
-            "Jan-v3-4B-base-instruct" = {
-              hf = "janhq/Jan-v3-4B-base-instruct-gguf";
-              temperature = 0.7;
-              top-p = 0.8;
-              top-k = 20;
-              min-p = 0;
-              presence-penalty = 1.5;
-              repeat-penalty = 1.0;
-              ctk = "q8_0";
-              ctv = "q8_0";
-            };
-            "Qwen2.5-Coder-1.5B-CodeFIM" = {
-              hf = "mradermacher/Qwen2.5-Coder-1.5B-CodeFIM-GGUF:Q4_K_M";
-            };
-            "FastApply-1.5B-v1.0" = {
-              hf = "MaziyarPanahi/FastApply-1.5B-v1.0-GGUF:Q5_K_M";
-            };
-            "nomic-embed-text-v1.5" = {
-              hf = "nomic-ai/nomic-embed-text-v1.5-GGUF:F32";
-            };
-            "zerank-1-small" = {
-              hf = "mradermacher/zerank-1-small-GGUF:Q4_K_M";
-            };
-            # OCR
-            "Nanonets-OCR-s" = {
-              hf = "unsloth/Nanonets-OCR-s-GGUF:UD-Q4_K_XL";
-            };
-          });
+              # Coder
+              "Qwen3.6-35B-A3B-MTP" = {
+                hf = "unsloth/Qwen3.6-35B-A3B-MTP-GGUF:UD-Q4_K_XL";
+                temperature = 0.7;
+                top-p = 0.8;
+                top-k = 20;
+                min-p = 0;
+                presence-penalty = 1.5;
+                repeat-penalty = 1.0;
+                fit = "off";
+                ot = ''blk\.[0-9]+\.ffn_.*exps.*=CPU'';
+                ctx-size = 204800;
+                ctk = "q8_0";
+                ctv = "q8_0";
+                spec-type = "draft-mtp";
+                spec-draft-n-max = 1;
+              };
+              "Jan-v3-4B-base-instruct" = {
+                hf = "janhq/Jan-v3-4B-base-instruct-gguf";
+                temperature = 0.7;
+                top-p = 0.8;
+                top-k = 20;
+                min-p = 0;
+                presence-penalty = 1.5;
+                repeat-penalty = 1.0;
+                ctk = "q8_0";
+                ctv = "q8_0";
+              };
+              "Qwen2.5-Coder-1.5B-CodeFIM" = {
+                hf = "mradermacher/Qwen2.5-Coder-1.5B-CodeFIM-GGUF:Q4_K_M";
+              };
+              "FastApply-1.5B-v1.0" = {
+                hf = "MaziyarPanahi/FastApply-1.5B-v1.0-GGUF:Q5_K_M";
+              };
+              "nomic-embed-text-v1.5" = {
+                hf = "nomic-ai/nomic-embed-text-v1.5-GGUF:F32";
+              };
+              "zerank-1-small" = {
+                hf = "mradermacher/zerank-1-small-GGUF:Q4_K_M";
+              };
+              # OCR
+              "Nanonets-OCR-s" = {
+                hf = "unsloth/Nanonets-OCR-s-GGUF:UD-Q4_K_XL";
+              };
+            }
+          );
           args = [
             "--host"
             "127.0.0.1"
@@ -223,24 +231,24 @@ in
       ProcSubset = "pid";
     };
   };
-  environment.etc."systemd/system-sleep/suspend-llama.sh".source = pkgs.writeShellScriptBin "suspend-llama.sh" ''
-    #!/bin/sh
+  environment.etc."systemd/system-sleep/suspend-llama.sh".source =
+    pkgs.writeShellScriptBin "suspend-llama.sh" ''
+      #!/bin/sh
 
-    case "$1" in
-        pre)
-            systemctl stop llama-cpp.service
-            ;;
-        post)
-            systemctl start llama-cpp.service
-            ;;
-    esac
-  '';
-  environment.systemPackages = with pkgs;
-    [
-      aicommits
-      cherry-studio
-      claude-code-best
-      llama-cpp
-      stable-diffusion-cpp-vulkan
-    ];
+      case "$1" in
+          pre)
+              systemctl stop llama-cpp.service
+              ;;
+          post)
+              systemctl start llama-cpp.service
+              ;;
+      esac
+    '';
+  environment.systemPackages = with pkgs; [
+    aicommits
+    cherry-studio
+    claude-code-best
+    llama-cpp
+    stable-diffusion-cpp-vulkan
+  ];
 }
