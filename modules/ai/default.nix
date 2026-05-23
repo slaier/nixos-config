@@ -149,6 +149,17 @@ in
                 spec-type = "draft-mtp";
                 spec-draft-n-max = 1;
               };
+              "preset/Qwen3.5-4B-MTP" = {
+                hf = "unsloth/Qwen3.5-4B-MTP-GGUF:UD-Q4_K_XL";
+                temperature = 0.7;
+                top-p = 0.8;
+                top-k = 20;
+                min-p = 0;
+                presence-penalty = 1.5;
+                repeat-penalty = 1.0;
+                ctk = "q8_0";
+                ctv = "q8_0";
+              };
               "preset/Jan-v3-4B-base-instruct" = {
                 hf = "janhq/Jan-v3-4B-base-instruct-gguf";
                 temperature = 0.7;
