@@ -133,8 +133,7 @@ in
                 reasoning = "off";
               };
 
-              # Coder
-              "Qwen3.6-35B-A3B-MTP" = {
+              "preset/Qwen3.6-35B-A3B-MTP" = {
                 hf = "unsloth/Qwen3.6-35B-A3B-MTP-GGUF:UD-Q4_K_XL";
                 temperature = 0.7;
                 top-p = 0.8;
@@ -150,7 +149,7 @@ in
                 spec-type = "draft-mtp";
                 spec-draft-n-max = 1;
               };
-              "Jan-v3-4B-base-instruct" = {
+              "preset/Jan-v3-4B-base-instruct" = {
                 hf = "janhq/Jan-v3-4B-base-instruct-gguf";
                 temperature = 0.7;
                 top-p = 0.8;
@@ -161,22 +160,6 @@ in
                 ctk = "q8_0";
                 ctv = "q8_0";
               };
-              "Qwen2.5-Coder-1.5B-CodeFIM" = {
-                hf = "mradermacher/Qwen2.5-Coder-1.5B-CodeFIM-GGUF:Q4_K_M";
-              };
-              "FastApply-1.5B-v1.0" = {
-                hf = "MaziyarPanahi/FastApply-1.5B-v1.0-GGUF:Q5_K_M";
-              };
-              "nomic-embed-text-v1.5" = {
-                hf = "nomic-ai/nomic-embed-text-v1.5-GGUF:F32";
-              };
-              "zerank-1-small" = {
-                hf = "mradermacher/zerank-1-small-GGUF:Q4_K_M";
-              };
-              # OCR
-              "Nanonets-OCR-s" = {
-                hf = "unsloth/Nanonets-OCR-s-GGUF:UD-Q4_K_XL";
-              };
             }
           );
           args = [
@@ -186,6 +169,8 @@ in
             "8080"
             "--models-preset"
             "${preset}"
+            "--models-max"
+            "1"
           ];
         in
         "${llama-cpp}/bin/llama-server ${utils.escapeSystemdExecArgs args}";
