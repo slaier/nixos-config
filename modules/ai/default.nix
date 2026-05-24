@@ -232,19 +232,6 @@ in
       ProcSubset = "pid";
     };
   };
-  environment.etc."systemd/system-sleep/suspend-llama.sh".source =
-    pkgs.writeShellScriptBin "suspend-llama.sh" ''
-      #!/bin/sh
-
-      case "$1" in
-          pre)
-              systemctl stop llama-cpp.service
-              ;;
-          post)
-              systemctl start llama-cpp.service
-              ;;
-      esac
-    '';
   environment.systemPackages = with pkgs; [
     aicommits
     cherry-studio
