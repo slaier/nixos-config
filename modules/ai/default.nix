@@ -248,7 +248,6 @@ in
   environment.systemPackages = with pkgs; [
     aicommits
     cherry-studio
-    claude-code-best
     llama-cpp
     stable-diffusion-cpp-vulkan
   ];
