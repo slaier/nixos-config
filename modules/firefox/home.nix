@@ -235,7 +235,7 @@ with lib;
           "Home Manager options" = {
             urls = [
               {
-                template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master";
+                template = "https://search.nixos.org/options?channel=unstable&query={searchTerms}&source=home_manager";
               }
             ];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
