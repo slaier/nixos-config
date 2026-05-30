@@ -12,4 +12,3 @@ iso:
 update:
   nix flake update
   nix-update CloudflareSpeedTest --flake
-  nix-update aicommits --url https://github.com/Nutlope/aicommits --flake

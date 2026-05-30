@@ -77,8 +77,8 @@ in
     "HF_ENDPOINT=https://hf-mirror.com"
   ];
   environment.systemPackages = with pkgs; [
-    aicommits
     cherry-studio
+    geminicommit
     llama-cpp
     stable-diffusion-cpp-vulkan
   ];
