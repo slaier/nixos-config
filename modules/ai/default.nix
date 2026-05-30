@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   ...
 }:
@@ -7,95 +6,6 @@ let
   llama-cpp = pkgs.llama-cpp-vulkan;
 in
 {
-  services.litellm = {
-    enable = true;
-    package = pkgs.litellm.overrideAttrs (prev: {
-      propagatedBuildInputs = prev.propagatedBuildInputs ++ [
-        pkgs.python3Packages.diskcache
-      ];
-    });
-    port = 4000;
-    environmentFile = config.sops.secrets.litellm.path;
-    settings = {
-      model_list = [
-        {
-          model_name = "gemini-chat";
-          litellm_params = {
-            model = "gemini/gemini-3.1-flash-lite";
-            api_base = "os.environ/GEMINI_API_BASE";
-            api_key = "os.environ/GEMINI_API_KEY";
-            rpm = 15;
-            tpm = 250000;
-            weight = 1;
-          };
-        }
-        {
-          model_name = "gemini-chat";
-          litellm_params = {
-            model = "gemini/gemma-4-26b-a4b-it";
-            api_base = "os.environ/GEMINI_API_BASE";
-            api_key = "os.environ/GEMINI_API_KEY";
-            rpm = 15;
-            weight = 3;
-          };
-        }
-        {
-          model_name = "gemini-chat";
-          litellm_params = {
-            model = "gemini/gemma-4-31b-it";
-            api_base = "os.environ/GEMINI_API_BASE";
-            api_key = "os.environ/GEMINI_API_KEY";
-            rpm = 15;
-            weight = 3;
-          };
-        }
-        {
-          model_name = "gemini-embedding";
-          litellm_params = {
-            model = "gemini/gemini-embedding-2";
-            api_base = "os.environ/GEMINI_API_BASE";
-            api_key = "os.environ/GEMINI_API_KEY";
-            rpm = 100;
-            tpm = 30000;
-          };
-        }
-        {
-          model_name = "gemini-embedding";
-          litellm_params = {
-            model = "gemini/gemini-embedding-1";
-            api_base = "os.environ/GEMINI_API_BASE";
-            api_key = "os.environ/GEMINI_API_KEY";
-            rpm = 100;
-            tpm = 30000;
-          };
-        }
-        {
-          model_name = "mimo-v2.5-pro";
-          litellm_params = {
-            model = "xiaomi_mimo/mimo-v2.5-pro";
-            api_base = "os.environ/XIAOMI_MIMO_API_BASE";
-            api_key = "os.environ/XIAOMI_MIMO_API_KEY";
-            rpm = 100;
-            tpm = 10000000;
-          };
-        }
-      ];
-      litellm_settings = {
-        cache = true;
-        cache_params = {
-          type = "disk";
-          disk_cache_dir = "/var/cache/litellm";
-        };
-        drop_params = true;
-      };
-    };
-  };
-  systemd.services.litellm.serviceConfig.CacheDirectory = "litellm";
-  sops.secrets.litellm = {
-    format = "dotenv";
-    key = "";
-    sopsFile = ../../secrets/litellm.env;
-  };
   services.llama-cpp = {
     enable = true;
     package = llama-cpp;
