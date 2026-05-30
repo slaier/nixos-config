@@ -46,7 +46,7 @@ in
       key = writeText "dummy" "dummy";
       base = "http://127.0.0.1:8080";
       model = "preset/Qwen3.6-35B-A3B-MTP";
-      haiku = "preset/Qwen2.5-Coder-3B-Instruct-128K";
+      haiku = "preset/Qwen3.5-4B-MTP";
       sonnet = "preset/Qwen3.5-4B-MTP";
     })
   ];

@@ -146,22 +146,6 @@ in
         ctk = "q8_0";
         ctv = "q8_0";
       };
-      "preset/Jan-v3-4B-base-instruct" = {
-        hf = "janhq/Jan-v3-4B-base-instruct-gguf";
-        temperature = 0.7;
-        top-p = 0.8;
-        top-k = 20;
-        min-p = 0;
-        presence-penalty = 1.5;
-        repeat-penalty = 1.0;
-        ctk = "q8_0";
-        ctv = "q8_0";
-      };
-      "preset/Qwen2.5-Coder-3B-Instruct-128K" = {
-        hf = "unsloth/Qwen2.5-Coder-3B-Instruct-128K-GGUF:Q4_K_M";
-        ctk = "q8_0";
-        ctv = "q8_0";
-      };
     };
   };
   systemd.services.llama-cpp.serviceConfig.Environment = [
