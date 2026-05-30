@@ -146,6 +146,20 @@ in
         ctk = "q8_0";
         ctv = "q8_0";
       };
+      "preset/MiniCPM5-1B" = {
+        hf = "openbmb/MiniCPM5-1B-GGUF:Q8_0";
+        temperature = 0.7;
+        top-p = 0.95;
+      };
+      "preset/Hy-MT2-1.8B-GGUF" = {
+        hf = "tencent/Hy-MT2-1.8B-GGUF:Q4_K_M";
+        temperature = 0.7;
+        top-p = 0.6;
+        top-k = 20;
+        repeat-penalty = 1.05;
+        ctk = "q8_0";
+        ctv = "q8_0";
+      };
     };
   };
   systemd.services.llama-cpp.serviceConfig.Environment = [
