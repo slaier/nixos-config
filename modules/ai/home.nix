@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   rtkMD = pkgs.runCommand "claude-rtk-md" { } ''
     mkdir -p $out
@@ -57,6 +62,10 @@ in
     configDir = "${config.xdg.configHome}/claude";
 
     settings = {
+      statusLine = {
+        type = "command";
+        command = "${lib.getExe pkgs.ccometixline}";
+      };
       hooks = {
         PreToolUse = [
           {
