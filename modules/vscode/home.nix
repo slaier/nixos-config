@@ -237,5 +237,8 @@
         "secrets/**" = "deny";
       };
     };
+    instructions = [
+      "${pkgs.rtk.src}/hooks/kilocode/rules.md"
+    ];
   };
 }
