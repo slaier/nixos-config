@@ -54,7 +54,6 @@
     # gui
     abiword
     arduino-ide
-    ariang
     filezilla
     freerdp
     gnumeric
