@@ -53,8 +53,6 @@
   environment.systemPackages = with pkgs; [
     # gui
     abiword
-    arduino-ide
-    filezilla
     freerdp
     gnumeric
     kodi-wayland
