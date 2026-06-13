@@ -241,4 +241,5 @@
       "${pkgs.rtk.src}/hooks/kilocode/rules.md"
     ];
   };
+  xdg.configFile."kilo/skills".source = ./skills;
 }
