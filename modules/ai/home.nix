@@ -43,9 +43,9 @@ in
     (mkCluade "qwen" {
       key = writeText "dummy" "dummy";
       base = "http://127.0.0.1:8080";
-      model = "preset/Qwen3.6-35B-A3B-MTP[256k]";
-      haiku = "preset/Qwen3.5-4B-MTP[128k]";
-      sonnet = "preset/Qwen3.5-4B-MTP[128k]";
+      model = "preset/Qwen3.5-4B-MTP";
+      haiku = "preset/Qwen3.5-4B-MTP";
+      sonnet = "preset/Qwen3.5-4B-MTP";
     })
   ];
   sops.secrets.anthropic_auth_token = { };

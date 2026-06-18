@@ -4,10 +4,6 @@
 }:
 let
   llama-cpp = pkgs.llama-cpp-vulkan;
-  qwen3-template = pkgs.fetchurl {
-    url = "https://huggingface.co/froggeric/Qwen-Fixed-Chat-Templates/resolve/main/chat_template_oneline.txt";
-    hash = "sha256-tyZNtJUYu+ivXYhlwz/NUv2yXx6iidxO2DxusoOEO7s=";
-  };
   llama-cpp-presets = pkgs.writeText "llama-cpp-presets.ini" ''
     [*]
     np = 1
@@ -24,7 +20,6 @@ let
 
     [preset/Qwen3.6-35B-A3B-MTP]
     hf = unsloth/Qwen3.6-35B-A3B-MTP-GGUF:UD-Q4_K_XL
-    chat-template-file = ${qwen3-template}
     temperature = 0.7
     top-p = 0.8
     top-k = 20
@@ -33,6 +28,7 @@ let
     repeat-penalty = 1.0
     fit = off
     ot = blk\.[0-9]+\.ffn_.*exps.*=CPU
+    ctx-size = 131072
     ctk = q8_0
     ctv = q8_0
     spec-type = draft-mtp
@@ -40,7 +36,6 @@ let
 
     [preset/Qwen3.5-4B-MTP]
     hf = unsloth/Qwen3.5-4B-MTP-GGUF:UD-Q4_K_XL
-    chat-template-file = ${qwen3-template}
     temperature = 0.7
     top-p = 0.8
     top-k = 20
