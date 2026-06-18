@@ -40,13 +40,6 @@ in
 {
   home.packages = with pkgs; [
     rtk
-    (mkCluade "mimo" {
-      key = config.sops.secrets.anthropic_auth_token.path;
-      base = "https://token-plan-cn.xiaomimimo.com/anthropic";
-      model = "mimo-v2.5-pro[1m]";
-      haiku = "mimo-v2.5[1m]";
-      sonnet = "mimo-v2.5[1m]";
-    })
     (mkCluade "qwen" {
       key = writeText "dummy" "dummy";
       base = "http://127.0.0.1:8080";
