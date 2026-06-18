@@ -124,7 +124,7 @@
             name = "claude-launcher";
             text = ''
               shift
-              exec claude-qwen "$@"
+              exec claude-gemini "$@"
             '';
           }
         );

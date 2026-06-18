@@ -47,6 +47,13 @@ in
       haiku = "preset/Qwen3.5-4B-MTP";
       sonnet = "preset/Qwen3.5-4B-MTP";
     })
+    (mkCluade "gemini" {
+      key = writeText "dummy" "dummy";
+      base = "http://127.0.0.1:3456";
+      model = "gemma-4-31b-it";
+      haiku = "gemma-4-31b-it";
+      sonnet = "gemma-4-31b-it";
+    })
   ];
   programs.claude-code = {
     enable = true;
