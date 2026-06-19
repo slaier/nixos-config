@@ -22,7 +22,7 @@ let
     }:
     pkgs.writeShellApplication {
       name = "claude-${name}";
-      runtimeInputs = [ pkgs.claude-code ];
+      runtimeInputs = [ config.programs.claude-code.finalPackage ];
       text = ''
         ANTHROPIC_AUTH_TOKEN=$(cat ${key})
         export ANTHROPIC_AUTH_TOKEN
@@ -55,10 +55,31 @@ in
       sonnet = "gemma-4-31b-it";
     })
   ];
+  sops.secrets.tavily = { };
+  programs.mcp = {
+    enable = true;
+    servers = {
+      tavily = {
+        enabled = true;
+        env.TAVILY_API_KEY.file = config.sops.secrets.tavily.path;
+        command = "${lib.getExe (
+          pkgs.writeShellApplication {
+            name = "tavily-mcp-remote";
+            runtimeInputs = [ pkgs.nodejs ];
+            text = ''
+              npx -y mcp-remote "https://mcp.tavily.com/mcp/?tavilyApiKey=$TAVILY_API_KEY"
+            '';
+          }
+        )}";
+      };
+    };
+  };
   programs.claude-code = {
     enable = true;
 
     configDir = "${config.xdg.configHome}/claude";
+
+    enableMcpIntegration = true;
 
     settings = {
       statusLine = {
@@ -98,6 +119,7 @@ in
           "Write"
         ];
         deny = [
+          "WebSearch"
           "Read(./.env)"
           "Read(./secrets/**)"
           "Read(**/*.pem)"
