@@ -90,6 +90,10 @@ in
         hash = "sha256-swAjX47Ojs7QK4+WINZ6MlScHoDc0k6v5n5syCFjS4w=";
       };
 
+      patches = (oldAttrs.patches or [ ]) ++ [
+        ./0001-feat-openai-add-reasoning-effort-support-to-request-.patch
+      ];
+
       pnpmDeps = pkgs.fetchPnpmDeps {
         pnpm = pkgs.pnpm_10;
         inherit (oldAttrs) pname;
@@ -114,8 +118,26 @@ in
             use = [ "gemini" ];
           };
         }
+        {
+          name = "openai";
+          api_base_url = "$OPENAI_API_BASE";
+          api_key = "$OPENAI_API_KEY";
+          models = [
+            "minimaxai/minimax-m3"
+            "moonshotai/kimi-k2.6"
+            "deepseek-ai/deepseek-v4-pro"
+            "deepseek-ai/deepseek-v4-flash"
+            "z-ai/glm-5.1"
+          ];
+          transformer = {
+            use = [ "OpenAI" ];
+          };
+        }
       ];
-      Router.default = "gemini,gemma-4-31b-it";
+      Router = {
+        default = "openai,minimaxai/minimax-m3";
+        background = "gemini,gemma-4-31b-it";
+      };
     };
     environmentFile = config.sops.secrets.ccr.path;
   };

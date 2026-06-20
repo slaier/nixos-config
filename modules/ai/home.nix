@@ -93,15 +93,19 @@ in
     package = mkShellApp {
       package = pkgs.claude-code;
       flags = "--add-dir ${rtkMD}";
-      runtimeEnv = {
-        ANTHROPIC_BASE_URL = "http://127.0.0.1:3456";
-        ANTHROPIC_AUTH_TOKEN = "dummy";
-        ANTHROPIC_MODEL = "gemma-4-31b-it";
-        ANTHROPIC_DEFAULT_HAIKU_MODEL = "gemma-4-31b-it";
-        ANTHROPIC_DEFAULT_SONNET_MODEL = "gemma-4-31b-it";
-        ANTHROPIC_DEFAULT_OPUS_MODEL = "gemma-4-31b-it";
-        CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD = "1";
-      };
+      runtimeEnv =
+        let
+          ANTHROPIC_MODEL = "minimaxai/minimax-m3";
+        in
+        {
+          ANTHROPIC_BASE_URL = "http://127.0.0.1:3456";
+          ANTHROPIC_AUTH_TOKEN = "dummy";
+          inherit ANTHROPIC_MODEL;
+          ANTHROPIC_DEFAULT_HAIKU_MODEL = ANTHROPIC_MODEL;
+          ANTHROPIC_DEFAULT_SONNET_MODEL = ANTHROPIC_MODEL;
+          ANTHROPIC_DEFAULT_OPUS_MODEL = ANTHROPIC_MODEL;
+          CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD = "1";
+        };
     };
 
     configDir = "${config.xdg.configHome}/claude";
