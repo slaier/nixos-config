@@ -47,9 +47,12 @@ in
       };
     })
   ];
-  sops.secrets.summarize = { };
-  sops.secrets.tavily = { };
-  sops.secrets.context7 = { };
+  sops.secrets = {
+    summarize = { };
+    tavily = { };
+    context7 = { };
+    github = { };
+  };
   programs.mcp = {
     enable = true;
     servers =
@@ -76,6 +79,11 @@ in
           enabled = true;
           env.CONTEXT7_API_KEY.file = config.sops.secrets.context7.path;
           command = mcp-remote ''https://mcp.context7.com/mcp --header "CONTEXT7_API_KEY: $CONTEXT7_API_KEY"'';
+        };
+        github = {
+          enable = true;
+          env.GITHUB_PAT.file = config.sops.secrets.github.path;
+          command = mcp-remote ''https://api.githubcopilot.com/mcp --header "Authorization: Bearer $GITHUB_PAT"'';
         };
       };
   };
