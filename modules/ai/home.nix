@@ -49,23 +49,35 @@ in
   ];
   sops.secrets.summarize = { };
   sops.secrets.tavily = { };
+  sops.secrets.context7 = { };
   programs.mcp = {
     enable = true;
-    servers = {
-      tavily = {
-        enabled = true;
-        env.TAVILY_API_KEY.file = config.sops.secrets.tavily.path;
-        command = "${lib.getExe (
-          pkgs.writeShellApplication {
-            name = "tavily-mcp-remote";
-            runtimeInputs = [ pkgs.nodejs ];
-            text = ''
-              npx -y mcp-remote "https://mcp.tavily.com/mcp/?tavilyApiKey=$TAVILY_API_KEY"
-            '';
-          }
-        )}";
+    servers =
+      let
+        mcp-remote =
+          flags:
+          "${lib.getExe (
+            pkgs.writeShellApplication {
+              name = "mcp-remote";
+              runtimeInputs = [ pkgs.nodejs ];
+              text = ''
+                npx -y mcp-remote ${flags}
+              '';
+            }
+          )}";
+      in
+      {
+        tavily = {
+          enabled = true;
+          env.TAVILY_API_KEY.file = config.sops.secrets.tavily.path;
+          command = mcp-remote ''"https://mcp.tavily.com/mcp/?tavilyApiKey=$TAVILY_API_KEY"'';
+        };
+        context7 = {
+          enabled = true;
+          env.CONTEXT7_API_KEY.file = config.sops.secrets.context7.path;
+          command = mcp-remote ''https://mcp.context7.com/mcp --header "CONTEXT7_API_KEY: $CONTEXT7_API_KEY"'';
+        };
       };
-    };
   };
   programs.claude-code = {
     enable = true;
