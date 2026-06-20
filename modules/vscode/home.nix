@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   ...
@@ -117,15 +118,7 @@
         "workbench.editor.enablePreviewFromCodeNavigation" = true;
         "workbench.iconTheme" = "file-icons";
 
-        "claudeCode.claudeProcessWrapper" = lib.getExe (
-          pkgs.writeShellApplication {
-            name = "claude-launcher";
-            text = ''
-              shift
-              exec claude-gemini "$@"
-            '';
-          }
-        );
+        "claudeCode.claudeProcessWrapper" = "${lib.getExe config.programs.claude-code.finalPackage}";
         "claudeCode.disableLoginPrompt" = true;
         "claudeCode.preferredLocation" = "sidebar";
         "direnv.restart.automatic" = true;

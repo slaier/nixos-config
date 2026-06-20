@@ -12,3 +12,4 @@ iso:
 update:
   nix flake update
   nix-update CloudflareSpeedTest --flake
+  nix-update summarize --flake --generate-lockfile
