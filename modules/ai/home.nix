@@ -105,6 +105,7 @@ in
         url = "https://raw.githubusercontent.com/openclaw/openclaw/refs/tags/v2026.6.8/skills/summarize/SKILL.md";
         hash = "sha256-ttm+D/R+ZGKAoP9AIDgj18o2kTqxvqJVdbLeSvs8wN8=";
       };
+      playwright-cli = "${pkgs.playwright-cli}/lib/node_modules/@playwright/cli/skills/playwright-cli";
     };
     plugins = [
       (pkgs.fetchFromGitHub {
