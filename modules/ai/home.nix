@@ -106,6 +106,14 @@ in
         hash = "sha256-ttm+D/R+ZGKAoP9AIDgj18o2kTqxvqJVdbLeSvs8wN8=";
       };
     };
+    plugins = [
+      (pkgs.fetchFromGitHub {
+        owner = "obra";
+        repo = "superpowers";
+        rev = "v6.0.3";
+        hash = "sha256-+lT2a/qq0SF4k0PgnEDKiuidVlZX2p0vEso4d/5T1os=";
+      })
+    ];
 
     settings = {
       statusLine = {
