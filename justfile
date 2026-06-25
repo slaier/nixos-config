@@ -14,3 +14,4 @@ update:
   nix-update CloudflareSpeedTest --flake
   nix-update summarize --flake --generate-lockfile
   nix-update playwright-cli --flake --generate-lockfile
+  nix-update mattpocock-skills --flake
