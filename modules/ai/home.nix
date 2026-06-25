@@ -82,8 +82,28 @@ in
         };
         github = {
           enable = true;
-          env.GITHUB_PAT.file = config.sops.secrets.github.path;
-          command = mcp-remote ''https://api.githubcopilot.com/mcp --header "Authorization: Bearer $GITHUB_PAT"'';
+          env.GITHUB_PERSONAL_ACCESS_TOKEN.file = config.sops.secrets.github.path;
+          command = "${lib.getExe pkgs.github-mcp-server}";
+          args = [
+            "stdio"
+            "--tools"
+            (lib.concatStringsSep "," [
+              "get_file_contents"
+              "get_latest_release"
+              "get_repository_tree"
+              "get_tag"
+              "issue_read"
+              "pull_request_read"
+              "list_branches"
+              "list_commits"
+              "list_releases"
+              "list_tags"
+              "search_code"
+              "search_issues"
+              "search_pull_requests"
+              "search_repositories"
+            ])
+          ];
         };
       };
   };
