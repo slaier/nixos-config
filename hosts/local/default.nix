@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     { programs.command-not-found.enable = false; }
@@ -26,7 +26,15 @@
     firewall.enable = false;
     proxy = {
       default = "http://local.lan:7890";
-      noProxy = "127.0.0.1,localhost,.lan,192.168.0.0/16,.cn";
+      noProxy = lib.strings.concatStringsSep "," [
+        "127.0.0.1"
+        "localhost"
+        ".lan"
+        "192.168.0.0/16"
+        ".cn"
+        ".hf-mirror.com"
+        "cas-bridge.xethub.hf.co"
+      ];
     };
   };
   boot.kernel.sysctl = {
