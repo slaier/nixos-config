@@ -26,7 +26,7 @@
     firewall.enable = false;
     proxy = {
       default = "http://local.lan:7890";
-      noProxy = "127.0.0.1,localhost,.lan";
+      noProxy = "127.0.0.1,localhost,.lan,192.168.0.0/16,.cn";
     };
   };
   boot.kernel.sysctl = {
