@@ -20,6 +20,7 @@ let
     }:
     pkgs.writeShellApplication {
       inherit name runtimeEnv;
+      derivationArgs.version = package.version;
       text =
         lib.optionalString (runtimeEnvFile != null) (
           lib.concatMapAttrsStringSep "" (name: value: ''
