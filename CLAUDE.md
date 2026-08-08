@@ -11,7 +11,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `just iso` — build installer ISO
 - `just update` — update flake inputs + `nix-update` for several packages
 - `nix fmt` — format all Nix files (nixfmt-tree). Run before committing.
-- `nix build .#modules/<name>.package` — build a specific package
+- `nix build .#<module-name>` — build a specific package (attr = leaf module dir name; `flattenAttrset` flattens the tree to a single level, e.g. `nix build .#free-claude-code`)
 - `sops --decrypt secrets/<file>` — decrypt a secret
 
 The dev shell (`.envrc` via direnv) provides `just`, `nixos-rebuild`, `sops`, `nix-update`.
@@ -33,7 +33,7 @@ The dev shell (`.envrc` via direnv) provides `just`, `nixos-rebuild`, `sops`, `n
 ## Modifying Modules: Best Practices
 
 1. **Verify Discovery**: Ensure your file matches the exact names above. If you rename a file to `other.nix`, it will be silently ignored.
-2. **Testing**: Always run `just` (nixos-rebuild test) before committing. If you are modifying packages, use `nix build .#packages.x86_64-linux.<name>` to verify the build.
+2. **Testing**: Always run `just` (nixos-rebuild test) before committing. If you are modifying packages, verify the build with `nix build .#<module-name>` by the leaf module dir name (e.g. `nix build .#free-claude-code`).
 3. **Secrets**: If adding new secrets, ensure they are encrypted via `sops` and referenceable by the module.
 4. **Formatting**: Always run `nix fmt` before committing to avoid CI linting failures.
 
