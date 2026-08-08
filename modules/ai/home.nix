@@ -54,6 +54,10 @@
             ])
           ];
         };
+        nixos = {
+          enable = true;
+          command = lib.getExe pkgs.mcp-nixos;
+        };
       };
   };
 }
