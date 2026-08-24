@@ -32,6 +32,7 @@ let
     ctk = q8_0
     ctv = q8_0
     reasoning = off
+    chat-template-file = ${./chat_template.jinja}
   '';
 in
 {
