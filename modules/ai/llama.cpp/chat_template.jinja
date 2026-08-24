@@ -79,10 +79,10 @@
     {{- raise_exception('No user query found in messages.') }}
 {%- endif %}
 {%- for message in messages %}
-    {%- set content = render_content(message.content, true)|trim %}
+    {%- set content = render_content(message.content, message.role != "system", message.role == "system")|trim %}
     {%- if message.role == "system" %}
-        {%- if not loop.first %}
-            {{- raise_exception('System message must be at the beginning.') }}
+        {%- if not loop.first and content %}
+            {{- '<|im_start|>system\n' + content + '<|im_end|>\n' }}
         {%- endif %}
     {%- elif message.role == "user" %}
         {{- '<|im_start|>' + message.role + '\n' + content + '<|im_end|>' + '\n' }}
