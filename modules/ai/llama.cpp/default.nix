@@ -31,6 +31,7 @@ let
     ctx-size = 131072
     ctk = q8_0
     ctv = q8_0
+    reasoning = off
   '';
 in
 {
