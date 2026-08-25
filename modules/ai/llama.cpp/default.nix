@@ -49,6 +49,18 @@ let
     ctv = q8_0
     reasoning = off
     chat-template-file = ${./chat_template.jinja}
+
+    [preset/Gemma4-26B-A4B]
+    hf = HauhauCS/Gemma4-26B-A4B-QAT-Uncensored-HauhauCS-Balanced-MTP:Q4_K_M
+    temperature = 1.0
+    top-p = 0.95
+    top-k = 64
+    fit = off
+    ot = blk\.[0-9]+\.ffn_.*exps.*=CPU
+    ctx-size = 131072
+    ctk = q8_0
+    ctv = q8_0
+    reasoning = off
   '';
 in
 {
