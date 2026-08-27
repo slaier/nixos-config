@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 let
@@ -21,5 +20,4 @@ in
       };
     };
   };
-  environment.systemPackages = [ pkgs.qwentts ];
 }

@@ -7,6 +7,7 @@
 {
   home.packages = with pkgs; [
     geminicommit
+    qwentts
   ];
 
   sops.secrets = {
