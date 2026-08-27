@@ -6,7 +6,7 @@ let
   llama-cpp = pkgs.llama-cpp-vulkan;
   llama-cpp-presets = pkgs.writeText "llama-cpp-presets.ini" ''
     [*]
-    np = 1
+    np = 4
     no-mmproj = true
     no-warmup = true
     sleep-idle-seconds = 600
