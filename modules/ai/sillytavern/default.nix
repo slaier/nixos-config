@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.services.sillytavern;
 in
@@ -16,4 +21,5 @@ in
       };
     };
   };
+  environment.systemPackages = [ pkgs.qwentts ];
 }
