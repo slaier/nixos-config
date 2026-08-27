@@ -5,10 +5,6 @@
   ...
 }:
 {
-  imports = [
-    ./claude-code/home.nix
-  ];
-
   home.packages = with pkgs; [
     geminicommit
   ];
