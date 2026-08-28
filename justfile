@@ -23,10 +23,7 @@ iso:
 update:
   nix flake update
   nix-update CloudflareSpeedTest --flake
-  nix-update mattpocock-skills --flake
   nix-update pw-duck --flake
-  nix-update free-claude-code --flake -u
-  nix-update excel-mcp-server --flake
 
 # Check for Chinese characters in Nix files (code must be English only, no Chinese)
 check-ascii:
