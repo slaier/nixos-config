@@ -9,7 +9,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `just local boot` — set as next-boot default
 - `just rollback` — revert to the previous generation (`--rollback`)
 - `just iso` — build the installer ISO (`nixosConfigurations.installer`)
-- `just update` — `nix flake update` + `nix-update` for `CloudflareSpeedTest`, `mattpocock-skills`, `pw-duck`, and `free-claude-code` (the last uses its custom `passthru.updateScript`, invoked via `-u`)
+- `just update` — `nix flake update` + `nix-update` for `CloudflareSpeedTest`, `mattpocock-skills`, `pw-duck`, and `free-claude-code` (the last uses its custom `passthru.updateScript`, invoked via `-u`). For new `fetchurl` hashes use `hash = lib.fakeHash` initially and let the build failure report the correct `sha256-...`, instead of manually running `nix-prefetch-url`.
+- `just check` — also runs `just check-ascii` which verifies no Chinese characters in `modules/`, `justfile`, etc. (code must be English only, no Chinese)
 - `nix fmt` — format all Nix files (nixfmt-tree). Run before committing to avoid CI lint failures.
 - `nix build .#<attr>` — build a package; attrs are flattened leaf dir names, e.g. `nix build .#free-claude-code`
 - `sops --decrypt secrets/secrets.yaml` — decrypt secrets (age key in `.sops.yaml`)

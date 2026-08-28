@@ -11,7 +11,8 @@ non-obvious facts an agent is likely to miss.
 - `just` — build & activate the `local` config (`sudo nixos-rebuild test --flake .#local`). Only needed when you actually want to apply the config; otherwise prefer `just check`.
 - `just local switch` / `just local boot` / `just rollback` — activate / set next-boot / revert.
 - `just iso` — build the installer ISO.
-- `just update` — `nix flake update` + `nix-update` for each pinned package; `free-claude-code` uses `-u` (custom `passthru.updateScript`). Do not hand-edit the version/sha in its `package.nix`.
+- `just update` — `nix flake update` + `nix-update` for each pinned package; `free-claude-code` uses `-u` (custom `passthru.updateScript`). Do not hand-edit the version/sha in its `package.nix`. For new `fetchurl` hashes use `hash = lib.fakeHash` initially and let the build failure report the correct `sha256-...`, instead of manually running `nix-prefetch-url`.
+- `just check-ascii` — verify no Chinese characters in `modules/`, `justfile`, etc. (code must be English only, no Chinese). This is run automatically by `just check`.
 - `nix build .#<leaf-dir-name>` — build a single package. Package attrs are flattened to the package's **parent directory name** (e.g. `free-claude-code`), despite arbitrary nesting under `modules/`.
 - `nix fmt` — formatter is `nixfmt-tree`. Run before committing or CI lint fails.
 
