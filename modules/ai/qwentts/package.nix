@@ -27,6 +27,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   patches = [
     ./0001-feat-tts-server-add-mp3-response-format-using-lame.patch
+    ./0002-feat-tts-server-add-idle-sleep-and-lazy-model-loadin.patch
   ];
 
   nativeBuildInputs = [
