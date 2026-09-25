@@ -33,22 +33,6 @@ let
     reasoning = off
     chat-template-file = ${./chat_template.jinja}
 
-    [preset/Qwen3.5-35B-A3B]
-    hf = HauhauCS/Qwen3.5-35B-A3B-Uncensored-HauhauCS-Aggressive:Q4_K_M
-    temperature = 0.7
-    top-p = 0.8
-    top-k = 20
-    min-p = 0
-    presence-penalty = 1.5
-    repeat-penalty = 1.0
-    fit = off
-    ot = blk\.[0-9]+\.ffn_.*exps.*=CPU
-    ctx-size = 131072
-    ctk = q8_0
-    ctv = q8_0
-    reasoning = off
-    chat-template-file = ${./chat_template.jinja}
-
     [preset/Gemma4-26B-A4B]
     hf = HauhauCS/Gemma4-26B-A4B-QAT-Uncensored-HauhauCS-Balanced-MTP:Q4_K_M
     temperature = 1.0
