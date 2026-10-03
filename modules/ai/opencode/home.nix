@@ -6,11 +6,18 @@ let
     rev = "b15d0be58f55b33972ba3e39709e0e5208ef30cb";
     hash = "sha256-wnD5crIal23Vtk6GReG2vCkjDuhrpmhWXvrNUq5mZfE=";
   };
+  mattpocock-skills = pkgs.fetchFromGitHub {
+    owner = "mattpocock";
+    repo = "skills";
+    rev = "v1.2.3";
+    hash = "sha256-I/EXHGW92nXz6JCLp8SKGgzXrbbUTkLAfxv8bc/ThwQ=";
+  };
 in
 {
   programs.opencode = {
     enable = true;
     skills.skill-creator = ./skills/skill-creator;
+    skills.grilling = "${mattpocock-skills}/skills/productivity/grilling";
     extraPackages = with pkgs; [ rtk ];
     settings = {
       plugin = [
