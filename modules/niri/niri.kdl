@@ -4,11 +4,8 @@ hotkey-overlay {
 
 input {
     keyboard {
-        repeat-delay 300
+        repeat-delay 200
         repeat-rate 30
-        xkb {
-            options "ctrl:nocaps"
-        }
     }
 }
 
