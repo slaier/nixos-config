@@ -18,6 +18,7 @@ in
     enable = true;
     skills.skill-creator = ./skills/skill-creator;
     skills.grilling = "${mattpocock-skills}/skills/productivity/grilling";
+    skills.fix-mpv-subtitle-entities = ./skills/fix-mpv-subtitle-entities;
     extraPackages = with pkgs; [ rtk ];
     settings = {
       plugin = [
