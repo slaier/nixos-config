@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
   i-have-adhd = pkgs.fetchFromGitHub {
     owner = "ayghri";
@@ -14,6 +14,8 @@ let
   };
 in
 {
+  sops.secrets.gemini_api_key = { };
+  sops.secrets.opencode_api_key = { };
   programs.opencode = {
     enable = true;
     skills.skill-creator = ./skills/skill-creator;
@@ -21,12 +23,15 @@ in
     skills.find-flake-input = ./skills/find-flake-input;
     extraPackages = with pkgs; [ rtk ];
     settings = {
+      small_model = "google/gemini-3.5-flash-lite";
       plugin = [
         "${pkgs.rtk.src}/hooks/opencode/rtk.ts"
         "@dietrichgebert/ponytail"
         "${i-have-adhd}/.opencode/plugins/i-have-adhd.mjs"
       ];
       provider = {
+        google.options.apiKey = "{file:${config.sops.secrets.gemini_api_key.path}}";
+        opencode.options.apiKey = "{file:${config.sops.secrets.opencode_api_key.path}}";
         "llama.cpp" = {
           npm = "@ai-sdk/openai-compatible";
           name = "llama-server (local)";
