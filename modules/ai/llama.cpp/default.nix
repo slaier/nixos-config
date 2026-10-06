@@ -24,7 +24,7 @@ let
     top-p = 0.95
     top-k = 20
     min-p = 0
-    n-cpu-moe = 34
+    ot = blk\.[0-9]+\.ffn_.*exps.*=CPU
     ctx-size = 131072
     chat-template-file = ${./chat_template.jinja}
   '';
