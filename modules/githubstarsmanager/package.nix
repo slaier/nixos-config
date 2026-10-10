@@ -9,12 +9,12 @@
 }:
 
 let
-  version = "0.8.5";
+  version = "0.8.6";
   src = fetchFromGitHub {
     owner = "AmintaCCCP";
     repo = "GithubStarsManager";
     rev = "v${version}";
-    hash = "sha256-yDqHTYCo4bfs9wZVhHJam6yTpTz4IrWoktTIbU0JjtU=";
+    hash = "sha256-5RPXwpPXm3Twil9PABGVXPW8f3ugwHsz+CKZCky2thw=";
   };
 
   # upstream lockfile requests babel-plugin-polyfill-corejs3@^0.13.0 but only
@@ -33,7 +33,7 @@ let
     npmDeps = fetchNpmDeps {
       inherit version;
       src = srcPatched;
-      hash = "sha256-RuQOziGVCKaP+eWdT19gUPpsJb/jsem3BoPvVk8qtAQ=";
+      hash = "sha256-nQ162HSjS1qMEgLbwzQu476J5/Kzr1bYG3DFeRNEEOQ=";
     };
     installPhase = ''
       runHook preInstall
@@ -47,7 +47,7 @@ let
     inherit version src;
     nodejs = nodejs_22;
     sourceRoot = "source/server";
-    npmDepsHash = "sha256-Tq/OBWtZUlHZ2idJxIq/1vv/xJm/jWj2J0vMLp5+Id0=";
+    npmDepsHash = "sha256-V50fDXA+X3ytFy35dWNt9r742owHo1LfGOTupUtNa2I=";
     nativeBuildInputs = [ python3 ];
     postBuild = "npm prune --omit=dev";
     installPhase = ''
