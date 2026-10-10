@@ -26,7 +26,6 @@ let
     min-p = 0
     ot = blk\.[0-9]+\.ffn_.*exps.*=CPU
     ctx-size = 131072
-    chat-template-file = ${./chat_template.jinja}
   '';
 in
 {
