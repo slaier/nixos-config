@@ -1,33 +1,20 @@
 { pkgs, config, ... }:
-let
-  i-have-adhd = pkgs.fetchFromGitHub {
-    owner = "ayghri";
-    repo = "i-have-adhd";
-    rev = "b15d0be58f55b33972ba3e39709e0e5208ef30cb";
-    hash = "sha256-wnD5crIal23Vtk6GReG2vCkjDuhrpmhWXvrNUq5mZfE=";
-  };
-  mattpocock-skills = pkgs.fetchFromGitHub {
-    owner = "mattpocock";
-    repo = "skills";
-    rev = "v1.2.3";
-    hash = "sha256-I/EXHGW92nXz6JCLp8SKGgzXrbbUTkLAfxv8bc/ThwQ=";
-  };
-in
 {
   sops.secrets.gemini_api_key = { };
   sops.secrets.opencode_api_key = { };
   programs.opencode = {
     enable = true;
-    skills.skill-creator = ./skills/skill-creator;
-    skills.grilling = "${mattpocock-skills}/skills/productivity/grilling";
     skills.find-flake-input = ./skills/find-flake-input;
+    skills.grilling = pkgs.agent-skills.github.mattpocock.skills.grilling;
+    skills.i-have-adhd = pkgs.agent-skills.github.ayghri.i-have-adhd.i-have-adhd;
+    skills.ponytail = pkgs.agent-skills.github.dietrichgebert.ponytail.ponytail;
+    skills.ponytail-review = pkgs.agent-skills.github.dietrichgebert.ponytail.ponytail-review;
+    skills.skill-creator = ./skills/skill-creator;
     extraPackages = with pkgs; [ rtk ];
     settings = {
       small_model = "google/gemini-3.5-flash-lite";
       plugin = [
         "${pkgs.rtk.src}/hooks/opencode/rtk.ts"
-        "@dietrichgebert/ponytail"
-        "${i-have-adhd}/.opencode/plugins/i-have-adhd.mjs"
       ];
       provider = {
         google.options.apiKey = "{file:${config.sops.secrets.gemini_api_key.path}}";
