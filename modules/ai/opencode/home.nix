@@ -9,6 +9,7 @@
     skills.i-have-adhd = pkgs.agent-skills.github.ayghri.i-have-adhd.i-have-adhd;
     skills.ponytail = pkgs.agent-skills.github.dietrichgebert.ponytail.ponytail;
     skills.ponytail-review = pkgs.agent-skills.github.dietrichgebert.ponytail.ponytail-review;
+    skills.ponytail-simplify = ./skills/ponytail-simplify;
     skills.skill-creator = ./skills/skill-creator;
     extraPackages = with pkgs; [ rtk ];
     settings = {
