@@ -16,6 +16,7 @@
   };
 
   xdg.configFile."promptbox/promptbox.toml".source = pkgs.writers.writeTOML "promptbox.toml" {
+    templates = [ ./templates ];
     model = {
       model = {
         model = "gemini-3.5-flash-lite";
@@ -34,5 +35,14 @@
       api_key = "GEMINI_API_KEY";
       send_app_id = false;
     };
+  };
+
+  programs.fish.functions = {
+    aic = ''
+      begin
+        git diff --cached --name-status
+        git diff --cached -O (git diff --cached --name-only --diff-filter ad | psub)
+      end | proxychains4 -q promptbox run commit | xargs -p -r -0 -I{} git commit -m '{}'
+    '';
   };
 }
