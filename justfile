@@ -25,6 +25,7 @@ update:
   nix-update CloudflareSpeedTest --flake
   nix-update pw-duck --flake
   nix-update githubstarsmanager -F -s frontend
+  nix-update promptbox -F
 
 # Check for Chinese characters in Nix files (code must be English only, no Chinese)
 check-ascii:
