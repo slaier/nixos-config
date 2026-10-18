@@ -44,5 +44,8 @@
         git diff --cached -O (git diff --cached --name-only --diff-filter ad | psub)
       end | proxychains4 -q promptbox run commit | xargs -p -r -0 -I{} git commit -m '{}'
     '';
+
+    tzh = "xargs -p -r -0 proxychains4 -q promptbox run translate --target_lang zh";
+    ten = "xargs -p -r -0 proxychains4 -q promptbox run translate --target_lang en";
   };
 }
