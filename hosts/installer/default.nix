@@ -48,6 +48,8 @@ in
 {
   imports = [ (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix") ];
   isoImage.squashfsCompression = "gzip -Xcompression-level 1";
+
+  programs.yazi.enable = true;
   environment.systemPackages = with pkgs; [
     ghostty
     git
