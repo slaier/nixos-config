@@ -51,6 +51,7 @@ in
 
   programs.yazi.enable = true;
   environment.systemPackages = with pkgs; [
+    ddrescue
     ghostty
     git
     niri
