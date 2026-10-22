@@ -7,7 +7,6 @@ let
   llama-cpp-presets = pkgs.writeText "llama-cpp-presets.ini" ''
     [*]
     np = 4
-    no-mmproj = true
     no-warmup = true
     sleep-idle-seconds = 1800
     n-gpu-layers = 99
@@ -15,11 +14,11 @@ let
     kv-unified = true
     ctk = q8_0
     ctv = q8_0
-    presence-penalty = 1.5
+    presence-penalty = 0
     repeat-penalty = 1.0
 
-    [preset/Ornith-1.5-35B-A3B]
-    hf = bartowski/Ornith-1.5-35B-A3B-GGUF:Q4_K_M
+    [ornith-ai/Ornith-1.5-35B-A3B]
+    hf = ornith-ai/Ornith-1.5-35B-A3B-GGUF:Q4_K_M
     temperature = 0.6
     top-p = 0.95
     top-k = 20
