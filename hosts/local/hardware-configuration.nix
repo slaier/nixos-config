@@ -117,6 +117,7 @@
         echo "m" > pp_od_clk_voltage
         echo "m 2 2250 950" > pp_od_clk_voltage
         echo "c" > pp_od_clk_voltage
+        echo "auto" > power_dpm_force_performance_level
       ''} %S%p/device"''
     ]}
     # 3554:fa09 - wireless keyboard receiver, disable autosuspend to avoid drops
