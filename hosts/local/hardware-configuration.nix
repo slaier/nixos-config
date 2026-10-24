@@ -28,14 +28,11 @@
   boot.extraModulePackages = with config.boot.kernelPackages; [ it87 ];
   boot.extraModprobeConfig = ''
     options it87 ignore_resource_conflict=1
-    options snd_hda_intel power_save=0
   '';
   boot.kernelParams = [
-    "iommu=pt"
-    "amdgpu.ppfeaturemask=0xfffd7fff"
-    "amdgpu.aspm=0"
-    "amdgpu.runpm=0"
+    "amdgpu.ppfeaturemask=0xffffffff"
     "amdgpu.gpu_recovery=1"
+    "amdgpu.send_sigterm=1"
     "zswap.enabled=1"
   ];
 
