@@ -37,8 +37,6 @@
     "amdgpu.runpm=0"
     "amdgpu.gpu_recovery=1"
     "zswap.enabled=1"
-    "nmi_watchdog=1"
-    "threadirqs"
   ];
 
   services.fstrim.enable = true;
