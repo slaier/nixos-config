@@ -20,6 +20,26 @@
         "type": "github"
       }
     },
+    "audio-cpp": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792812536,
+        "narHash": "sha256-4DgKOc+1Jzbv7GVNrBngCOrGUzMEhh9QXBYA1N8ERaU=",
+        "owner": "0xShug0",
+        "repo": "audio.cpp",
+        "rev": "dd92e32b6e268178ff43f4fa3ca36f0b380491e0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "0xShug0",
+        "repo": "audio.cpp",
+        "type": "github"
+      }
+    },
     "bluetooth-player": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -286,6 +306,7 @@
     "root": {
       "inputs": {
         "agents-nix": "agents-nix",
+        "audio-cpp": "audio-cpp",
         "bluetooth-player": "bluetooth-player",
         "darkmatter-grub-theme": "darkmatter-grub-theme",
         "home-manager": "home-manager",
