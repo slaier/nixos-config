@@ -26,13 +26,16 @@ let
     ot = blk\.[0-9]+\.ffn_.*exps.*=CPU
     ctx-size = 131072
 
-    [tencent/Hy-MT2-30B-A3B]
-    hf = OS-Software/Hy-MT2-30B-A3B-uncensored-heretic-GGUF:Q4_K_M
+    [tencent/Hy-MT2-7B]
+    hf = alexwkleung/Hy-MT2-7B-Abliterated-GGUF:Q4_K_M
     temperature = 0.7
     top-p = 1.0
     top-k = -1
-    ot = blk\.[0-9]+\.ffn_.*exps.*=CPU
-    ctx-size = 65536
+    ctx-size = 8192
+
+    [IndexTeam/Index-Translate-2B]
+    hf = IndexTeam/Index-Translate-2B-GGUF:Q8_0
+    ctx-size = 8192
   '';
 in
 {
