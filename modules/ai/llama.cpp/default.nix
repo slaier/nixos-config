@@ -26,6 +26,13 @@ let
     ot = blk\.[0-9]+\.ffn_.*exps.*=CPU
     ctx-size = 131072
 
+    [XHToken/Spark-X2.6-4B]
+    hf = XHToken/Spark-X2.6-4B-GGUF:Q4_K_M
+    temperature = 1.0
+    top-p = 0.95
+    top-k = -1
+    ctx-size = 131072
+
     [tencent/Hy-MT2-7B]
     hf = alexwkleung/Hy-MT2-7B-Abliterated-GGUF:Q4_K_M
     temperature = 0.7
