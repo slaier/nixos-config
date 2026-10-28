@@ -27,8 +27,8 @@
           package = "@opencode/ai/providers/openai-compatible";
           settings.baseURL = "http://127.0.0.1:8080/v1";
           models = {
-            "ornith-ai/Ornith-1.5-35B-A3B" = {
-              name = "Ornith-1.5-35B-A3B (local)";
+            "InternScience/Sage-A1.5" = {
+              name = "Sage-A1.5 (local)";
               capabilities = {
                 input = [
                   "text"

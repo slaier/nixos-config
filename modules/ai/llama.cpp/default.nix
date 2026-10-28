@@ -17,8 +17,8 @@ let
     presence-penalty = 0
     repeat-penalty = 1.0
 
-    [ornith-ai/Ornith-1.5-35B-A3B]
-    hf = ornith-ai/Ornith-1.5-35B-A3B-GGUF:Q4_K_M
+    [InternScience/Sage-A1.5]
+    hf = InternScience/Sage-A1.5-Q4_K_M-GGUF:Q4_K_M
     temperature = 0.6
     top-p = 0.95
     top-k = 20
