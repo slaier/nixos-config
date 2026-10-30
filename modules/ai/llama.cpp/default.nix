@@ -52,6 +52,7 @@ in
     enable = true;
     package = llama-cpp;
     settings = {
+      host = "0.0.0.0";
       models-max = 1;
       "models-preset" = llama-cpp-presets;
     };
