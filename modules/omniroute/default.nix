@@ -85,13 +85,10 @@ in
             API_HOST = "0.0.0.0";
             OMNIROUTE_SERVER_HOST = "0.0.0.0";
             LIVE_WS_HOST = "0.0.0.0";
-            # Podman injects the host proxy env (127.0.0.1) into the
-            # container, where it points at nothing. Use the host gateway.
-            HTTP_PROXY = "http://host.containers.internal:7890";
-            HTTPS_PROXY = "http://host.containers.internal:7890";
-            ALL_PROXY = "http://host.containers.internal:7890";
-            NO_PROXY = "127.0.0.1,localhost,.lan,host.containers.internal";
           };
+          # Do not pass the host proxy env (127.0.0.1) into the container,
+          # where it points at nothing.
+          extraOptions = [ "--http-proxy=false" ];
           environmentFiles = [ config.sops.templates."omniroute-env".path ];
           volumes = [ "${dataDir}/data:/app/data" ];
           ports = [
