@@ -26,6 +26,7 @@
       file-icons.file-icons
       jnoortheen.nix-ide
       llvm-vs-code-extensions.vscode-clangd
+      mechatroner.rainbow-csv
       mesonbuild.mesonbuild
       mkhl.direnv
       ms-python.black-formatter
