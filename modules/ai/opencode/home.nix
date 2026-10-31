@@ -27,8 +27,8 @@
           package = "@opencode/ai/providers/openai-compatible";
           settings.baseURL = "http://127.0.0.1:8080/v1";
           models = {
-            "InternScience/Sage-A1.5" = {
-              name = "Sage-A1.5 (local)";
+            "ornith-ai/Ornith-1.5-35B-A3B" = {
+              name = "Ornith-1.5-35B-A3B (local)";
               capabilities = {
                 input = [
                   "text"
@@ -43,24 +43,7 @@
                 temperature = true;
                 tools = true;
               };
-              limit.context = 131072;
-            };
-            "XHToken/Spark-X2.6-4B" = {
-              name = "Spark-X2.6-4B (local)";
-              capabilities = {
-                input = [ "text" ];
-                output = [ "text" ];
-                reasoning = {
-                  supported = true;
-                  effort = [
-                    "low"
-                    "high"
-                  ];
-                };
-                temperature = true;
-                tools = true;
-              };
-              limit.context = 131072;
+              limit.context = 262144;
             };
           };
         };
