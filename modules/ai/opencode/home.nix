@@ -16,9 +16,6 @@
     extraPackages = with pkgs; [ rtk ];
     settings = {
       small_model = "google/gemini-3.5-flash-lite";
-      plugin = [
-        "${pkgs.rtk.src}/hooks/opencode/rtk.ts"
-      ];
       providers = {
         google.settings.apiKey = "{file:${config.sops.secrets.gemini_api_key.path}}";
         opencode.settings.apiKey = "{file:${config.sops.secrets.opencode_api_key.path}}";
@@ -40,7 +37,6 @@
                   supported = true;
                   effort = [ "max" ];
                 };
-                temperature = true;
                 tools = true;
               };
               limit.context = 262144;
@@ -48,11 +44,7 @@
           };
         };
       };
-      permission = {
-        read = {
-          "secrets/**" = "deny";
-        };
-      };
     };
   };
+  xdg.configFile."opencode/plugins/rtk.ts".source = "${pkgs.rtk.src}/hooks/opencode/rtk.ts";
 }
