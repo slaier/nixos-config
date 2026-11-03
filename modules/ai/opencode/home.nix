@@ -2,7 +2,10 @@
 {
   sops.secrets.gemini_api_key = { };
   sops.secrets.opencode_api_key = { };
-  home.packages = with pkgs; [ nur.repos.natsukium.playwright-cli ];
+  home.packages = with pkgs; [
+    nur.repos.natsukium.playwright-cli
+    rtk
+  ];
   programs.opencode = {
     enable = true;
     skills.find-flake-input = ./skills/find-flake-input;
@@ -13,7 +16,6 @@
     skills.ponytail-review = pkgs.agent-skills.github.dietrichgebert.ponytail.ponytail-review;
     skills.ponytail-simplify = ./skills/ponytail-simplify;
     skills.skill-creator = ./skills/skill-creator;
-    extraPackages = with pkgs; [ rtk ];
     settings = {
       small_model = "google/gemini-3.5-flash-lite";
       providers = {
