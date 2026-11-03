@@ -134,6 +134,10 @@
         };
         "nix.hiddenLanguageServerErrors" = [ "textDocument/definition" ];
         "remote.autoForwardPorts" = false;
+
+        "[python]" = {
+          "editor.defaultFormatter" = "ms-python.black-formatter";
+        };
       };
     };
   };
