@@ -102,9 +102,6 @@
       };
       outbounds = [
         {
-          multiplex = {
-            enabled = true;
-          };
           server._secret = config.sops.secrets.sing_box_server_ip.path;
           server_port = 443;
           tag = "proxy";
